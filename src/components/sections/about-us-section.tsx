@@ -22,8 +22,7 @@ export function AboutUsSection() {
             <Card className="shadow-xl bg-card/80 backdrop-blur-sm border-border/50 overflow-hidden">
               <div className="relative aspect-square">
                 <Image
-                  // IMPORTANT: Replace this src with the actual URL of your photo!
-                  src="https://placehold.co/600x600.png" 
+                  src="/images/Inspectors-LaBelle-Home Inspector-Clewiston-lehigh acres.png" 
                   alt="Photo of the lead inspector at Mayne Inspectors"
                   layout="fill"
                   objectFit="cover"
