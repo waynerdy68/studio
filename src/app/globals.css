@@ -18,8 +18,8 @@ body {
     --popover: 0 0% 10%;
     --popover-foreground: 0 0% 98%;
 
-    --primary: 271 100% 25%; /* Deep Indigo #4B0082 */
-    --primary-foreground: 0 0% 98%;
+    --primary: 210 100% 50%; /* New: Bright Blue */
+    --primary-foreground: 0 0% 98%; /* Light text, good on bright blue */
 
     --secondary: 0 0% 20%; /* Darker secondary for dark mode */
     --secondary-foreground: 0 0% 98%;
@@ -27,34 +27,34 @@ body {
     --muted: 0 0% 20%;
     --muted-foreground: 0 0% 60%; /* Lighter muted text */
 
-    --accent: 275 88% 53%; /* Vibrant Violet #A020F0 */
-    --accent-foreground: 0 0% 98%;
+    --accent: 170 100% 40%; /* New: Tealish Green */
+    --accent-foreground: 0 0% 98%; /* Light text, good on teal */
 
     --destructive: 0 72% 51%; /* Adjusted destructive for dark mode */
     --destructive-foreground: 0 0% 98%;
 
     --border: 0 0% 25%; /* Darker border */
     --input: 0 0% 25%; /* Darker input */
-    --ring: 275 88% 58%; /* Ring based on accent */
+    --ring: 170 100% 45%; /* Ring based on new accent */
 
     --radius: 0.5rem;
 
-    /* Chart colors - can be adjusted if charts are used */
-    --chart-1: 271 100% 70%;
-    --chart-2: 275 88% 70%;
-    --chart-3: 271 100% 50%;
-    --chart-4: 275 88% 50%;
-    --chart-5: 271 100% 30%;
+    /* Chart colors adjusted for the new theme */
+    --chart-1: 210 100% 70%; /* Lighter Blue */
+    --chart-2: 170 100% 60%; /* Lighter Teal */
+    --chart-3: 210 100% 50%; /* Primary Blue */
+    --chart-4: 170 100% 40%; /* Accent Teal */
+    --chart-5: 210 100% 30%; /* Darker Blue */
 
     /* Sidebar variables adjusted for the new theme */
     --sidebar-background: 0 0% 10%; /* Darker sidebar background */
     --sidebar-foreground: 0 0% 80%; /* Lighter sidebar foreground */
-    --sidebar-primary: 271 100% 35%; /* Primary color for sidebar active items */
+    --sidebar-primary: 210 100% 50%; /* New primary for sidebar active items */
     --sidebar-primary-foreground: 0 0% 98%;
     --sidebar-accent: 0 0% 20%; /* Accent for sidebar hover */
     --sidebar-accent-foreground: 0 0% 98%;
     --sidebar-border: 0 0% 25%;
-    --sidebar-ring: 275 88% 58%;
+    --sidebar-ring: 170 100% 45%; /* New accent for sidebar ring */
   }
 
   .light {
@@ -67,8 +67,8 @@ body {
     --popover: 0 0% 100%;
     --popover-foreground: 0 0% 3.9%;
 
-    --primary: 271 100% 25%; /* Deep Indigo #4B0082 */
-    --primary-foreground: 0 0% 98%;
+    --primary: 210 100% 50%; /* New: Bright Blue */
+    --primary-foreground: 0 0% 98%; /* Light text on blue */
 
     --secondary: 0 0% 90%; /* Lighter secondary for light mode */
     --secondary-foreground: 0 0% 9%;
@@ -76,32 +76,32 @@ body {
     --muted: 0 0% 90%;
     --muted-foreground: 0 0% 45.1%;
 
-    --accent: 275 88% 53%; /* Vibrant Violet #A020F0 */
-    --accent-foreground: 0 0% 98%;
+    --accent: 170 100% 35%; /* New: Tealish Green (slightly darker for light mode contrast) */
+    --accent-foreground: 0 0% 98%; /* Light text on teal */
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
 
     --border: 0 0% 89.8%;
     --input: 0 0% 89.8%;
-    --ring: 271 100% 30%;
+    --ring: 210 100% 55%; /* Ring based on new primary for light mode */
 
     /* Chart colors for light theme */
-    --chart-1: 271 100% 60%;
-    --chart-2: 275 88% 60%;
-    --chart-3: 271 100% 40%;
-    --chart-4: 275 88% 40%;
-    --chart-5: 271 100% 20%;
+    --chart-1: 210 100% 70%; /* Lighter Blue */
+    --chart-2: 170 100% 55%; /* Lighter Teal for light theme */
+    --chart-3: 210 100% 50%; /* Primary Blue */
+    --chart-4: 170 100% 35%; /* Accent Teal for light theme */
+    --chart-5: 210 100% 30%; /* Darker Blue */
 
     /* Sidebar variables for light theme */
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 271 100% 25%;
+    --sidebar-primary: 210 100% 50%; /* New primary */
     --sidebar-primary-foreground: 0 0% 98%;
     --sidebar-accent: 0 0% 92%;
     --sidebar-accent-foreground: 240 5.9% 10%;
     --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 271 100% 30%;
+    --sidebar-ring: 210 100% 55%; /* Ring based on new primary */
   }
 }
 
