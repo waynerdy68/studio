@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { pricingTiers } from "@/lib/constants";
 import { PricingCard } from "@/components/common/pricing-card";
 import { ScrollAnimationWrapper } from "@/components/common/scroll-animation-wrapper";

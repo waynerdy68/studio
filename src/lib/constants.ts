@@ -1,7 +1,7 @@
 import type { LucideIcon } from "lucide-react";
 import {
   Home, ClipboardCheck, Wind, FlaskConical, ShieldAlert, TestTube, Thermometer,
-  Drone as DroneIcon, Accessibility, Building, Award, Building2, Star, ShieldCheck, Gem, User, Users, Briefcase
+  Camera as DroneIcon, Accessibility, Building, Award, Building2, Star, ShieldCheck, Gem, User, Users, Briefcase
 } from "lucide-react";
 
 export interface Service {
