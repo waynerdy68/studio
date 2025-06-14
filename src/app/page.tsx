@@ -1,6 +1,8 @@
+
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import { HeroSection } from "@/components/sections/hero-section";
+import { AboutUsSection } from "@/components/sections/about-us-section";
 import { ServicesSection } from "@/components/sections/services-section";
 import { VideoSection } from "@/components/sections/video-section";
 import { TestimonialsSection } from "@/components/sections/testimonials-section";
@@ -16,6 +18,7 @@ export default function HomePage() {
       <Header />
       <main className="flex-grow">
         <HeroSection />
+        <AboutUsSection />
         <ServicesSection />
         <VideoSection />
         <TestimonialsSection />

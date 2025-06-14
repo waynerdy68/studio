@@ -1,5 +1,6 @@
+
 import Link from "next/link"
-import { Lightbulb, Facebook, Linkedin, Youtube } from "lucide-react" // Changed Home to Lightbulb
+import { Lightbulb, Facebook, Linkedin, Youtube } from "lucide-react"
 
 export function Footer() {
   const currentYear = new Date().getFullYear()
@@ -10,7 +11,7 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
           <div className="flex flex-col items-center md:items-start">
             <Link href="/" className="flex items-center gap-2 mb-4" aria-label="Mayne Insights Home">
-              <Lightbulb className="h-8 w-8 text-primary" /> {/* Changed Home to Lightbulb */}
+              <Lightbulb className="h-8 w-8 text-primary" />
               <span className="text-xl font-bold font-headline">Mayne Insights</span>
             </Link>
             <p className="text-sm text-muted-foreground text-center md:text-left">
@@ -21,6 +22,7 @@ export function Footer() {
           <div className="flex flex-col items-center">
             <h3 className="text-lg font-semibold mb-3 font-headline">Quick Links</h3>
             <nav className="flex flex-col space-y-2 items-center md:items-start">
+              <Link href="#about" className="text-sm hover:text-primary transition-colors">About Us</Link>
               <Link href="#services" className="text-sm hover:text-primary transition-colors">Services</Link>
               <Link href="#pricing" className="text-sm hover:text-primary transition-colors">Pricing</Link>
               <Link href="#schedule" className="text-sm hover:text-primary transition-colors">Schedule Inspection</Link>
