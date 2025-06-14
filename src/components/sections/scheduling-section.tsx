@@ -116,8 +116,8 @@ export function SchedulingSection() {
           <ScrollAnimationWrapper animationClass="animate-fadeIn" delay="delay-200" className="order-1 lg:order-2">
             <div className="relative aspect-square max-w-md mx-auto lg:max-w-none">
                 <Image 
-                    src="https://images.unsplash.com/photo-1580041065992-898390371d62?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wzODEwMjd8MHwxfHNlYXJjaHwyfHxob21lJTIwaW5zcGVjdG9yJTIwY2xpcGJvYXJkfGVufDB8fHx8MTY5OTE5ODg1Nnww&ixlib=rb-4.0.3&q=80&w=1080" 
-                    alt="Home inspector with clipboard" 
+                    src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=1080&q=80&auto=format&fit=crop" 
+                    alt="Home inspector with clipboard and house plans" 
                     layout="fill" 
                     objectFit="cover" 
                     className="rounded-xl shadow-2xl"
@@ -133,4 +133,3 @@ export function SchedulingSection() {
     </section>
   );
 }
-
