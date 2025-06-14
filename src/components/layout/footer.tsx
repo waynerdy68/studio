@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { Home, Facebook, Linkedin, Youtube } from "lucide-react"
+import { Lightbulb, Facebook, Linkedin, Youtube } from "lucide-react" // Changed Home to Lightbulb
 
 export function Footer() {
   const currentYear = new Date().getFullYear()
@@ -10,7 +10,7 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
           <div className="flex flex-col items-center md:items-start">
             <Link href="/" className="flex items-center gap-2 mb-4" aria-label="Mayne Insights Home">
-              <Home className="h-8 w-8 text-primary" />
+              <Lightbulb className="h-8 w-8 text-primary" /> {/* Changed Home to Lightbulb */}
               <span className="text-xl font-bold font-headline">Mayne Insights</span>
             </Link>
             <p className="text-sm text-muted-foreground text-center md:text-left">

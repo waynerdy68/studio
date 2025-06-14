@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 import { useState, useEffect } from "react"
-import { Menu, X, Home } from "lucide-react"
+import { Menu, X, Lightbulb } from "lucide-react" // Changed Home to Lightbulb
 import { ThemeToggleButton } from "@/components/ui/theme-toggle-button"
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger, SheetClose } from "@/components/ui/sheet"
@@ -44,9 +44,9 @@ export function Header() {
       }`}
     >
       <div className="container mx-auto flex h-20 items-center justify-between px-4 md:px-6">
-        <Link href="/" className="flex items-center gap-2" aria-label="Mayne Insights Home">
-          <Home className="h-8 w-8 text-primary" />
-          <span className="text-2xl font-bold font-headline text-foreground">Mayne Insights</span>
+        <Link href="/" className="flex items-center gap-2" aria-label="Mayne Inspectors Home">
+          <Lightbulb className="h-8 w-8 text-primary" /> {/* Changed Home to Lightbulb */}
+          <span className="text-2xl font-bold font-headline text-foreground">Mayne Inspectors</span>
         </Link>
 
         {/* Desktop Navigation */}
@@ -69,9 +69,9 @@ export function Header() {
             <SheetContent side="right" className="w-full max-w-xs bg-background p-6">
               <div className="flex flex-col space-y-6">
                 <div className="flex justify-between items-center">
-                   <Link href="/" className="flex items-center gap-2" aria-label="Mayne Insights Home" onClick={() => setIsMobileMenuOpen(false)}>
-                    <Home className="h-7 w-7 text-primary" />
-                    <span className="text-xl font-bold font-headline text-foreground">Mayne Insights</span>
+                   <Link href="/" className="flex items-center gap-2" aria-label="Mayne Inspectors Home" onClick={() => setIsMobileMenuOpen(false)}>
+                    <Lightbulb className="h-7 w-7 text-primary" /> {/* Changed Home to Lightbulb */}
+                    <span className="text-xl font-bold font-headline text-foreground">Mayne Inspectors</span>
                   </Link>
                   <SheetClose asChild>
                      <Button variant="ghost" size="icon" aria-label="Close navigation menu">
