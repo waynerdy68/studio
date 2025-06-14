@@ -8,7 +8,7 @@ export function HeroSection() {
     <section id="hero" className="relative bg-gradient-to-br from-background to-primary/30 pt-24 pb-16 md:pt-32 md:pb-24 min-h-[calc(100vh-5rem)] flex items-center">
       <div className="absolute inset-0 opacity-10">
         <Image 
-          src="https://placehold.co/1920x1080.png" 
+          src="https://images.unsplash.com/photo-1633834003013-6c03541f4e62?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxN3x8aG9tZSUyMGluc3BlY3Rpb24lMjAlMjBzdyUyMGZsb3JpZGElMjBnYXRlZCUyMGNvbW11bml0eSUyMHxlbnwwfHx8fDE3NDk4NzY0OTZ8MA&ixlib=rb-4.1.0&q=80&w=1080" 
           alt="Abstract background" 
           layout="fill" 
           objectFit="cover" 
