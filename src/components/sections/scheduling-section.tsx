@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useEffect } from "react";
@@ -115,12 +116,12 @@ export function SchedulingSection() {
           <ScrollAnimationWrapper animationClass="animate-fadeIn" delay="delay-200" className="order-1 lg:order-2">
             <div className="relative aspect-square max-w-md mx-auto lg:max-w-none">
                 <Image 
-                    src="https://placehold.co/600x600.png" 
-                    alt="Home inspector at work" 
+                    src="https://images.unsplash.com/photo-1580041065992-898390371d62?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wzODEwMjd8MHwxfHNlYXJjaHwyfHxob21lJTIwaW5zcGVjdG9yJTIwY2xpcGJvYXJkfGVufDB8fHx8MTY5OTE5ODg1Nnww&ixlib=rb-4.0.3&q=80&w=1080" 
+                    alt="Home inspector with clipboard" 
                     layout="fill" 
                     objectFit="cover" 
                     className="rounded-xl shadow-2xl"
-                    data-ai-hint="home inspector"
+                    data-ai-hint="inspector clipboard"
                 />
             </div>
             <p className="mt-6 text-center text-muted-foreground">
@@ -132,3 +133,4 @@ export function SchedulingSection() {
     </section>
   );
 }
+
