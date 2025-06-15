@@ -22,7 +22,7 @@ export function AboutUsSection() {
             <Card className="shadow-xl bg-card/80 backdrop-blur-sm border-border/50 overflow-hidden">
               <div className="relative aspect-square">
                 <Image
-                  src="/images/Inspectors-LaBelle-Home Inspector-Clewiston-lehigh acres.png"
+                  src="/images/wayne-casten-inspector.png"
                   alt="Photo of the lead inspector at Mayne Inspectors"
                   layout="fill"
                   objectFit="cover"
@@ -38,7 +38,6 @@ export function AboutUsSection() {
                 Your Inspector: Wayne Casten
               </h3>
               <p className="text-lg leading-relaxed">
-                {/* IMPORTANT: Replace this with your actual bio! */}
                 From a young age, I began my career in the building industry alongside my father, a licensed Florida Contractor. This experience fueled my passion for the field, leading me to obtain my State Contractor's License in 2005 and my Home Inspector License in 2011.
               </p>
               <p className="text-lg leading-relaxed">
