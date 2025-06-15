@@ -22,7 +22,7 @@ export function AboutUsSection() {
             <Card className="shadow-xl bg-card/80 backdrop-blur-sm border-border/50 overflow-hidden">
               <div className="relative aspect-square">
                 <Image
-                  src="/images/Inspectors-LaBelle-Home Inspector-Clewiston-lehigh acres.png" 
+                  src="/images/Inspectors-LaBelle-Home Inspector-Clewiston-lehigh acres.png"
                   alt="Photo of the lead inspector at Mayne Inspectors"
                   layout="fill"
                   objectFit="cover"
@@ -35,17 +35,17 @@ export function AboutUsSection() {
           <ScrollAnimationWrapper animationClass="animate-fadeInUp" delay="delay-200" className="lg:col-span-3">
             <div className="space-y-6 text-foreground/90">
               <h3 className="text-3xl font-bold font-headline text-primary">
-                Your Inspector: [Your Name Here]
+                Your Inspector: Wayne Casten
               </h3>
               <p className="text-lg leading-relaxed">
                 {/* IMPORTANT: Replace this with your actual bio! */}
-                Hello! I'm [Your Name], founder and lead inspector at Mayne Home Inspectors. With over [Number] years of dedicated experience in the home inspection industry and a genuine passion for helping clients navigate the complexities of property buying, I established Mayne Inspectors to bring unparalleled thoroughness, honesty, and reliability to our community.
+                From a young age, I began my career in the building industry alongside my father, a licensed Florida Contractor. This experience fueled my passion for the field, leading me to obtain my State Contractor's License in 2005 and my Home Inspector License in 2011.
               </p>
               <p className="text-lg leading-relaxed">
-                As a certified [mention your certifications, e.g., InterNACHI, Florida State License #] inspector, I am committed to upholding the highest standards of practice. My approach is meticulous, ensuring every accessible component of your potential new home is carefully examined. My goal is not just to identify issues, but to provide you with a clear, comprehensive understanding of the property's condition, empowering you to make an informed decision with confidence.
+              With over 30 years of combined experience in construction and inspections, Mayne Inspectors understands the anxieties of buying property. We're here to alleviate that stress by providing a comprehensive inspection conducted by a highly trained professional.
               </p>
               <p className="text-lg leading-relaxed">
-                When I'm not inspecting homes, I enjoy [mention a brief, relatable hobby or interest, e.g., "spending time with my family," "exploring the beautiful Florida outdoors," or "volunteering in the LaBelle community"]. I believe in clear communication and am always here to answer your questions before, during, and after the inspection.
+              At Mayne Inspectors, we believe an inspection isn't complete until all your questions are answered. We'll ensure you have a complete understanding of your investment, empowering you to make informed decisions with peace of mind.
               </p>
               <div className="flex items-center gap-2 text-muted-foreground">
                 <UserCircle className="w-6 h-6 text-accent" />
