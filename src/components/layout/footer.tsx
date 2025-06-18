@@ -12,7 +12,7 @@ export function Footer() {
           <div className="flex flex-col items-center md:items-start">
             <Link href="/" className="flex items-center gap-2 mb-4" aria-label="Mayne Insights Home">
               <Lightbulb className="h-8 w-8 text-primary" />
-              <span className="text-xl font-bold font-headline">Mayne Insights</span>
+              <span className="text-xl font-bold font-headline">Mayne Inspectors</span>
             </Link>
             <p className="text-sm text-muted-foreground text-center md:text-left">
               Serving LaBelle, FL and surrounding areas.

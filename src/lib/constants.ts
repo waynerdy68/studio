@@ -56,7 +56,7 @@ export interface PricingTier {
 export const pricingTiers: PricingTier[] = [
   {
     id: "basic",
-    name: "Essential Inspection",
+    name: "Basic Inspection",
     price: "$350+",
     priceDetails: "For homes up to 2000 sq ft",
     icon: User, // Using User for individual/basic
@@ -93,3 +93,4 @@ export const serviceAreas = [
 ];
 
 export const youtubeVideoId = "dQw4w9WgXcQ"; // Replace with actual video ID
+
