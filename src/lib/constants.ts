@@ -1,3 +1,4 @@
+
 import type { LucideIcon } from "lucide-react";
 import {
   Home, ClipboardCheck, Wind, FlaskConical, ShieldAlert, TestTube, Thermometer,
@@ -56,10 +57,10 @@ export interface PricingTier {
 export const pricingTiers: PricingTier[] = [
   {
     id: "basic",
-    name: "Basic Inspection",
+    name: "Essential Inspection", // Changed back from "Basic Inspection"
     price: "$350+",
     priceDetails: "For homes up to 2000 sq ft",
-    icon: User, // Using User for individual/basic
+    icon: User, 
     features: ["Standard Home Inspection", "Key Systems Check (HVAC, Plumbing, Electrical)", "Structural Overview", "Digital Report within 24hrs"],
     ctaText: "Get Started",
     href: "#schedule",
@@ -69,7 +70,7 @@ export const pricingTiers: PricingTier[] = [
     name: "Comprehensive Plus",
     price: "$475+",
     priceDetails: "For homes up to 3000 sq ft",
-    icon: Users, // Using Users for family/standard
+    icon: Users, 
     features: ["Everything in Essential", "4-Point Inspection Included", "Wind Mitigation Overview", "Infrared Scan (Key Areas)", "Priority Scheduling"],
     ctaText: "Choose Plan",
     isPopular: true,
@@ -80,7 +81,7 @@ export const pricingTiers: PricingTier[] = [
     name: "Ultimate Peace of Mind",
     price: "$650+",
     priceDetails: "For homes over 3000 sq ft / complex properties",
-    icon: Briefcase, // Using Briefcase for business/premium
+    icon: Briefcase, 
     features: ["Everything in Comprehensive Plus", "Mold & Air Quality Sampling (1 area)", "Radon Test Kit", "Drone Roof Inspection", "Extended Consultation"],
     ctaText: "Select Premium",
     href: "#schedule",
