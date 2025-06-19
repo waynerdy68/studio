@@ -112,25 +112,25 @@ export function ContactSection() {
                 <div className="flex items-start gap-4">
                   <MapPin className="w-7 h-7 text-primary mt-1 shrink-0" />
                   <div>
-                    <h4 className="font-semibold text-lg">Our Office</h4>
-                    <p className="text-muted-foreground">123 Inspection Way, LaBelle, FL 33935</p>
+                    <h4 className="font-semibold text-lg">Location</h4>
+                    <p className="text-muted-foreground">LaBelle, FL 33935</p>
                     <a href="#" className="text-sm text-primary hover:underline mt-1 block">Get Directions</a>
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
                   <Phone className="w-7 h-7 text-primary mt-1 shrink-0" />
                   <div>
-                    <h4 className="font-semibold text-lg">Call Us</h4>
-                    <a href="tel:+1234567890" className="text-muted-foreground hover:text-primary transition-colors">(123) 456-7890</a>
-                    <p className="text-sm text-muted-foreground">Mon - Fri, 8am - 6pm</p>
+                    <h4 className="font-semibold text-lg">Call/Text Us</h4>
+                    <a href="tel:+ 2398430735" className="text-muted-foreground hover:text-primary transition-colors">(239) 843-0735</a>
+                    <p className="text-sm text-muted-foreground">Mon - Sat 7am - 6pm, Sun 12 - 4pm</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
                   <Mail className="w-7 h-7 text-primary mt-1 shrink-0" />
                   <div>
                     <h4 className="font-semibold text-lg">Email Us</h4>
-                    <a href="mailto:info@mayneinspectors.com" className="text-muted-foreground hover:text-primary transition-colors">info@mayneinspectors.com</a>
-                    <p className="text-sm text-muted-foreground">We reply within 24 hours</p>
+                    <a href="mailto:castenhome@gmail.com" className="text-muted-foreground hover:text-primary transition-colors">castenhome@gmail.com</a>
+                    <p className="text-sm text-muted-foreground">Same Day Reply</p>
                   </div>
                 </div>
               </div>

@@ -2,8 +2,9 @@
 "use client"
 
 import Link from "next/link"
+import Image from "next/image" // Added import for Image
 import { useState, useEffect } from "react"
-import { Menu, X, Home } from "lucide-react" // Changed Lightbulb to Home
+import { Menu, X } from "lucide-react"
 import { ThemeToggleButton } from "@/components/ui/theme-toggle-button"
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger, SheetClose } from "@/components/ui/sheet"
@@ -47,7 +48,12 @@ export function Header() {
     >
       <div className="container mx-auto flex h-20 items-center justify-between px-4 md:px-6">
         <Link href="/" className="flex items-center gap-2" aria-label="Mayne Inspectors Home">
-          <Home className="h-8 w-8 text-primary" /> {/* Changed Lightbulb to Home */}
+          <Image
+            src="/images/mayne inspector.png"
+            alt="Mayne Inspectors Logo"
+            width={32}
+            height={32}
+          />
           <span className="text-2xl font-bold font-headline text-foreground">Mayne Inspectors</span>
         </Link>
 
@@ -72,7 +78,12 @@ export function Header() {
               <div className="flex flex-col space-y-6">
                 <div className="flex justify-between items-center">
                    <Link href="/" className="flex items-center gap-2" aria-label="Mayne Inspectors Home" onClick={() => setIsMobileMenuOpen(false)}>
-                    <Home className="h-7 w-7 text-primary" /> {/* Changed Lightbulb to Home */}
+                    <Image
+                      src="/images/mayne inspector.png"
+                      alt="Mayne Inspectors Logo"
+                      width={28} // h-7 w-7 equivalent
+                      height={28}
+                    />
                     <span className="text-xl font-bold font-headline text-foreground">Mayne Inspectors</span>
                   </Link>
                   <SheetClose asChild>
