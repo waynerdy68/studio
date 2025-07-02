@@ -4,7 +4,7 @@
 import Link from "next/link"
 import Image from "next/image" 
 import { useState, useEffect } from "react"
-import { Menu, X } from "lucide-react"
+import { Menu, X, ShieldCheck } from "lucide-react"
 import { ThemeToggleButton } from "@/components/ui/theme-toggle-button"
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger, SheetClose } from "@/components/ui/sheet"
@@ -40,6 +40,14 @@ export function Header() {
     </Link>
   )
 
+  const Logo = () => (
+    <>
+      <Image src="/images/Mayne-Inspector-light.png" alt="Mayne Inspectors Logo" width={32} height={32} className="hidden dark:block" />
+      <ShieldCheck className="h-8 w-8 text-primary dark:hidden" />
+    </>
+  );
+
+
   return (
     <header
       className={`sticky top-0 z-50 w-full transition-all duration-300 ${
@@ -48,7 +56,7 @@ export function Header() {
     >
       <div className="container mx-auto flex h-20 items-center justify-between px-4 md:px-6">
         <Link href="/" className="flex items-center gap-2" aria-label="Mayne Inspectors Home">
-          <Image src="/images/Mayne-Inspector-light.png" alt="Mayne Inspectors Logo" width={32} height={32} />
+          <Logo />
           <span className="text-2xl font-bold font-headline text-foreground">Mayne Inspectors</span>
         </Link>
 
@@ -73,7 +81,7 @@ export function Header() {
               <div className="flex flex-col space-y-6">
                 <div className="flex justify-between items-center">
                    <Link href="/" className="flex items-center gap-2" aria-label="Mayne Inspectors Home" onClick={() => setIsMobileMenuOpen(false)}>
-                    <Image src="/images/Mayne-Inspector-light.png" alt="Mayne Inspectors Logo" width={28} height={28} />
+                    <Logo />
                     <span className="text-xl font-bold font-headline text-foreground">Mayne Inspectors</span>
                   </Link>
                   <SheetClose asChild>
