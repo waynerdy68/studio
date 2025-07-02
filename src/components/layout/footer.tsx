@@ -1,17 +1,39 @@
 
 import Link from "next/link"
-import { Lightbulb, Facebook, Linkedin, Youtube } from "lucide-react"
+import Image from "next/image"
+import { Facebook, Linkedin, Youtube } from "lucide-react"
 
 export function Footer() {
   const currentYear = new Date().getFullYear()
+
+  const Logo = () => (
+    <>
+      <Image
+        src="/images/Mayne-Inspector-dark.png"
+        alt="Mayne Inspectors Logo"
+        width={32}
+        height={32}
+        className="block dark:hidden h-8 w-8"
+        data-ai-hint="logo"
+      />
+      <Image
+        src="/images/Mayne-Inspector-light.png"
+        alt="Mayne Inspectors Logo"
+        width={32}
+        height={32}
+        className="hidden dark:block h-8 w-8"
+        data-ai-hint="logo"
+      />
+    </>
+  );
 
   return (
     <footer className="bg-card text-card-foreground py-12 border-t">
       <div className="container mx-auto px-4 md:px-6">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
           <div className="flex flex-col items-center md:items-start">
-            <Link href="/" className="flex items-center gap-2 mb-4" aria-label="Mayne Insights Home">
-              <Lightbulb className="h-8 w-8 text-primary" />
+            <Link href="/" className="flex items-center gap-2 mb-4" aria-label="Mayne Inspectors Home">
+              <Logo />
               <span className="text-xl font-bold font-headline">Mayne Inspectors</span>
             </Link>
             <p className="text-sm text-muted-foreground text-center md:text-left">
