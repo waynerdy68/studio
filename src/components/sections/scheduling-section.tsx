@@ -1,8 +1,6 @@
-
 "use client";
 
-import { useEffect } from "react";
-import { useFormState } from "react-dom";
+import { useEffect, useActionState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
@@ -33,7 +31,7 @@ const initialState: ScheduleFormState = {
 
 export function SchedulingSection() {
   const { toast } = useToast();
-  const [state, formAction] = useFormState(scheduleInspection, initialState);
+  const [state, formAction] = useActionState(scheduleInspection, initialState);
   
   const form = useForm<ScheduleFormData>({
     resolver: zodResolver(scheduleFormSchema),
