@@ -4,7 +4,7 @@
 import Link from "next/link"
 import Image from "next/image" 
 import { useState, useEffect } from "react"
-import { Menu, X, ShieldCheck } from "lucide-react"
+import { Menu, X } from "lucide-react"
 import { ThemeToggleButton } from "@/components/ui/theme-toggle-button"
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger, SheetClose } from "@/components/ui/sheet"
@@ -43,7 +43,7 @@ export function Header() {
   const Logo = () => (
     <>
       <Image src="/images/Mayne-Inspector-light.png" alt="Mayne Inspectors Logo" width={32} height={32} className="hidden dark:block" />
-      <ShieldCheck className="h-8 w-8 text-primary dark:hidden" />
+      <Image src="/images/Mayne-Inspector-dark.png" alt="Mayne Inspectors Logo" width={32} height={32} className="block dark:hidden" />
     </>
   );
 

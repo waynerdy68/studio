@@ -1,7 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ScrollAnimationWrapper } from "@/components/common/scroll-animation-wrapper";
 import Image from "next/image";
-import { LucideIcon, ShieldCheck } from "lucide-react";
+import { LucideIcon } from "lucide-react";
 
 interface ServiceCardProps {
   icon: LucideIcon;
@@ -17,8 +17,8 @@ export function ServiceCard({ icon: Icon, name, description, index }: ServiceCar
     <ScrollAnimationWrapper animationClass="animate-fadeInUp" delay={delayClass}>
       <Card className="h-full transform transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-primary/30 flex flex-col bg-card/80 backdrop-blur-sm border-border/50">
         <CardHeader className="flex flex-row items-center gap-4 pb-2">
-          <Image src="/images/Mayne-Inspector-light.png" alt="Company Logo" width={32} height={32} className="mr-3 hidden dark:block" />
-          <ShieldCheck className="h-8 w-8 text-primary mr-3 dark:hidden" />
+          <Image src="/images/Mayne-Inspector-light.png" alt="Company Logo" width={32} height={32} className="hidden dark:block" />
+          <Image src="/images/Mayne-Inspector-dark.png" alt="Company Logo" width={32} height={32} className="block dark:hidden" />
           <CardTitle className="text-xl font-semibold font-headline">{name}</CardTitle>
         </CardHeader>
         <CardContent className="flex-grow">
