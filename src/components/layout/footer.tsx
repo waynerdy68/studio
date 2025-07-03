@@ -1,13 +1,28 @@
 
 import Link from "next/link"
 import Image from "next/image"
-import { Facebook, Linkedin, Youtube, ShieldCheck } from "lucide-react"
+import { Facebook, Linkedin, Youtube } from "lucide-react"
 
 export function Footer() {
   const currentYear = new Date().getFullYear()
 
   const Logo = () => (
-    <ShieldCheck className="h-8 w-8 text-primary" />
+    <>
+      <Image
+        src="/images/Mayne-Inspector-dark.png"
+        width={32}
+        height={32}
+        alt="Mayne Inspectors Logo"
+        className="dark:hidden"
+      />
+      <Image
+        src="/images/Mayne-Inspector-light.png"
+        width={32}
+        height={32}
+        alt="Mayne Inspectors Logo"
+        className="hidden dark:block"
+      />
+    </>
   );
 
   return (

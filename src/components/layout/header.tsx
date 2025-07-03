@@ -1,9 +1,10 @@
+
 "use client"
 
 import Link from "next/link"
 import Image from "next/image"
 import { useState, useEffect } from "react"
-import { Menu, X, ShieldCheck } from "lucide-react"
+import { Menu, X } from "lucide-react"
 import { ThemeToggleButton } from "@/components/ui/theme-toggle-button"
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger, SheetClose } from "@/components/ui/sheet"
@@ -40,7 +41,22 @@ export function Header() {
   )
 
   const Logo = () => (
-    <ShieldCheck className="h-8 w-8 text-primary" />
+    <>
+      <Image
+        src="/images/Mayne-Inspector-dark.png"
+        width={32}
+        height={32}
+        alt="Mayne Inspectors Logo"
+        className="dark:hidden"
+      />
+      <Image
+        src="/images/Mayne-Inspector-light.png"
+        width={32}
+        height={32}
+        alt="Mayne Inspectors Logo"
+        className="hidden dark:block"
+      />
+    </>
   );
 
 
