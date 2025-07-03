@@ -16,7 +16,7 @@ export function Footer() {
         className="dark:hidden"
       />
       <Image
-        src="/images/Mayne-Inspector-light.png"
+        src="/images/Mayne-Inspector-light-removebg-preview.png"
         width={32}
         height={32}
         alt="Mayne Inspectors Logo"
