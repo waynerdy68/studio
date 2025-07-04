@@ -33,7 +33,7 @@ export async function scheduleInspection(
   if (!db) {
     console.error("Firestore is not initialized. Check your Firebase credentials in the .env file.");
     return {
-      message: "Submission failed. Server configuration error.",
+      message: "Submission failed due to server configuration. Please check the server logs for more details.",
       success: false,
     };
   }
@@ -93,7 +93,7 @@ export async function submitContactForm(
   if (!db) {
     console.error("Firestore is not initialized. Check your Firebase credentials in the .env file.");
     return {
-      message: "Submission failed. Server configuration error.",
+      message: "Submission failed due to server configuration. Please check the server logs for more details.",
       success: false,
     };
   }

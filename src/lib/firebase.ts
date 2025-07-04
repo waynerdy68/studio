@@ -10,6 +10,8 @@ const serviceAccount: admin.ServiceAccount = {
   privateKey: (process.env.FIREBASE_PRIVATE_KEY || '').replace(/\\n/g, '\n'),
 };
 
+let db: admin.firestore.Firestore | null = null;
+
 // Initialize the admin app if it hasn't been already
 if (!admin.apps.length) {
   // Check if all the necessary credentials are provided
@@ -18,17 +20,20 @@ if (!admin.apps.length) {
       admin.initializeApp({
         credential: admin.credential.cert(serviceAccount),
       });
+      console.log('Firebase Admin SDK initialized successfully.');
+      db = admin.firestore();
     } catch (error) {
-      console.error('Firebase admin initialization error', error);
+      console.error('Firebase admin initialization error:', error);
     }
   } else {
     // This warning will show in your server logs if credentials are not in the .env file
     console.warn('Firebase Admin SDK credentials not provided. Server-side Firebase features will be disabled.');
+    if (!serviceAccount.projectId) console.warn('- FIREBASE_PROJECT_ID is missing or empty in your .env file.');
+    if (!serviceAccount.clientEmail) console.warn('- FIREBASE_CLIENT_EMAIL is missing or empty in your .env file.');
+    if (!serviceAccount.privateKey) console.warn('- FIREBASE_PRIVATE_KEY is missing or empty in your .env file.');
   }
+} else {
+    db = admin.firestore();
 }
-
-// Get a reference to the Firestore database, only if an app is initialized.
-// This prevents the app from crashing if firebase credentials are not provided.
-const db = admin.apps.length ? admin.firestore() : null;
 
 export { db };
