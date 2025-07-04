@@ -2,7 +2,7 @@
 
 import { z } from "zod";
 import { db } from "@/lib/firebase";
-import { collection, addDoc, serverTimestamp } from "firebase/firestore";
+import { FieldValue } from "firebase-admin/firestore";
 
 // --- Schedule Inspection Form ---
 
@@ -47,9 +47,9 @@ export async function scheduleInspection(
   }
 
   try {
-    await addDoc(collection(db, "inspections"), {
+    await db.collection("inspections").add({
       ...validatedFields.data,
-      submittedAt: serverTimestamp(),
+      submittedAt: FieldValue.serverTimestamp(),
     });
     return { message: "Inspection scheduled successfully! We will contact you shortly.", success: true };
   } catch (error) {
@@ -98,9 +98,9 @@ export async function submitContactForm(
   }
 
   try {
-    await addDoc(collection(db, "contacts"), {
+    await db.collection("contacts").add({
       ...validatedFields.data,
-      submittedAt: serverTimestamp(),
+      submittedAt: FieldValue.serverTimestamp(),
     });
     return { message: "Message sent successfully! We will get back to you soon.", success: true };
   } catch (error) {
