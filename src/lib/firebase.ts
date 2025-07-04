@@ -25,7 +25,8 @@ if (!admin.apps.length) {
   }
 }
 
-// Get a reference to the Firestore database
-const db = admin.firestore();
+// Get a reference to the Firestore database, only if an app is initialized.
+// This prevents the app from crashing if firebase credentials are not provided.
+const db = admin.apps.length ? admin.firestore() : null;
 
 export { db };

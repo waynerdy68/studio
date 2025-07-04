@@ -30,6 +30,14 @@ export async function scheduleInspection(
   prevState: ScheduleFormState,
   formData: FormData
 ): Promise<ScheduleFormState> {
+  if (!db) {
+    console.error("Firestore is not initialized. Check your Firebase credentials in the .env file.");
+    return {
+      message: "Submission failed. Server configuration error.",
+      success: false,
+    };
+  }
+
   const validatedFields = scheduleSchema.safeParse({
     name: formData.get("name"),
     address: formData.get("address"),
@@ -82,6 +90,14 @@ export async function submitContactForm(
   prevState: ContactFormState,
   formData: FormData
 ): Promise<ContactFormState> {
+  if (!db) {
+    console.error("Firestore is not initialized. Check your Firebase credentials in the .env file.");
+    return {
+      message: "Submission failed. Server configuration error.",
+      success: false,
+    };
+  }
+  
   const validatedFields = contactSchema.safeParse({
     name: formData.get("name"),
     email: formData.get("email"),
