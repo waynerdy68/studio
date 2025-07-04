@@ -4,7 +4,9 @@ import * as admin from 'firebase-admin';
 const serviceAccount: admin.ServiceAccount = {
   projectId: process.env.FIREBASE_PROJECT_ID,
   clientEmail: process.env.FIREBASE_CLIENT_EMAIL,
-  // The private key is a long string that needs to be handled carefully
+  // The private key is a long string that needs to be handled carefully.
+  // In your .env file, make sure to wrap the entire key in double quotes,
+  // including the "-----BEGIN PRIVATE KEY-----" and "-----END PRIVATE KEY-----" lines.
   privateKey: (process.env.FIREBASE_PRIVATE_KEY || '').replace(/\\n/g, '\n'),
 };
 
