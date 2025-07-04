@@ -13,6 +13,7 @@ import { useToast } from "@/hooks/use-toast";
 import { ScrollAnimationWrapper } from "@/components/common/scroll-animation-wrapper";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Mail, Phone, MapPin } from "lucide-react";
+import { useFormContext as useSharedFormContext } from "@/context/form-context";
 
 const contactFormSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters"),
@@ -31,13 +32,14 @@ const initialState: ContactFormState = {
 export function ContactSection() {
   const { toast } = useToast();
   const [state, formAction] = useActionState(submitContactForm, initialState);
+  const { sharedData, setSharedData } = useSharedFormContext();
   
   const form = useForm<ContactFormData>({
     resolver: zodResolver(contactFormSchema),
     defaultValues: {
-      name: "",
-      email: "",
-      phone: "",
+      name: sharedData.name || "",
+      email: sharedData.email || "",
+      phone: sharedData.phone || "",
       message: "",
     },
   });
@@ -50,10 +52,26 @@ export function ContactSection() {
         variant: state.success ? "default" : "destructive",
       });
       if (state.success) {
-        form.reset();
+        form.reset({
+          ...form.getValues(),
+          message: "",
+        });
       }
     }
   }, [state, toast, form]);
+
+  useEffect(() => {
+    if (form.getValues('name') !== sharedData.name || form.getValues('email') !== sharedData.email || form.getValues('phone') !== sharedData.phone) {
+      form.reset({
+        ...sharedData,
+        message: form.getValues("message"),
+      });
+    }
+  }, [sharedData, form]);
+
+  const nameReg = form.register("name");
+  const emailReg = form.register("email");
+  const phoneReg = form.register("phone");
 
   return (
     <section id="contact" className="bg-primary/5">
@@ -76,19 +94,28 @@ export function ContactSection() {
                 <form action={formAction} className="space-y-6">
                   <div>
                     <Label htmlFor="contact-name" className="font-medium">Full Name</Label>
-                    <Input id="contact-name" name="name" {...form.register("name")} placeholder="Jane Smith" className="mt-1" />
+                    <Input id="contact-name" {...nameReg} placeholder="Jane Smith" className="mt-1" onChange={(e) => {
+                      nameReg.onChange(e);
+                      setSharedData({ name: e.target.value });
+                    }} />
                     {form.formState.errors.name && <p className="text-sm text-destructive mt-1">{form.formState.errors.name.message}</p>}
                     {state.errors?.name && <p className="text-sm text-destructive mt-1">{state.errors.name[0]}</p>}
                   </div>
                   <div>
                     <Label htmlFor="contact-email" className="font-medium">Email Address</Label>
-                    <Input id="contact-email" name="email" type="email" {...form.register("email")} placeholder="jane@example.com" className="mt-1" />
+                    <Input id="contact-email" name="email" type="email" {...emailReg} placeholder="jane@example.com" className="mt-1" onChange={(e) => {
+                      emailReg.onChange(e);
+                      setSharedData({ email: e.target.value });
+                    }} />
                     {form.formState.errors.email && <p className="text-sm text-destructive mt-1">{form.formState.errors.email.message}</p>}
                     {state.errors?.email && <p className="text-sm text-destructive mt-1">{state.errors.email[0]}</p>}
                   </div>
                   <div>
                     <Label htmlFor="contact-phone" className="font-medium">Phone Number (Optional)</Label>
-                    <Input id="contact-phone" name="phone" type="tel" {...form.register("phone")} placeholder="(555) 987-6543" className="mt-1" />
+                    <Input id="contact-phone" name="phone" type="tel" {...phoneReg} placeholder="(555) 987-6543" className="mt-1" onChange={(e) => {
+                      phoneReg.onChange(e);
+                      setSharedData({ phone: e.target.value });
+                    }} />
                     {state.errors?.phone && <p className="text-sm text-destructive mt-1">{state.errors.phone[0]}</p>}
                   </div>
                   <div>

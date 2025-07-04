@@ -11,24 +11,27 @@ import { SchedulingSection } from "@/components/sections/scheduling-section";
 import { ContactSection } from "@/components/sections/contact-section";
 import { BackToTopButton } from "@/components/common/back-to-top-button";
 import { AIChatbox } from "@/components/common/ai-chatbox";
+import { FormProvider } from "@/context/form-context";
 
 export default function HomePage() {
   return (
-    <div className="flex flex-col min-h-screen">
-      <Header />
-      <main className="flex-grow">
-        <HeroSection />
-        <AboutUsSection />
-        <ServicesSection />
-        <VideoSection />
-        <TestimonialsSection />
-        <PricingSection />
-        <SchedulingSection />
-        <ContactSection />
-      </main>
-      <Footer />
-      <BackToTopButton />
-      <AIChatbox />
-    </div>
+    <FormProvider>
+      <div className="flex flex-col min-h-screen">
+        <Header />
+        <main className="flex-grow">
+          <HeroSection />
+          <AboutUsSection />
+          <ServicesSection />
+          <VideoSection />
+          <TestimonialsSection />
+          <PricingSection />
+          <SchedulingSection />
+          <ContactSection />
+        </main>
+        <Footer />
+        <BackToTopButton />
+        <AIChatbox />
+      </div>
+    </FormProvider>
   );
 }

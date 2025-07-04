@@ -13,6 +13,7 @@ import { useToast } from "@/hooks/use-toast";
 import { ScrollAnimationWrapper } from "@/components/common/scroll-animation-wrapper";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import Image from "next/image";
+import { useFormContext as useSharedFormContext } from "@/context/form-context";
 
 const scheduleFormSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters"),
@@ -32,14 +33,15 @@ const initialState: ScheduleFormState = {
 export function SchedulingSection() {
   const { toast } = useToast();
   const [state, formAction] = useActionState(scheduleInspection, initialState);
+  const { sharedData, setSharedData } = useSharedFormContext();
   
   const form = useForm<ScheduleFormData>({
     resolver: zodResolver(scheduleFormSchema),
     defaultValues: {
-      name: "",
+      name: sharedData.name || "",
       address: "",
-      email: "",
-      phone: "",
+      email: sharedData.email || "",
+      phone: sharedData.phone || "",
       notes: "",
     },
   });
@@ -52,10 +54,28 @@ export function SchedulingSection() {
         variant: state.success ? "default" : "destructive",
       });
       if (state.success) {
-        form.reset();
+        form.reset({
+          ...form.getValues(),
+          address: "",
+          notes: "",
+        });
       }
     }
   }, [state, toast, form]);
+
+  useEffect(() => {
+    if (form.getValues('name') !== sharedData.name || form.getValues('email') !== sharedData.email || form.getValues('phone') !== sharedData.phone) {
+      form.reset({
+        ...sharedData,
+        address: form.getValues("address"),
+        notes: form.getValues("notes"),
+      });
+    }
+  }, [sharedData, form]);
+
+  const nameReg = form.register("name");
+  const emailReg = form.register("email");
+  const phoneReg = form.register("phone");
 
   return (
     <section id="schedule" className="bg-background">
@@ -78,30 +98,39 @@ export function SchedulingSection() {
                 <form action={formAction} className="space-y-6">
                   <div>
                     <Label htmlFor="name" className="font-medium">Full Name</Label>
-                    <Input id="name" name="name" {...form.register("name")} placeholder="John Doe" className="mt-1" />
+                    <Input id="name" {...nameReg} placeholder="John Doe" className="mt-1" onChange={(e) => {
+                      nameReg.onChange(e);
+                      setSharedData({ name: e.target.value });
+                    }}/>
                     {form.formState.errors.name && <p className="text-sm text-destructive mt-1">{form.formState.errors.name.message}</p>}
                     {state.errors?.name && <p className="text-sm text-destructive mt-1">{state.errors.name[0]}</p>}
                   </div>
                   <div>
                     <Label htmlFor="address" className="font-medium">Property Address</Label>
-                    <Input id="address" name="address" {...form.register("address")} placeholder="123 Main St, LaBelle, FL" className="mt-1" />
+                    <Input id="address" {...form.register("address")} placeholder="123 Main St, LaBelle, FL" className="mt-1" />
                     {form.formState.errors.address && <p className="text-sm text-destructive mt-1">{form.formState.errors.address.message}</p>}
                     {state.errors?.address && <p className="text-sm text-destructive mt-1">{state.errors.address[0]}</p>}
                   </div>
                   <div>
                     <Label htmlFor="email" className="font-medium">Email Address</Label>
-                    <Input id="email" name="email" type="email" {...form.register("email")} placeholder="you@example.com" className="mt-1" />
-                    {form.formState.errors.email && <p className="text-sm text-destructive mt-1">{form.formState.errors.email.message}</p>}
+                    <Input id="email" type="email" {...emailReg} placeholder="you@example.com" className="mt-1" onChange={(e) => {
+                      emailReg.onChange(e);
+                      setSharedData({ email: e.target.value });
+                    }}/>
+                     {form.formState.errors.email && <p className="text-sm text-destructive mt-1">{form.formState.errors.email.message}</p>}
                      {state.errors?.email && <p className="text-sm text-destructive mt-1">{state.errors.email[0]}</p>}
                   </div>
                   <div>
                     <Label htmlFor="phone" className="font-medium">Phone Number (Optional)</Label>
-                    <Input id="phone" name="phone" type="tel" {...form.register("phone")} placeholder="(555) 123-4567" className="mt-1" />
+                    <Input id="phone" type="tel" {...phoneReg} placeholder="(555) 123-4567" className="mt-1" onChange={(e) => {
+                      phoneReg.onChange(e);
+                      setSharedData({ phone: e.target.value });
+                    }}/>
                      {state.errors?.phone && <p className="text-sm text-destructive mt-1">{state.errors.phone[0]}</p>}
                   </div>
                   <div>
                     <Label htmlFor="notes" className="font-medium">Additional Notes (Optional)</Label>
-                    <Textarea id="notes" name="notes" {...form.register("notes")} placeholder="Preferred date/time, specific concerns, etc." className="mt-1 min-h-[100px]" />
+                    <Textarea id="notes" {...form.register("notes")} placeholder="Preferred date/time, specific concerns, etc." className="mt-1 min-h-[100px]" />
                      {state.errors?.notes && <p className="text-sm text-destructive mt-1">{state.errors.notes[0]}</p>}
                   </div>
                   <FormSubmitButton className="w-full text-lg py-3 bg-primary hover:bg-primary/90">
