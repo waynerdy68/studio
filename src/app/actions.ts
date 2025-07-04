@@ -1,6 +1,10 @@
 "use server";
 
 import { z } from "zod";
+import { db } from "@/lib/firebase";
+import { collection, addDoc, serverTimestamp } from "firebase/firestore";
+
+// --- Schedule Inspection Form ---
 
 const scheduleSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters."),
@@ -42,18 +46,19 @@ export async function scheduleInspection(
     };
   }
 
-  // Simulate API call or database interaction
-  console.log("Scheduling inspection:", validatedFields.data);
-  await new Promise(resolve => setTimeout(resolve, 1000)); // Simulate delay
-
-  // Example of a possible error during submission
-  // if (validatedFields.data.email.includes("testfail")) {
-  //   return { message: "Submission failed due to a server error.", success: false };
-  // }
-  
-  return { message: "Inspection scheduled successfully! We will contact you shortly.", success: true };
+  try {
+    await addDoc(collection(db, "inspections"), {
+      ...validatedFields.data,
+      submittedAt: serverTimestamp(),
+    });
+    return { message: "Inspection scheduled successfully! We will contact you shortly.", success: true };
+  } catch (error) {
+    console.error("Error writing to Firestore: ", error);
+    return { message: "Submission failed. A server error occurred.", success: false };
+  }
 }
 
+// --- Contact Form ---
 
 const contactSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters."),
@@ -72,7 +77,6 @@ export type ContactFormState = {
   };
   success: boolean;
 };
-
 
 export async function submitContactForm(
   prevState: ContactFormState,
@@ -93,9 +97,14 @@ export async function submitContactForm(
     };
   }
 
-  // Simulate API call or database interaction
-  console.log("Contact form submission:", validatedFields.data);
-  await new Promise(resolve => setTimeout(resolve, 1000)); // Simulate delay
-
-  return { message: "Message sent successfully! We will get back to you soon.", success: true };
+  try {
+    await addDoc(collection(db, "contacts"), {
+      ...validatedFields.data,
+      submittedAt: serverTimestamp(),
+    });
+    return { message: "Message sent successfully! We will get back to you soon.", success: true };
+  } catch (error) {
+    console.error("Error writing to Firestore: ", error);
+    return { message: "Submission failed. A server error occurred.", success: false };
+  }
 }
