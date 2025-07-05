@@ -4,7 +4,10 @@ import { z } from "zod";
 import { db } from "@/lib/firebase";
 import { FieldValue } from "firebase-admin/firestore";
 
-const FIREBASE_NOT_CONFIGURED_ERROR = "Server is not configured for database access. Please ensure FIREBASE_PROJECT_ID, FIREBASE_CLIENT_EMAIL, and FIREBASE_PRIVATE_KEY are correctly set in the .env file.";
+const FIREBASE_NOT_CONFIGURED_ERROR = `Server database not configured. Please check your .env file and ensure the following:
+1. FIREBASE_PROJECT_ID is set.
+2. FIREBASE_CLIENT_EMAIL is set.
+3. FIREBASE_PRIVATE_KEY is the full key wrapped in double quotes, including the "-----BEGIN PRIVATE KEY-----" and "-----END PRIVATE KEY-----" markers.`;
 
 // --- Schedule Inspection Form ---
 
