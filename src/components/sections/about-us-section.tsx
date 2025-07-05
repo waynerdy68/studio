@@ -24,9 +24,9 @@ export function AboutUsSection() {
                 <Image
                   src="/images/wayne-casten-inspector.png"
                   alt="Photo of the lead inspector at Mayne Inspectors"
-                  layout="fill"
-                  objectFit="cover"
-                  className="transform transition-transform duration-500 hover:scale-105"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 40vw"
+                  className="transform transition-transform duration-500 hover:scale-105 object-cover"
                   data-ai-hint="person portrait professional"
                 />
               </div>

@@ -83,7 +83,7 @@ export function SchedulingSection() {
         <ScrollAnimationWrapper>
           <h2 className="section-title">Book Your Inspection Today</h2>
           <p className="section-subtitle">
-            Ready to get started? Fill out the form below to schedule your home inspection. We&apos;ll confirm your appointment shortly.
+            Ready to get started? Fill out the form below to schedule your home inspection. We'll confirm your appointment shortly.
           </p>
         </ScrollAnimationWrapper>
         
@@ -92,7 +92,7 @@ export function SchedulingSection() {
             <Card className="shadow-xl bg-card/80 backdrop-blur-sm border-border/50">
               <CardHeader>
                 <CardTitle className="text-2xl font-bold font-headline">Inspection Request Form</CardTitle>
-                <CardDescription>Provide your details and we&apos;ll get in touch to finalize.</CardDescription>
+                <CardDescription>Provide your details and we'll get in touch to finalize.</CardDescription>
               </CardHeader>
               <CardContent>
                 <form action={formAction} className="space-y-6">
@@ -145,9 +145,9 @@ export function SchedulingSection() {
                 <Image 
                     src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=1080&q=80&auto=format&fit=crop" 
                     alt="Home inspector with clipboard and house plans" 
-                    layout="fill" 
-                    objectFit="cover" 
-                    className="rounded-xl shadow-2xl"
+                    fill 
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 40vw"
+                    className="rounded-xl shadow-2xl object-cover"
                     data-ai-hint="inspector clipboard"
                 />
             </div>

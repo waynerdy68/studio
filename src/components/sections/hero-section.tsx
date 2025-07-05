@@ -10,9 +10,9 @@ export function HeroSection() {
         <Image 
           src="/images/mayne-cityscape-silhouette.png" 
           alt="Cityscape silhouette background" 
-          layout="fill" 
-          objectFit="cover" 
+          fill
           priority
+          sizes="100vw"
           data-ai-hint="cityscape silhouette"
         />
       </div>
