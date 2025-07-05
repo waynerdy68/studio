@@ -11,9 +11,10 @@ const serviceAccount = {
 /**
  * A function to get the initialized Firestore instance.
  * It uses a singleton pattern to ensure Firebase is only initialized once.
- * @returns {admin.firestore.Firestore} The initialized Firestore database instance.
+ * It now returns null on failure instead of throwing an error to prevent server crashes.
+ * @returns {admin.firestore.Firestore | null} The initialized Firestore database instance or null.
  */
-function getFirestoreInstance(): admin.firestore.Firestore {
+function getFirestoreInstance(): admin.firestore.Firestore | null {
   // If the app is already initialized, return the existing firestore instance.
   if (admin.apps.length > 0) {
     return admin.firestore();
@@ -33,8 +34,8 @@ function getFirestoreInstance(): admin.firestore.Firestore {
       return admin.firestore();
     } catch (error) {
       console.error('Firebase admin initialization error:', error);
-      // Throw an error to make it clear that initialization failed and the app cannot proceed.
-      throw new Error('Could not initialize Firebase Admin SDK. Check server logs for details.');
+      // Return null to prevent a server crash. The calling code should handle the null case.
+      return null;
     }
   } else {
     // This warning will show in your server logs if credentials are not in the .env file.
@@ -42,11 +43,11 @@ function getFirestoreInstance(): admin.firestore.Firestore {
     if (!serviceAccount.project_id) console.warn('- FIREBASE_PROJECT_ID is missing or empty in your .env file.');
     if (!serviceAccount.client_email) console.warn('- FIREBASE_CLIENT_EMAIL is missing or empty in your .env file.');
     if (!process.env.FIREBASE_PRIVATE_KEY) console.warn('- FIREBASE_PRIVATE_KEY is missing or empty in your .env file.');
-    // Throw an error because database functionality is unavailable.
-    throw new Error('Missing Firebase Admin SDK credentials. Cannot connect to Firestore.');
+    // Return null because database functionality is unavailable.
+    return null;
   }
 }
 
 // Export a single, memoized instance of the Firestore database.
-// The function will only run the initialization logic on the very first call.
+// This will be null if the initialization fails, which is handled in the action files.
 export const db = getFirestoreInstance();
