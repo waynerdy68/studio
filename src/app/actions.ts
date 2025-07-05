@@ -3,7 +3,8 @@
 import { z } from "zod";
 import { db } from "@/lib/firebase";
 import { FieldValue } from "firebase-admin/firestore";
-import { generateChecklist, GenerateChecklistInputSchema, type GenerateChecklistOutput } from "@/ai/flows/generate-checklist-flow";
+import { generateChecklist } from "@/ai/flows/generate-checklist-flow";
+import { GenerateChecklistInputSchema, type GenerateChecklistOutput } from "@/ai/schemas/checklist-schema";
 
 
 const FIREBASE_NOT_CONFIGURED_ERROR = `Server database not configured. Please check your .env file and ensure the following:
