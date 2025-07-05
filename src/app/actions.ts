@@ -3,6 +3,8 @@
 import { z } from "zod";
 import { db } from "@/lib/firebase";
 import { FieldValue } from "firebase-admin/firestore";
+import { generateChecklist, GenerateChecklistInputSchema, type GenerateChecklistOutput } from "@/ai/flows/generate-checklist-flow";
+
 
 const FIREBASE_NOT_CONFIGURED_ERROR = `Server database not configured. Please check your .env file and ensure the following:
 1. FIREBASE_PROJECT_ID is set.
@@ -127,5 +129,41 @@ export async function submitContactForm(
   } catch (error) {
     console.error("Error writing to Firestore: ", error);
     return { message: "Submission failed. A server error occurred.", success: false };
+  }
+}
+
+// --- Checklist Generator ---
+export type ChecklistFormState = {
+  checklist?: GenerateChecklistOutput['checklist'];
+  error?: string;
+  success: boolean;
+};
+
+export async function getChecklistAction(
+  prevState: ChecklistFormState,
+  formData: FormData
+): Promise<ChecklistFormState> {
+  const validatedFields = GenerateChecklistInputSchema.safeParse({
+    propertyType: formData.get("propertyType"),
+    propertyAge: formData.get("propertyAge"),
+    userConcerns: formData.get("userConcerns"),
+  });
+
+  if (!validatedFields.success) {
+    return {
+      error: "Invalid input. Please check the form and try again.",
+      success: false,
+    };
+  }
+
+  try {
+    const result = await generateChecklist(validatedFields.data);
+    if (!result || !result.checklist) {
+      return { error: "The AI could not generate a checklist. Please try again with different inputs.", success: false };
+    }
+    return { checklist: result.checklist, success: true };
+  } catch (e) {
+    console.error("Checklist generation error:", e);
+    return { error: "An unexpected error occurred while generating the checklist. Please try again later.", success: false };
   }
 }

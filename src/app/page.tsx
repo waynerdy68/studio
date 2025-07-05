@@ -12,6 +12,7 @@ import { ContactSection } from "@/components/sections/contact-section";
 import { BackToTopButton } from "@/components/common/back-to-top-button";
 import { AIChatbox } from "@/components/common/ai-chatbox";
 import { FormProvider } from "@/context/form-context";
+import { ChecklistGeneratorSection } from "@/components/sections/checklist-generator-section";
 
 export default function HomePage() {
   return (
@@ -22,6 +23,7 @@ export default function HomePage() {
           <HeroSection />
           <AboutUsSection />
           <ServicesSection />
+          <ChecklistGeneratorSection />
           <VideoSection />
           <TestimonialsSection />
           <PricingSection />
