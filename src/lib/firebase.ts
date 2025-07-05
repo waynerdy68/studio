@@ -2,8 +2,7 @@ import * as admin from 'firebase-admin';
 
 // This is the "service account" that gives your server admin rights.
 // The Firebase Admin SDK's runtime expects snake_case keys for the service account object,
-// which matches the keys in the downloaded JSON file. We cast to `admin.ServiceAccount`
-// to satisfy TypeScript's type-checking while providing the correct keys for the runtime.
+// which matches the keys in the downloaded JSON file.
 const serviceAccount = {
   project_id: process.env.FIREBASE_PROJECT_ID,
   client_email: process.env.FIREBASE_CLIENT_EMAIL,
@@ -20,7 +19,9 @@ if (!admin.apps.length) {
   if (serviceAccount.project_id && serviceAccount.client_email && serviceAccount.private_key) {
     try {
       admin.initializeApp({
-        credential: admin.credential.cert(serviceAccount as admin.ServiceAccount),
+        // The type definitions for ServiceAccount are incorrect (expect camelCase).
+        // Casting to `any` bypasses the type check and allows the runtime to use the correct snake_case keys.
+        credential: admin.credential.cert(serviceAccount as any),
       });
       console.log('Firebase Admin SDK initialized successfully.');
       db = admin.firestore();
