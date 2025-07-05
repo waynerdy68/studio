@@ -4,6 +4,8 @@ import { z } from "zod";
 import { db } from "@/lib/firebase";
 import { FieldValue } from "firebase-admin/firestore";
 
+const FIREBASE_NOT_CONFIGURED_ERROR = "Server is not configured for database access. Please ensure FIREBASE_PROJECT_ID, FIREBASE_CLIENT_EMAIL, and FIREBASE_PRIVATE_KEY are correctly set in the .env file.";
+
 // --- Schedule Inspection Form ---
 
 const scheduleSchema = z.object({
@@ -31,9 +33,9 @@ export async function scheduleInspection(
   formData: FormData
 ): Promise<ScheduleFormState> {
   if (!db) {
-    console.error("Firestore is not initialized. Check your Firebase credentials in the .env file.");
+    console.error("Submission failed: Firestore is not initialized. Check your Firebase credentials in the .env file.");
     return {
-      message: "Submission failed due to server configuration. Please check the server logs for more details.",
+      message: FIREBASE_NOT_CONFIGURED_ERROR,
       success: false,
     };
   }
@@ -91,9 +93,9 @@ export async function submitContactForm(
   formData: FormData
 ): Promise<ContactFormState> {
   if (!db) {
-    console.error("Firestore is not initialized. Check your Firebase credentials in the .env file.");
+    console.error("Submission failed: Firestore is not initialized. Check your Firebase credentials in the .env file.");
     return {
-      message: "Submission failed due to server configuration. Please check the server logs for more details.",
+      message: FIREBASE_NOT_CONFIGURED_ERROR,
       success: false,
     };
   }
