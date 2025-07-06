@@ -36,10 +36,10 @@ export interface Testimonial {
 }
 
 export const testimonials: Testimonial[] = [
-  { id: "t1", quote: "Mayne Home Inspectors were incredibly thorough and professional. They found issues we never would have noticed. Highly recommend!", name: "Sarah M.", location: "LaBelle, FL", avatarUrl: "https://placehold.co/100x100.png" },
-  { id: "t2", quote: "The detailed report and clear explanations gave us peace of mind during our home purchase. Excellent service!", name: "John B.", location: "Fort Myers, FL", avatarUrl: "https://placehold.co/100x100.png" },
-  { id: "t3", quote: "Fast, efficient, and very knowledgeable. The drone inspection for our roof was impressive. Five stars!", name: "Lisa P.", location: "Cape Coral, FL", avatarUrl: "https://placehold.co/100x100.png" },
-  { id: "t4", quote: "From scheduling to the final report, everything was seamless. The team is friendly and answered all our questions.", name: "David K.", location: "Lehigh Acres, FL", avatarUrl: "https://placehold.co/100x100.png" },
+  { id: "t1", quote: "Wayne's inspection was incredibly detailed. The final report was easy to understand and gave us the confidence to move forward with our purchase. The use of the drone for the roof inspection was a huge plus!", name: "Jessica & Tom L.", location: "Fort Myers, FL", avatarUrl: "https://placehold.co/100x100.png" },
+  { id: "t2", quote: "As a real estate agent, I need inspectors who are reliable and great with clients. Mayne Inspectors is my go-to. Their 4-Point and Wind Mitigation reports are always clear and delivered quickly.", name: "Maria G.", location: "Real Estate Agent, Cape Coral", avatarUrl: "https://placehold.co/100x100.png" },
+  { id: "t3", quote: "I was worried about potential mold in a property, and the air quality test from Mayne was a lifesaver. They explained the process and results clearly, which was a huge relief. Absolutely top-notch service.", name: "David R.", location: "Lehigh Acres, FL", avatarUrl: "https://placehold.co/100x100.png" },
+  { id: "t4", quote: "The most professional and comprehensive home inspection I've ever had. Wayne took the time to walk me through his findings on-site and answer every single question. I can't recommend them enough.", name: "Brenda S.", location: "Punta Gorda, FL", avatarUrl: "https://placehold.co/100x100.png" },
 ];
 
 export interface PricingTier {
@@ -94,4 +94,3 @@ export const serviceAreas = [
 ];
 
 export const youtubeVideoId = "dQw4w9WgXcQ"; // Replace with actual video ID
-
