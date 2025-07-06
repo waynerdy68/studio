@@ -1,0 +1,87 @@
+
+import type { Metadata } from 'next';
+import Link from 'next/link';
+import { ArrowLeft } from 'lucide-react';
+import { serviceAreas, services } from '@/lib/constants';
+import { ServiceCard } from '@/components/common/service-card';
+import { Button } from '@/components/ui/button';
+import { SchedulingSection } from '@/components/sections/scheduling-section';
+
+// Helper to convert city names to slugs and back
+const slugify = (text: string) => text.toLowerCase().replace(/\s+/g, '-');
+const unslugify = (slug: string) => {
+    return slug
+        .split('-')
+        .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+        .join(' ');
+};
+
+// Generate static paths for all cities at build time for performance and SEO
+export async function generateStaticParams() {
+    return serviceAreas.map(city => ({
+        city: slugify(city),
+    }));
+}
+
+// Generate dynamic metadata for each city page for better SEO
+export async function generateMetadata({ params }: { params: { city: string } }): Promise<Metadata> {
+    const cityName = unslugify(params.city);
+
+    // Find the original city name to ensure correct capitalization for the title
+    const originalCity = serviceAreas.find(area => slugify(area) === params.city) || cityName;
+
+    return {
+        title: `Home Inspection Services in ${originalCity}, FL | Mayne Inspectors`,
+        description: `Your trusted local home inspectors in ${originalCity}, FL. We offer comprehensive services including 4-point, wind mitigation, and mold testing. Schedule your ${originalCity} inspection today.`,
+        keywords: `home inspection ${originalCity}, ${originalCity} home inspector, 4-point inspection ${originalCity}, wind mitigation ${originalCity}, mayne inspectors ${originalCity}`,
+    };
+}
+
+
+export default function ServiceAreaPage({ params }: { params: { city: string } }) {
+    const cityName = unslugify(params.city);
+    // Use the original city name from constants to preserve capitalization
+    const originalCity = serviceAreas.find(area => slugify(area) === params.city) || cityName;
+
+    return (
+        <div className="bg-background">
+            <section className="container mx-auto px-4 md:px-6 py-12 md:py-20">
+                <div className="max-w-4xl mx-auto">
+                    <Button asChild variant="outline" className="mb-8 hidden md:inline-flex">
+                        <Link href="/#services">
+                            <ArrowLeft className="mr-2 h-4 w-4" />
+                            Back to Homepage
+                        </Link>
+                    </Button>
+
+                    <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl font-headline text-center">
+                        <span className="block text-primary">Expert Home Inspections</span>
+                        <span className="block text-foreground mt-2">in {originalCity}, FL</span>
+                    </h1>
+                    <p className="mt-6 text-lg text-muted-foreground text-center max-w-3xl mx-auto">
+                        Mayne Home Inspectors is proud to provide our full suite of professional, reliable, and modern inspection services to the community of {originalCity}. We are committed to ensuring you have a complete understanding of your property investment.
+                    </p>
+                </div>
+
+                <div className="mt-16">
+                     <h2 className="text-3xl font-bold tracking-tight sm:text-4xl text-center mb-12 font-headline">
+                        Services Available in {originalCity}
+                    </h2>
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        {services.map((service, index) => (
+                            <ServiceCard
+                                key={service.id}
+                                icon={service.icon}
+                                name={service.name}
+                                description={service.description}
+                                index={index}
+                            />
+                        ))}
+                    </div>
+                </div>
+            </section>
+            
+            <SchedulingSection />
+        </div>
+    );
+}

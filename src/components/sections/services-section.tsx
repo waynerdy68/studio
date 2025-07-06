@@ -1,7 +1,12 @@
+
+import Link from "next/link";
 import { services, serviceAreas } from "@/lib/constants";
 import { ServiceCard } from "@/components/common/service-card";
 import { ScrollAnimationWrapper } from "@/components/common/scroll-animation-wrapper";
 import { MapPin } from "lucide-react";
+import { Button } from "@/components/ui/button";
+
+const slugify = (text: string) => text.toLowerCase().replace(/\s+/g, '-');
 
 export function ServicesSection() {
   return (
@@ -31,13 +36,15 @@ export function ServicesSection() {
               <h3 className="text-2xl font-semibold font-headline">Servicing Your Area</h3>
             </div>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              Mayne Home Inspectors is proud to serve LaBelle and the surrounding communities, including:
+              Mayne Home Inspectors is proud to serve LaBelle and the surrounding communities. Click on a city to learn more:
             </p>
-            <div className="mt-4 flex flex-wrap justify-center gap-x-4 gap-y-2">
+            <div className="mt-4 flex flex-wrap justify-center gap-x-2 gap-y-2">
               {serviceAreas.map((area) => (
-                <span key={area} className="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm font-medium">
-                  {area}
-                </span>
+                <Button key={area} asChild variant="link" className="text-primary font-medium px-2">
+                  <Link href={`/service-areas/${slugify(area)}`}>
+                    {area}
+                  </Link>
+                </Button>
               ))}
             </div>
           </div>
