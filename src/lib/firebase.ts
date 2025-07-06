@@ -11,9 +11,10 @@ const serviceAccount = {
 /**
  * A function to get the initialized Firestore instance.
  * It uses a singleton pattern to ensure Firebase is only initialized once.
- * @returns {admin.firestore.Firestore} The initialized Firestore database instance.
+ * It will not throw an error on initialization failure, but will return null instead.
+ * @returns {admin.firestore.Firestore | null} The initialized Firestore database instance, or null if initialization fails.
  */
-function getFirestoreInstance(): admin.firestore.Firestore {
+function getFirestoreInstance(): admin.firestore.Firestore | null {
   // If the app is already initialized, return the existing firestore instance.
   if (admin.apps.length > 0) {
     return admin.firestore();
@@ -33,17 +34,19 @@ function getFirestoreInstance(): admin.firestore.Firestore {
       return admin.firestore();
     } catch (error) {
       console.error('Firebase admin initialization error:', error);
-      // Throw an error to make it clear that initialization failed and the app cannot proceed.
-      throw new Error('Could not initialize Firebase Admin SDK. Check server logs for details.');
+      // Return null instead of throwing to prevent server crashes on startup.
+      return null;
     }
   } else {
     // This warning will show in your server logs if credentials are not in the .env file.
-    console.warn('Firebase Admin SDK credentials not provided. Server-side Firebase features will be disabled.');
-    if (!serviceAccount.project_id) console.warn('- FIREBASE_PROJECT_ID is missing or empty in your .env file.');
-    if (!serviceAccount.client_email) console.warn('- FIREBASE_CLIENT_EMAIL is missing or empty in your .env file.');
-    if (!process.env.FIREBASE_PRIVATE_KEY) console.warn('- FIREBASE_PRIVATE_KEY is missing or empty in your .env file.');
-    // Throw an error because database functionality is unavailable.
-    throw new Error('Missing Firebase Admin SDK credentials. Cannot connect to Firestore.');
+    if (process.env.NODE_ENV === 'development') {
+        console.warn('Firebase Admin SDK credentials not provided. Server-side Firebase features will be disabled.');
+        if (!serviceAccount.project_id) console.warn('- FIREBASE_PROJECT_ID is missing or empty in your .env file.');
+        if (!serviceAccount.client_email) console.warn('- FIREBASE_CLIENT_EMAIL is missing or empty in your .env file.');
+        if (!process.env.FIREBASE_PRIVATE_KEY) console.warn('- FIREBASE_PRIVATE_KEY is missing or empty in your .env file.');
+    }
+    // Return null because database functionality is unavailable.
+    return null;
   }
 }
 
