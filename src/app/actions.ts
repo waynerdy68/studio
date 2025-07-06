@@ -5,6 +5,7 @@ import { db } from "@/lib/firebase";
 import { FieldValue } from "firebase-admin/firestore";
 import { generateChecklist } from "@/ai/flows/generate-checklist-flow";
 import { GenerateChecklistInputSchema, type GenerateChecklistOutput } from "@/ai/schemas/checklist-schema";
+import { sendEmail } from "@/lib/email";
 
 
 const FIREBASE_NOT_CONFIGURED_ERROR = `Server database not configured. Please check your .env file and ensure the following:
@@ -187,6 +188,27 @@ export type SendChecklistState = {
   success: boolean;
 };
 
+function formatChecklistToHtml(checklist: GenerateChecklistOutput['checklist'], name: string): string {
+    let html = `<div style="font-family: Arial, sans-serif; line-height: 1.6; color: #333;">`;
+    html += `<div style="max-width: 600px; margin: auto; padding: 20px; border: 1px solid #ddd; border-radius: 8px;">`;
+    html += `<h2 style="color: #0056b3;">Hello ${name},</h2>`;
+    html += `<p>Thank you for using the AI Pre-Inspection Checklist from Mayne Inspectors. Here is the custom checklist you generated:</p>`;
+    
+    checklist.forEach(category => {
+        html += `<h3 style="color: #0056b3; border-bottom: 2px solid #eee; padding-bottom: 5px;">${category.category}</h3>`;
+        html += '<ul style="list-style-type: none; padding-left: 0;">';
+        category.items.forEach(item => {
+            html += `<li style="margin-bottom: 10px; padding-left: 20px; position: relative;"><span style="position: absolute; left: 0; color: #28a745;">&#10003;</span>${item}</li>`;
+        });
+        html += '</ul>';
+    });
+
+    html += `<br><p>This checklist is a great starting point. For a comprehensive evaluation, a professional inspection is crucial. If you'd like to schedule one or have any questions, please don't hesitate to contact us.</p>`;
+    html += `<p>Sincerely,<br><b>The Mayne Inspectors Team</b></p>`;
+    html += `</div></div>`;
+    return html;
+}
+
 export async function sendChecklistAction(
   prevState: SendChecklistState,
   formData: FormData
@@ -222,9 +244,41 @@ export async function sendChecklistAction(
       checklist,
       submittedAt: FieldValue.serverTimestamp(),
     });
-    return { message: "Checklist sent! We've saved a copy for you and for our records.", success: true };
+
+    const emailHtmlToClient = formatChecklistToHtml(checklist, name);
+
+    // Send email to the client
+    const clientEmailResult = await sendEmail({
+        to: email,
+        subject: "Your Pre-Inspection Checklist from Mayne Inspectors",
+        html: emailHtmlToClient,
+    });
+    
+    // Send notification email to the admin
+    const adminEmail = "castenhome@gmail.com";
+    const adminEmailHtml = `
+      <div style="font-family: Arial, sans-serif; line-height: 1.6;">
+        <h2>New Pre-Inspection Checklist Lead</h2>
+        <p>A new checklist has been generated and saved.</p>
+        <p><strong>Name:</strong> ${name}</p>
+        <p><strong>Email:</strong> ${email}</p>
+        <hr>
+        ${emailHtmlToClient}
+      </div>
+    `;
+    await sendEmail({
+        to: adminEmail,
+        subject: `New Checklist Lead: ${name}`,
+        html: adminEmailHtml,
+    });
+
+    if (!clientEmailResult.success) {
+        return { message: "Checklist saved, but we couldn't email you a copy. The email server may not be configured.", success: true };
+    }
+
+    return { message: "Checklist sent! A copy has been sent to your email.", success: true };
   } catch (error) {
-    console.error("Error writing checklist to Firestore: ", error);
-    return { message: "Submission failed. A server error occurred while saving your checklist.", success: false };
+    console.error("Error writing checklist to Firestore or sending email: ", error);
+    return { message: "Submission failed. A server error occurred while saving or sending your checklist.", success: false };
   }
 }
