@@ -168,3 +168,63 @@ export async function getChecklistAction(
     return { error: "An unexpected error occurred while generating the checklist. Please try again later.", success: false };
   }
 }
+
+// --- Send Checklist Form ---
+
+const sendChecklistSchema = z.object({
+  name: z.string().min(2, "Name must be at least 2 characters."),
+  email: z.string().email("Invalid email address."),
+  checklistJson: z.string().min(1, "Checklist data is missing."),
+});
+
+export type SendChecklistState = {
+  message: string;
+  errors?: {
+    name?: string[];
+    email?: string[];
+    checklistJson?: string[];
+  };
+  success: boolean;
+};
+
+export async function sendChecklistAction(
+  prevState: SendChecklistState,
+  formData: FormData
+): Promise<SendChecklistState> {
+  if (!db) {
+    return {
+      message: FIREBASE_NOT_CONFIGURED_ERROR,
+      success: false,
+    };
+  }
+
+  const validatedFields = sendChecklistSchema.safeParse({
+    name: formData.get("name"),
+    email: formData.get("email"),
+    checklistJson: formData.get("checklistJson"),
+  });
+
+  if (!validatedFields.success) {
+    return {
+      message: "Validation failed. Please check your inputs.",
+      errors: validatedFields.error.flatten().fieldErrors,
+      success: false,
+    };
+  }
+  
+  const { name, email, checklistJson } = validatedFields.data;
+  
+  try {
+    const checklist = JSON.parse(checklistJson);
+    await db.collection("checklistLeads").add({
+      name,
+      email,
+      checklist,
+      submittedAt: FieldValue.serverTimestamp(),
+    });
+    return { message: "Checklist sent! We've saved a copy for you and for our records.", success: true };
+  } catch (error) {
+    console.error("Error writing checklist to Firestore: ", error);
+    return { message: "Submission failed. A server error occurred while saving your checklist.", success: false };
+  }
+}

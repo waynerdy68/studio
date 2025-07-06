@@ -1,7 +1,7 @@
 "use client";
 
-import { useActionState } from "react";
-import { getChecklistAction, type ChecklistFormState } from "@/app/actions";
+import { useActionState, useEffect } from "react";
+import { getChecklistAction, sendChecklistAction, type ChecklistFormState, type SendChecklistState } from "@/app/actions";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
@@ -9,14 +9,36 @@ import { Textarea } from "@/components/ui/textarea";
 import { FormSubmitButton } from "@/components/common/form-submit-button";
 import { ScrollAnimationWrapper } from "@/components/common/scroll-animation-wrapper";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { Check, Lightbulb } from "lucide-react";
+import { Check, Lightbulb, Send } from "lucide-react";
+import { Input } from "@/components/ui/input";
+import { useToast } from "@/hooks/use-toast";
+import { useFormContext } from "@/context/form-context";
 
-const initialState: ChecklistFormState = {
+const initialChecklistState: ChecklistFormState = {
+  success: false,
+};
+
+const initialSendState: SendChecklistState = {
+  message: "",
   success: false,
 };
 
 export function ChecklistGeneratorSection() {
-  const [state, formAction] = useActionState(getChecklistAction, initialState);
+  const [state, formAction] = useActionState(getChecklistAction, initialChecklistState);
+  const [sendState, sendFormAction] = useActionState(sendChecklistAction, initialSendState);
+  
+  const { toast } = useToast();
+  const { sharedData, setSharedData } = useFormContext();
+
+  useEffect(() => {
+    if (sendState.message && !sendState.success) {
+      toast({
+        title: "Error",
+        description: sendState.message,
+        variant: "destructive",
+      });
+    }
+  }, [sendState, toast]);
 
   return (
     <section id="checklist" className="bg-primary/5 py-12 md:py-20 lg:py-24">
@@ -87,7 +109,7 @@ export function ChecklistGeneratorSection() {
             </Card>
           </ScrollAnimationWrapper>
 
-          <div className="lg:col-span-3">
+          <div className="lg:col-span-3 space-y-8">
             <Card className="shadow-xl bg-card/80 backdrop-blur-sm border-border/50 min-h-[400px]">
               <CardHeader>
                 <CardTitle className="font-headline text-2xl">Your Custom Checklist</CardTitle>
@@ -124,6 +146,69 @@ export function ChecklistGeneratorSection() {
                 )}
               </CardContent>
             </Card>
+
+            {state.success && state.checklist && (
+              <ScrollAnimationWrapper animationClass="animate-fadeInUp">
+                <Card className="shadow-xl bg-card/80 backdrop-blur-sm border-border/50">
+                  {!sendState.success ? (
+                    <>
+                      <CardHeader>
+                        <CardTitle className="font-headline text-2xl flex items-center gap-2">
+                          <Send className="text-primary"/>
+                          Get a Copy
+                        </CardTitle>
+                        <CardDescription>
+                          Enter your details below to save a copy of this checklist for your records.
+                        </CardDescription>
+                      </CardHeader>
+                      <CardContent>
+                        <form action={sendFormAction} className="space-y-4">
+                          <input type="hidden" name="checklistJson" value={JSON.stringify(state.checklist)} />
+                          <div className="grid sm:grid-cols-2 gap-4">
+                            <div>
+                              <Label htmlFor="send-checklist-name">Name</Label>
+                              <Input 
+                                id="send-checklist-name" 
+                                name="name" 
+                                placeholder="John Doe" 
+                                className="mt-1" 
+                                required 
+                                defaultValue={sharedData.name}
+                                onChange={(e) => setSharedData({ name: e.target.value })}
+                              />
+                              {sendState.errors?.name && <p className="text-sm text-destructive mt-1">{sendState.errors.name[0]}</p>}
+                            </div>
+                            <div>
+                              <Label htmlFor="send-checklist-email">Email</Label>
+                              <Input 
+                                id="send-checklist-email" 
+                                name="email" 
+                                type="email" 
+                                placeholder="you@example.com" 
+                                className="mt-1" 
+                                required 
+                                defaultValue={sharedData.email}
+                                onChange={(e) => setSharedData({ email: e.target.value })}
+                                />
+                                {sendState.errors?.email && <p className="text-sm text-destructive mt-1">{sendState.errors.email[0]}</p>}
+                            </div>
+                          </div>
+                          <FormSubmitButton className="w-full text-lg py-3 bg-accent hover:bg-accent/90">
+                            Save My Checklist
+                          </FormSubmitButton>
+                        </form>
+                      </CardContent>
+                    </>
+                  ) : (
+                    <CardContent className="p-8 text-center">
+                       <CardTitle className="font-headline text-2xl text-primary">Checklist Saved!</CardTitle>
+                       <CardDescription className="mt-2">{sendState.message}</CardDescription>
+                    </CardContent>
+                  )}
+                </Card>
+              </ScrollAnimationWrapper>
+            )}
+
           </div>
         </div>
       </div>
