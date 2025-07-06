@@ -35,23 +35,30 @@ const getServiceDetails = ai.defineTool(
     }),
     outputSchema: z.string(),
   },
-  async input => {
-    const serviceDetails = {
+  async (input) => {
+    const serviceDetails: Record<string, string> = {
       'Home Inspection': 'A thorough examination of the home’s systems and structure.',
       '4-Point Inspection':
         'Focuses on four key areas: roofing, electrical, plumbing, and HVAC.',
-      'Wind Mitigation Inspection':
+      'Wind Mitigation':
         'Identifies features that reduce wind damage during a storm.',
       'Mold & Air Quality': 'Testing for mold and assessing indoor air quality.',
-      Radon: 'Testing for radon gas levels.',
+      'Radon Testing': 'Testing for radon gas levels.',
       'Well Water Testing': 'Testing the safety of well water.',
-      Infrared: 'Using infrared technology to detect hidden issues.',
-      Drone: 'Using drone to inspect roofs and other inaccessible areas.',
+      'Infrared Inspection': 'Using infrared technology to detect hidden issues.',
+      'Drone Inspection': 'Using drone to inspect roofs and other inaccessible areas.',
       'ADA Survey': 'Ensuring the property complies with ADA standards.',
-      Commercial: 'Inspections for commercial properties.',
+      'Commercial Inspection': 'Inspections for commercial properties.',
       'Roof Certification': 'Certifying the condition and lifespan of the roof.',
       'Condo/Townhouse Inspection': 'Inspections specific to condos and townhouses.',
     };
+    // A simple heuristic to find the right service even if the user's query is slightly different
+    const lowerCaseServiceName = input.serviceName.toLowerCase();
+    for (const key in serviceDetails) {
+        if (key.toLowerCase().includes(lowerCaseServiceName)) {
+            return serviceDetails[key];
+        }
+    }
     return serviceDetails[input.serviceName] || 'Service details not found.';
   }
 );
@@ -61,7 +68,7 @@ const answerQuestionsPrompt = ai.definePrompt({
   tools: [getServiceDetails],
   input: {schema: AnswerQuestionsInputSchema},
   output: {schema: AnswerQuestionsOutputSchema},
-  prompt: `You are an AI assistant for Mayne Home Inspectors, based in LaBelle, FL, also servicing Lehigh Acres, Cewiston, Moore Haven,  Immokalee,  Fort Myers, Cape Coral, Punta Gorda,  Port Charlotte. Use the available tools to answer questions about our services, location, and pricing.
+  prompt: `You are an AI assistant for Mayne Home Inspectors, based in LaBelle, FL, also servicing Lehigh Acres, Clewiston, Moore Haven, Immokalee, Fort Myers, Cape Coral, Punta Gorda, and Port Charlotte. Use the available tools to answer questions about our services, location, and pricing.
 
 Question: {{{question}}}
 
