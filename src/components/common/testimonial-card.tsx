@@ -1,3 +1,4 @@
+
 import Image from "next/image";
 import { Card, CardContent } from "@/components/ui/card";
 import { Star, MessageSquare } from "lucide-react";
@@ -24,7 +25,7 @@ export function TestimonialCard({ quote, name, location, avatarUrl, index }: Tes
                 alt={name}
                 width={80}
                 height={80}
-                className="rounded-full border-2 border-primary"
+                className="rounded-full border-2 border-primary object-cover"
                 data-ai-hint="person portrait"
               />
             ) : (
