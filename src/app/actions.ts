@@ -15,6 +15,8 @@ const FIREBASE_NOT_CONFIGURED_ERROR = `Server database not configured. Please ch
 2. FIREBASE_CLIENT_EMAIL is set.
 3. FIREBASE_PRIVATE_KEY is the full key wrapped in double quotes, including the "-----BEGIN PRIVATE KEY-----" and "-----END PRIVATE KEY-----" markers.`;
 
+const ADMIN_EMAIL = process.env.ADMIN_EMAIL || "castenhome@gmail.com";
+
 // --- Schedule Inspection Form ---
 
 const scheduleSchema = z.object({
@@ -65,14 +67,39 @@ export async function scheduleInspection(
     };
   }
 
+  const { name, address, email, phone, notes } = validatedFields.data;
+
   try {
     await db.collection("inspections").add({
       ...validatedFields.data,
       submittedAt: FieldValue.serverTimestamp(),
     });
-    return { message: "Inspection scheduled successfully! We will contact you shortly.", success: true };
+
+    // Send notification email to admin
+    const adminEmailHtml = `
+      <div style="font-family: Arial, sans-serif; line-height: 1.6;">
+        <h2>New Inspection Request</h2>
+        <p>A new inspection has been requested via the website.</p>
+        <ul>
+          <li><strong>Name:</strong> ${name}</li>
+          <li><strong>Property Address:</strong> ${address}</li>
+          <li><strong>Email:</strong> ${email}</li>
+          <li><strong>Phone:</strong> ${phone || 'Not provided'}</li>
+          <li><strong>Notes:</strong> ${notes || 'None'}</li>
+        </ul>
+        <p>Please follow up with the client to confirm the appointment.</p>
+      </div>
+    `;
+
+    await sendEmail({
+      to: ADMIN_EMAIL,
+      subject: `New Inspection Request: ${name} - ${address}`,
+      html: adminEmailHtml,
+    });
+
+    return { message: "Inspection request sent! We will contact you shortly to confirm.", success: true };
   } catch (error) {
-    console.error("Error writing to Firestore: ", error);
+    console.error("Error in scheduleInspection: ", error);
     return { message: "Submission failed. A server error occurred.", success: false };
   }
 }
@@ -124,14 +151,39 @@ export async function submitContactForm(
     };
   }
 
+  const { name, email, phone, message } = validatedFields.data;
+
   try {
     await db.collection("contacts").add({
       ...validatedFields.data,
       submittedAt: FieldValue.serverTimestamp(),
     });
+
+    // Send notification email to admin
+    const adminEmailHtml = `
+      <div style="font-family: Arial, sans-serif; line-height: 1.6;">
+        <h2>New Contact Form Message</h2>
+        <p>You received a new message from your website's contact form.</p>
+        <ul>
+          <li><strong>Name:</strong> ${name}</li>
+          <li><strong>Email:</strong> ${email}</li>
+          <li><strong>Phone:</strong> ${phone || 'Not provided'}</li>
+        </ul>
+        <hr>
+        <h3>Message:</h3>
+        <p style="background-color: #f4f4f4; padding: 15px; border-radius: 5px;">${message}</p>
+      </div>
+    `;
+
+    await sendEmail({
+      to: ADMIN_EMAIL,
+      subject: `New Contact Message from ${name}`,
+      html: adminEmailHtml,
+    });
+
     return { message: "Message sent successfully! We will get back to you soon.", success: true };
   } catch (error) {
-    console.error("Error writing to Firestore: ", error);
+    console.error("Error in submitContactForm: ", error);
     return { message: "Submission failed. A server error occurred.", success: false };
   }
 }
@@ -257,7 +309,6 @@ export async function sendChecklistAction(
     });
     
     // Send notification email to the admin
-    const adminEmail = "castenhome@gmail.com";
     const adminEmailHtml = `
       <div style="font-family: Arial, sans-serif; line-height: 1.6;">
         <h2>New Pre-Inspection Checklist Lead</h2>
@@ -269,15 +320,14 @@ export async function sendChecklistAction(
       </div>
     `;
     const adminEmailResult = await sendEmail({
-        to: adminEmail,
+        to: ADMIN_EMAIL,
         subject: `New Checklist Lead: ${name}`,
         html: adminEmailHtml,
     });
 
     if (!clientEmailResult.success) {
         console.error("Client email failed:", clientEmailResult.message);
-        // User message is intentionally less specific than the log to avoid leaking implementation details.
-        const userMessage = "Checklist saved, but we couldn't email you. Please double-check the email server settings in your .env file. If using Gmail, ensure you have set up and are using a 16-digit 'App Password'.";
+        const userMessage = "Checklist saved, but we couldn't send a copy to your email. Please ensure your email server settings are configured correctly in the .env file.";
         return { message: userMessage, success: true };
     }
 
