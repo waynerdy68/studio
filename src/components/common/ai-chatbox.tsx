@@ -31,7 +31,7 @@ export function AIChatbox() {
     if (isOpen && messages.length === 0) {
       // Add initial greeting message from AI
       setMessages([
-        { id: "greeting", text: "Hello! I'm the Mayne Insights AI assistant. How can I help you with your home inspection questions today?", sender: "ai" }
+        { id: "greeting", text: "Hello! I'm the Mayne Inspectors AI assistant. How can I help you with your home inspection questions today?", sender: "ai" }
       ]);
     }
   }, [isOpen, messages.length]);
