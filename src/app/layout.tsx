@@ -3,6 +3,11 @@ import { Inter } from 'next/font/google';
 import './globals.css';
 import { ThemeProvider } from '@/components/ui/theme-provider';
 import { Toaster } from '@/components/ui/toaster';
+import { FormProvider } from '@/context/form-context';
+import { Header } from '@/components/layout/header';
+import { Footer } from '@/components/layout/footer';
+import { BackToTopButton } from '@/components/common/back-to-top-button';
+import { AIChatbox } from '@/components/common/ai-chatbox';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 
@@ -35,7 +40,15 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          {children}
+          <FormProvider>
+            <div className="flex flex-col min-h-screen">
+              <Header />
+              <main className="flex-grow">{children}</main>
+              <Footer />
+              <BackToTopButton />
+              <AIChatbox />
+            </div>
+          </FormProvider>
           <Toaster />
         </ThemeProvider>
       </body>

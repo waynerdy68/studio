@@ -10,14 +10,14 @@ import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger, SheetClose } from "@/components/ui/sheet"
 
 const navLinks = [
-  { href: "#about", label: "About" },
-  { href: "#services", label: "Services" },
-  { href: "#cost-estimator", label: "Cost Estimator" },
-  { href: "#checklist", label: "Checklist" },
-  { href: "#testimonials", label: "Testimonials" },
-  { href: "#pricing", label: "Pricing" },
-  { href: "#schedule", label: "Schedule" },
-  { href: "#contact", label: "Contact" },
+  { href: "/#about", label: "About" },
+  { href: "/#services", label: "Services" },
+  { href: "/cost-estimator", label: "Cost Estimator" },
+  { href: "/checklist", label: "Checklist" },
+  { href: "/#testimonials", label: "Testimonials" },
+  { href: "/#pricing", label: "Pricing" },
+  { href: "/#schedule", label: "Schedule" },
+  { href: "/#contact", label: "Contact" },
 ]
 
 export function Header() {

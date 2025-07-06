@@ -42,11 +42,11 @@ export function Footer() {
           <div className="flex flex-col items-center">
             <h3 className="text-lg font-semibold mb-3 font-headline">Quick Links</h3>
             <nav className="flex flex-col space-y-2 items-center md:items-start">
-              <Link href="#about" className="text-sm hover:text-primary transition-colors">About Us</Link>
-              <Link href="#services" className="text-sm hover:text-primary transition-colors">Services</Link>
-              <Link href="#pricing" className="text-sm hover:text-primary transition-colors">Pricing</Link>
-              <Link href="#schedule" className="text-sm hover:text-primary transition-colors">Schedule Inspection</Link>
-              <Link href="#contact" className="text-sm hover:text-primary transition-colors">Contact Us</Link>
+              <Link href="/#about" className="text-sm hover:text-primary transition-colors">About Us</Link>
+              <Link href="/#services" className="text-sm hover:text-primary transition-colors">Services</Link>
+              <Link href="/#pricing" className="text-sm hover:text-primary transition-colors">Pricing</Link>
+              <Link href="/#schedule" className="text-sm hover:text-primary transition-colors">Schedule Inspection</Link>
+              <Link href="/#contact" className="text-sm hover:text-primary transition-colors">Contact Us</Link>
             </nav>
           </div>
           
