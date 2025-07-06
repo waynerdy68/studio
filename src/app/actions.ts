@@ -6,6 +6,8 @@ import { FieldValue } from "firebase-admin/firestore";
 import { generateChecklist } from "@/ai/flows/generate-checklist-flow";
 import { GenerateChecklistInputSchema, type GenerateChecklistOutput } from "@/ai/schemas/checklist-schema";
 import { sendEmail } from "@/lib/email";
+import { calculateMaterialCost } from "@/ai/flows/cost-calculator-flow";
+import { CostCalculatorInputSchema, type CostCalculatorOutput } from "@/ai/schemas/cost-calculator-schema";
 
 
 const FIREBASE_NOT_CONFIGURED_ERROR = `Server database not configured. Please check your .env file and ensure the following:
@@ -289,5 +291,39 @@ export async function sendChecklistAction(
     console.error("Error in sendChecklistAction: ", error);
     const errorMessage = error instanceof Error ? error.message : "An unknown error occurred";
     return { message: `Submission failed. A server error occurred: ${errorMessage}`, success: false };
+  }
+}
+
+// --- Cost Calculator ---
+export type CostCalculatorState = {
+  estimate?: CostCalculatorOutput;
+  error?: string;
+  success: boolean;
+};
+
+export async function getCostEstimateAction(
+  prevState: CostCalculatorState,
+  formData: FormData
+): Promise<CostCalculatorState> {
+  const validatedFields = CostCalculatorInputSchema.safeParse({
+    deficiencyDescription: formData.get("deficiencyDescription"),
+  });
+
+  if (!validatedFields.success) {
+    return {
+      error: validatedFields.error.flatten().fieldErrors.deficiencyDescription?.[0] ?? "Invalid input. Please check the form and try again.",
+      success: false,
+    };
+  }
+
+  try {
+    const result = await calculateMaterialCost(validatedFields.data);
+    if (!result) {
+      return { error: "The AI could not generate an estimate. Please try again with a different description.", success: false };
+    }
+    return { estimate: result, success: true };
+  } catch (e) {
+    console.error("Cost estimation error:", e);
+    return { error: "An unexpected error occurred while generating the estimate. Please try again later.", success: false };
   }
 }

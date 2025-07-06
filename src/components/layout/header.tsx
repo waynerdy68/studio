@@ -12,6 +12,7 @@ import { Sheet, SheetContent, SheetTrigger, SheetClose } from "@/components/ui/s
 const navLinks = [
   { href: "#about", label: "About" },
   { href: "#services", label: "Services" },
+  { href: "#cost-estimator", label: "Cost Estimator" },
   { href: "#checklist", label: "Checklist" },
   { href: "#testimonials", label: "Testimonials" },
   { href: "#pricing", label: "Pricing" },
