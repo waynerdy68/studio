@@ -266,19 +266,28 @@ export async function sendChecklistAction(
         ${emailHtmlToClient}
       </div>
     `;
-    await sendEmail({
+    const adminEmailResult = await sendEmail({
         to: adminEmail,
         subject: `New Checklist Lead: ${name}`,
         html: adminEmailHtml,
     });
 
     if (!clientEmailResult.success) {
-        return { message: "Checklist saved, but we couldn't email you a copy. The email server may not be configured.", success: true };
+        console.error("Client email failed:", clientEmailResult.message);
+        // User message is intentionally less specific than the log to avoid leaking implementation details.
+        const userMessage = "Checklist saved, but we couldn't email you. Please double-check the email server settings in your .env file. If using Gmail, ensure you have set up and are using a 16-digit 'App Password'.";
+        return { message: userMessage, success: true };
+    }
+
+    if (!adminEmailResult.success) {
+        // This is a non-critical error for the user, but important for the admin.
+        console.error("Admin notification email failed:", adminEmailResult.message);
     }
 
     return { message: "Checklist sent! A copy has been sent to your email.", success: true };
   } catch (error) {
-    console.error("Error writing checklist to Firestore or sending email: ", error);
-    return { message: "Submission failed. A server error occurred while saving or sending your checklist.", success: false };
+    console.error("Error in sendChecklistAction: ", error);
+    const errorMessage = error instanceof Error ? error.message : "An unknown error occurred";
+    return { message: `Submission failed. A server error occurred: ${errorMessage}`, success: false };
   }
 }
