@@ -15,6 +15,8 @@ const FIREBASE_NOT_CONFIGURED_ERROR = `Server database not configured. Please ch
 2. FIREBASE_CLIENT_EMAIL is set.
 3. FIREBASE_PRIVATE_KEY is the full key wrapped in double quotes, including the "-----BEGIN PRIVATE KEY-----" and "-----END PRIVATE KEY-----" markers.`;
 
+const AI_NOT_CONFIGURED_ERROR = "The AI feature is not configured correctly. The site administrator needs to set the GOOGLE_API_KEY in the hosting environment.";
+
 const ADMIN_EMAIL = process.env.ADMIN_EMAIL || "castenhome@gmail.com";
 
 // --- Schedule Inspection Form ---
@@ -199,6 +201,11 @@ export async function getChecklistAction(
   prevState: ChecklistFormState,
   formData: FormData
 ): Promise<ChecklistFormState> {
+  if (!process.env.GOOGLE_API_KEY) {
+    console.error("Checklist generation failed: GOOGLE_API_KEY is not set.");
+    return { error: AI_NOT_CONFIGURED_ERROR, success: false };
+  }
+  
   const validatedFields = GenerateChecklistInputSchema.safeParse({
     propertyType: formData.get("propertyType"),
     propertyAge: formData.get("propertyAge"),
@@ -355,6 +362,11 @@ export async function getCostEstimateAction(
   prevState: CostCalculatorState,
   formData: FormData
 ): Promise<CostCalculatorState> {
+  if (!process.env.GOOGLE_API_KEY) {
+    console.error("Cost estimation failed: GOOGLE_API_KEY is not set.");
+    return { error: AI_NOT_CONFIGURED_ERROR, success: false };
+  }
+  
   const validatedFields = CostCalculatorInputSchema.safeParse({
     deficiencyDescription: formData.get("deficiencyDescription"),
   });

@@ -23,6 +23,12 @@ const AnswerQuestionsOutputSchema = z.object({
 export type AnswerQuestionsOutput = z.infer<typeof AnswerQuestionsOutputSchema>;
 
 export async function answerQuestions(input: AnswerQuestionsInput): Promise<AnswerQuestionsOutput> {
+  if (!process.env.GOOGLE_API_KEY) {
+    console.error("AI chat failed: GOOGLE_API_KEY is not set.");
+    return {
+      answer: "I'm sorry, but the AI assistant is not configured correctly. The site administrator needs to provide an API key for the AI service."
+    }
+  }
   return answerQuestionsFlow(input);
 }
 
