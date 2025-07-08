@@ -42,6 +42,31 @@ export default function ServiceAreaPage({ params }: { params: { city: string } }
     const cityName = unslugify(params.city);
     // Use the original city name from constants to preserve capitalization
     const originalCity = serviceAreas.find(area => slugify(area) === params.city) || cityName;
+    const cityIndex = serviceAreas.findIndex(area => slugify(area) === params.city);
+
+    // Define content variations to make each page unique for SEO
+    const headlines = [
+        { primary: "Expert Home Inspections", secondary: `in {city}, FL`},
+        { primary: "Your Premier Inspector", secondary: `for {city}, FL` },
+        { primary: "Trusted Property Inspections", secondary: `in the {city} Area`},
+    ];
+
+    const intros = [
+        `Mayne Home Inspectors is proud to provide our full suite of professional, reliable, and modern inspection services to the community of {city}. We are committed to ensuring you have a complete understanding of your property investment.`,
+        `Serving homeowners and real estate professionals throughout {city}, Mayne Home Inspectors offers detailed and trustworthy inspection services. Let us empower you with the knowledge to make confident property decisions.`,
+        `For thorough and dependable home inspections in {city}, look no further. Our team brings expertise and modern technology to every job, giving you the peace of mind you deserve when buying or selling property.`,
+        `As a leading home inspector for the {city} area, we are dedicated to delivering top-quality reports and exceptional customer service. We inspect every property as if it were our own.`
+    ];
+
+    // Cycle through the content variations based on the city's index
+    const headline = headlines[cityIndex % headlines.length];
+    const intro = intros[cityIndex % intros.length];
+
+    const currentHeadline = {
+        primary: headline.primary.replace(/{city}/g, originalCity),
+        secondary: headline.secondary.replace(/{city}/g, originalCity)
+    };
+    const currentIntro = intro.replace(/{city}/g, originalCity);
 
     return (
         <div className="bg-background">
@@ -55,11 +80,11 @@ export default function ServiceAreaPage({ params }: { params: { city: string } }
                     </Button>
 
                     <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl font-headline text-center">
-                        <span className="block text-primary">Expert Home Inspections</span>
-                        <span className="block text-foreground mt-2">in {originalCity}, FL</span>
+                        <span className="block text-primary">{currentHeadline.primary}</span>
+                        <span className="block text-foreground mt-2">{currentHeadline.secondary}</span>
                     </h1>
                     <p className="mt-6 text-lg text-muted-foreground text-center max-w-3xl mx-auto">
-                        Mayne Home Inspectors is proud to provide our full suite of professional, reliable, and modern inspection services to the community of {originalCity}. We are committed to ensuring you have a complete understanding of your property investment.
+                        {currentIntro}
                     </p>
                 </div>
 
