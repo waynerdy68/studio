@@ -353,7 +353,7 @@ export async function sendChecklistAction(
 
 // --- Cost Calculator ---
 export type CostCalculatorState = {
-  estimate?: CostCalculatorOutput;
+  estimate?: CostCalculatorOutput & { originalDescription: string };
   error?: string;
   success: boolean;
 };
@@ -383,9 +383,122 @@ export async function getCostEstimateAction(
     if (!result) {
       return { error: "The AI could not generate an estimate. Please try again with a different description.", success: false };
     }
-    return { estimate: result, success: true };
+    return { 
+      estimate: { ...result, originalDescription: validatedFields.data.deficiencyDescription }, 
+      success: true 
+    };
   } catch (e) {
     console.error("Cost estimation error:", e);
     return { error: "An unexpected error occurred while generating the estimate. Please try again later.", success: false };
+  }
+}
+
+// --- Send Estimates Form ---
+const sendEstimatesSchema = z.object({
+  name: z.string().min(2, "Name must be at least 2 characters."),
+  email: z.string().email("Invalid email address."),
+  estimatesJson: z.string().min(1, "Estimates data is missing."),
+});
+
+export type SendEstimatesState = {
+  message: string;
+  errors?: {
+    name?: string[];
+    email?: string[];
+    estimatesJson?: string[];
+  };
+  success: boolean;
+};
+
+function formatEstimatesToHtml(estimates: (CostCalculatorOutput & { originalDescription: string })[], name: string): string {
+    let html = `<div style="font-family: Arial, sans-serif; line-height: 1.6; color: #333;">`;
+    html += `<div style="max-width: 600px; margin: auto; padding: 20px; border: 1px solid #ddd; border-radius: 8px;">`;
+    html += `<h2 style="color: #0056b3;">Hello ${name},</h2>`;
+    html += `<p>Thank you for using the AI Repair Cost Estimator from Mayne Inspectors. Here is the summary of the estimates you generated:</p>`;
+
+    estimates.forEach((estimate, index) => {
+        html += `<div style="border: 1px solid #eee; padding: 15px; border-radius: 5px; margin-bottom: 20px;">`;
+        html += `<h3 style="color: #0056b3; border-bottom: 2px solid #eee; padding-bottom: 5px; margin-top: 0;">Estimate #${index + 1}: ${estimate.originalDescription}</h3>`;
+        html += `<p style="font-size: 1.5em; font-weight: bold; color: #28a745; margin: 10px 0;">$${estimate.estimatedMinCost} - $${estimate.estimatedMaxCost}</p>`;
+        html += `<strong>Required Materials:</strong>`;
+        html += '<ul style="list-style-type: disc; padding-left: 20px; margin-top: 5px;">';
+        estimate.requiredMaterials.forEach(item => {
+            html += `<li>${item}</li>`;
+        });
+        html += '</ul>';
+        html += `<div style="font-size: 0.9em; color: #666; background-color: #f9f9f9; padding: 10px; border-radius: 4px; margin-top: 15px;"><strong>Disclaimer:</strong> ${estimate.disclaimer}</div>`;
+        html += `</div>`;
+    });
+
+    html += `<br><p>This tool provides a rough estimate for materials only. For a comprehensive evaluation and accurate quote including labor, a professional inspection is crucial. If you'd like to schedule one, please don't hesitate to contact us.</p>`;
+    html += `<p>Sincerely,<br><b>The Mayne Inspectors Team</b></p>`;
+    html += `</div></div>`;
+    return html;
+}
+
+export async function sendEstimatesAction(
+  prevState: SendEstimatesState,
+  formData: FormData
+): Promise<SendEstimatesState> {
+  if (!db) {
+    return { message: FIREBASE_NOT_CONFIGURED_ERROR, success: false };
+  }
+
+  const validatedFields = sendEstimatesSchema.safeParse({
+    name: formData.get("name"),
+    email: formData.get("email"),
+    estimatesJson: formData.get("estimatesJson"),
+  });
+
+  if (!validatedFields.success) {
+    return {
+      message: "Validation failed. Please check your inputs.",
+      errors: validatedFields.error.flatten().fieldErrors,
+      success: false,
+    };
+  }
+  
+  const { name, email, estimatesJson } = validatedFields.data;
+  
+  try {
+    const estimates = JSON.parse(estimatesJson);
+    await db.collection("costEstimateLeads").add({
+      name,
+      email,
+      estimates,
+      submittedAt: FieldValue.serverTimestamp(),
+    });
+
+    const emailHtmlToClient = formatEstimatesToHtml(estimates, name);
+
+    // Send email to the client
+    await sendEmail({
+        to: email,
+        subject: "Your Repair Cost Estimates from Mayne Inspectors",
+        html: emailHtmlToClient,
+    });
+    
+    // Send notification email to the admin
+    const adminEmailHtml = `
+      <div style="font-family: Arial, sans-serif; line-height: 1.6;">
+        <h2>New Repair Cost Estimate Lead</h2>
+        <p>A new estimate list has been generated and saved.</p>
+        <p><strong>Name:</strong> ${name}</p>
+        <p><strong>Email:</strong> ${email}</p>
+        <hr>
+        ${emailHtmlToClient}
+      </div>
+    `;
+    await sendEmail({
+        to: ADMIN_EMAIL,
+        subject: `New Cost Estimate Lead: ${name}`,
+        html: adminEmailHtml,
+    });
+
+    return { message: "Estimates sent! A copy has been sent to your email.", success: true };
+  } catch (error) {
+    console.error("Error in sendEstimatesAction: ", error);
+    const errorMessage = error instanceof Error ? error.message : "An unknown error occurred";
+    return { message: `Submission failed. A server error occurred: ${errorMessage}`, success: false };
   }
 }
