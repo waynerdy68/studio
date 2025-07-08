@@ -5,7 +5,7 @@ import { ScrollAnimationWrapper } from "@/components/common/scroll-animation-wra
 
 export function HeroSection() {
   return (
-    <section id="hero" className="relative bg-gradient-to-br from-background to-secondary pt-20 pb-12 md:pt-28 md:pb-20 min-h-[75vh] flex items-center">
+    <section id="hero" className="relative bg-gradient-to-br from-background to-secondary pt-20 pb-12 md:pt-28 md:pb-20 min-h-screen flex items-center">
       <div className="absolute inset-0 opacity-20">
         <Image 
           src="/images/mayne-cityscape-silhouette.png" 
