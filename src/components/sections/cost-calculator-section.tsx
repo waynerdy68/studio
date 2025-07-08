@@ -1,6 +1,7 @@
+
 "use client";
 
-import { useActionState } from "react";
+import { useActionState, useRef, useEffect } from "react";
 import { getCostEstimateAction, type CostCalculatorState } from "@/app/actions";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
@@ -15,6 +16,13 @@ const initialCostState: CostCalculatorState = {
 
 export function CostCalculatorSection() {
   const [state, formAction] = useActionState(getCostEstimateAction, initialCostState);
+  const formRef = useRef<HTMLFormElement>(null);
+
+  useEffect(() => {
+    if (state.success) {
+      formRef.current?.reset();
+    }
+  }, [state]);
 
   return (
     <section id="cost-estimator" className="bg-background">
@@ -37,7 +45,7 @@ export function CostCalculatorSection() {
                 <CardDescription>Be as specific as possible for a more accurate estimate.</CardDescription>
               </CardHeader>
               <CardContent>
-                <form action={formAction} className="space-y-6">
+                <form action={formAction} ref={formRef} className="space-y-6">
                   <div>
                     <Label htmlFor="deficiencyDescription">Deficiency Description</Label>
                     <Textarea
