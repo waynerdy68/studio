@@ -26,7 +26,7 @@ export async function answerQuestions(input: AnswerQuestionsInput): Promise<Answ
   if (!process.env.GOOGLE_API_KEY) {
     console.error("AI chat failed: GOOGLE_API_KEY is not set.");
     return {
-      answer: "I'm sorry, but the AI assistant is not configured correctly. The site administrator needs to provide an API key for the AI service."
+      answer: "I'm sorry, but the AI assistant is not configured correctly. The site administrator needs to add the GOOGLE_API_KEY in the 'AI Logic' section of the Firebase Console."
     }
   }
   return answerQuestionsFlow(input);

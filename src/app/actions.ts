@@ -15,7 +15,7 @@ const FIREBASE_NOT_CONFIGURED_ERROR = `Server database not configured. Please ch
 2. FIREBASE_CLIENT_EMAIL is set.
 3. FIREBASE_PRIVATE_KEY is the full key wrapped in double quotes, including the "-----BEGIN PRIVATE KEY-----" and "-----END PRIVATE KEY-----" markers.`;
 
-const AI_NOT_CONFIGURED_ERROR = "The AI feature is not configured correctly. The site administrator needs to set the GOOGLE_API_KEY in the hosting environment.";
+const AI_NOT_CONFIGURED_ERROR = "AI feature not configured. Please add your GOOGLE_API_KEY in the 'AI Logic' section of the Firebase Console.";
 
 const ADMIN_EMAIL = process.env.ADMIN_EMAIL || "castenhome@gmail.com";
 
