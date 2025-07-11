@@ -25,6 +25,7 @@ export function ServicesSection() {
               icon={service.icon}
               name={service.name}
               description={service.description}
+              slug={service.slug}
               index={index}
             />
           ))}

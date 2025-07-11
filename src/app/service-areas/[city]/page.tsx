@@ -99,6 +99,7 @@ export default function ServiceAreaPage({ params }: { params: { city: string } }
                                 icon={service.icon}
                                 name={service.name}
                                 description={service.description}
+                                slug={service.slug}
                                 index={index}
                             />
                         ))}

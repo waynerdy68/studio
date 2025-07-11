@@ -1,16 +1,20 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ScrollAnimationWrapper } from "@/components/common/scroll-animation-wrapper";
 import type { LucideIcon } from "lucide-react";
+import Link from "next/link";
+import { Button } from "../ui/button";
+import { ArrowRight } from "lucide-react";
 
 interface ServiceCardProps {
   icon: LucideIcon;
   name: string;
   description: string;
+  slug: string;
   index: number;
 }
 
-export function ServiceCard({ icon: Icon, name, description, index }: ServiceCardProps) {
-  const delayClass = `delay-${index * 100}`; // e.g., delay-0, delay-100, delay-200
+export function ServiceCard({ icon: Icon, name, description, slug, index }: ServiceCardProps) {
+  const delayClass = `delay-${index * 100}`;
 
   return (
     <ScrollAnimationWrapper animationClass="animate-fadeInUp" delay={delayClass}>
@@ -21,8 +25,13 @@ export function ServiceCard({ icon: Icon, name, description, index }: ServiceCar
           </div>
           <CardTitle className="text-xl font-semibold font-headline">{name}</CardTitle>
         </CardHeader>
-        <CardContent className="flex-grow">
-          <p className="text-sm text-muted-foreground">{description}</p>
+        <CardContent className="flex-grow flex flex-col">
+          <p className="text-sm text-muted-foreground flex-grow">{description}</p>
+          <Button asChild variant="link" className="mt-4 p-0 justify-start text-primary h-auto">
+            <Link href={`/services/${slug}`}>
+              Learn More <ArrowRight className="ml-2 h-4 w-4" />
+            </Link>
+          </Button>
         </CardContent>
       </Card>
     </ScrollAnimationWrapper>
