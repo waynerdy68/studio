@@ -16,7 +16,7 @@ export function HeroSection() {
           className="object-cover"
           data-ai-hint="modern house"
         />
-        <div className="absolute inset-0 bg-black/60"></div>
+        <div className="absolute inset-0 bg-black/70"></div>
       </div>
       <div className="container mx-auto px-4 md:px-6 text-center relative z-10">
         <ScrollAnimationWrapper animationClass="animate-fadeInUp">
