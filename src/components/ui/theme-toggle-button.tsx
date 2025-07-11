@@ -8,6 +8,16 @@ import { Button } from "@/components/ui/button"
 
 export function ThemeToggleButton() {
   const { theme, setTheme } = useTheme()
+  const [mounted, setMounted] = React.useState(false)
+
+  React.useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  if (!mounted) {
+    // Render a placeholder button on the server and during initial client render
+    return <Button variant="ghost" size="icon" disabled={true} className="h-9 w-9" />
+  }
 
   return (
     <Button
