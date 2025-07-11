@@ -2,6 +2,12 @@
 # https://firebase.google.com/docs/app-hosting/configure
 
 runConfig:
-  # Increase this value if you'd like to automatically spin up
-  # more instances in response to increased traffic.
   maxInstances: 1
+
+routes:
+  - type: redirect
+    source: "https://www.mayneinspectors.com/**"
+    destination: "https://mayneinspectors.com"
+    statusCode: 301
+
+
