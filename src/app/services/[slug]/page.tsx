@@ -41,10 +41,15 @@ export default function ServiceDetailPage({ params }: { params: { slug: string }
         notFound();
     }
 
-    // Find which pricing tiers include this service
-    const relevantTiers = pricingTiers.filter(tier => 
-        tier.features.some(feature => feature.toLowerCase().includes(service.name.toLowerCase().split(' ')[0]))
-    );
+    // Find which pricing tiers include this service with more specific matching logic
+    const relevantTiers = pricingTiers.filter(tier => {
+        const serviceNameLower = service.name.toLowerCase();
+        // A service is relevant if its exact name appears in a feature, or if a feature explicitly bundles it (e.g. "4-point inspection")
+        return tier.features.some(feature => {
+            const featureLower = feature.toLowerCase();
+            return featureLower.includes(serviceNameLower);
+        });
+    });
 
     return (
         <div className="bg-background">
