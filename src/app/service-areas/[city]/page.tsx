@@ -1,6 +1,7 @@
 
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import Image from 'next/image';
 import { ArrowLeft } from 'lucide-react';
 import { serviceAreas, services } from '@/lib/constants';
 import { ServiceCard } from '@/components/common/service-card';
@@ -43,6 +44,7 @@ export default function ServiceAreaPage({ params }: { params: { city: string } }
     // Use the original city name from constants to preserve capitalization
     const originalCity = serviceAreas.find(area => slugify(area) === params.city) || cityName;
     const cityIndex = serviceAreas.findIndex(area => slugify(area) === params.city);
+    const isLehighAcres = params.city === 'lehigh-acres';
 
     // Define content variations to make each page unique for SEO
     const headlines = [
@@ -87,6 +89,18 @@ export default function ServiceAreaPage({ params }: { params: { city: string } }
                         {currentIntro}
                     </p>
                 </div>
+
+                {isLehighAcres && (
+                    <div className="mt-16 max-w-4xl mx-auto">
+                        <Image 
+                            src="https://firebasestudio.corp.google.com/static/agents/images/ce53782b-5e36-419a-9e5c-c6ba1b7e4110.png"
+                            alt="Welcome to Lehigh Acres sign with a palm tree"
+                            width={800}
+                            height={600}
+                            className="rounded-xl shadow-lg mx-auto"
+                        />
+                    </div>
+                )}
 
                 <div className="mt-16">
                      <h2 className="text-3xl font-bold tracking-tight sm:text-4xl text-center mb-12 font-headline">
