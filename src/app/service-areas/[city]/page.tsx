@@ -93,7 +93,7 @@ export default function ServiceAreaPage({ params }: { params: { city: string } }
                 {isLehighAcres && (
                     <div className="mt-16 max-w-4xl mx-auto">
                         <Image 
-                            src="https://firebasestudio.corp.google.com/static/agents/images/ce53782b-5e36-419a-9e5c-c6ba1b7e4110.png"
+                            src="/images/lehigh-acres-sign.png"
                             alt="Welcome to Lehigh Acres sign with a palm tree"
                             width={800}
                             height={600}
