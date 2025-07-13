@@ -51,6 +51,7 @@ export default function ServiceAreaPage({ params }: { params: { city: string } }
     const isCapeCoral = params.city === 'cape-coral';
     const isMonturaRanchEstates = params.city === 'montura-ranch-estates';
     const isPuntaGorda = params.city === 'punta-gorda';
+    const isPortCharlotte = params.city === 'port-charlotte';
 
     // Define content variations to make each page unique for SEO
     const headlines = [
@@ -167,6 +168,17 @@ export default function ServiceAreaPage({ params }: { params: { city: string } }
                         <Image 
                             src="/images/punta-gorda-home-inspection-dji-mini.png"
                             alt="Drone inspecting a home in Punta Gorda"
+                            width={800}
+                            height={600}
+                            className="rounded-xl shadow-lg mx-auto"
+                        />
+                    </div>
+                )}
+                 {isPortCharlotte && (
+                     <div className="mt-16 max-w-4xl mx-auto">
+                        <Image 
+                            src="/images/port-charlotte-rotonda-west-osprey.png"
+                            alt="Osprey in its nest in Port Charlotte, a common sight"
                             width={800}
                             height={600}
                             className="rounded-xl shadow-lg mx-auto"
