@@ -50,6 +50,7 @@ export default function ServiceAreaPage({ params }: { params: { city: string } }
     const isFortMyers = params.city === 'fort-myers';
     const isCapeCoral = params.city === 'cape-coral';
     const isMonturaRanchEstates = params.city === 'montura-ranch-estates';
+    const isPuntaGorda = params.city === 'punta-gorda';
 
     // Define content variations to make each page unique for SEO
     const headlines = [
@@ -155,6 +156,17 @@ export default function ServiceAreaPage({ params }: { params: { city: string } }
                         <Image 
                             src="/images/montura-ranch-estates-jesus-donkey-love.png"
                             alt="A statue of Jesus with a donkey in Montura Ranch Estates"
+                            width={800}
+                            height={600}
+                            className="rounded-xl shadow-lg mx-auto"
+                        />
+                    </div>
+                )}
+                {isPuntaGorda && (
+                     <div className="mt-16 max-w-4xl mx-auto">
+                        <Image 
+                            src="/images/punta-gorda-home-inspection-dji-mini.png"
+                            alt="Drone inspecting a home in Punta Gorda"
                             width={800}
                             height={600}
                             className="rounded-xl shadow-lg mx-auto"
