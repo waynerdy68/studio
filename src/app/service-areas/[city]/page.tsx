@@ -45,6 +45,7 @@ export default function ServiceAreaPage({ params }: { params: { city: string } }
     const originalCity = serviceAreas.find(area => slugify(area) === params.city) || cityName;
     const cityIndex = serviceAreas.findIndex(area => slugify(area) === params.city);
     const isLehighAcres = params.city === 'lehigh-acres';
+    const isLaBelle = params.city === 'labelle';
 
     // Define content variations to make each page unique for SEO
     const headlines = [
@@ -90,6 +91,17 @@ export default function ServiceAreaPage({ params }: { params: { city: string } }
                     </p>
                 </div>
 
+                {isLaBelle && (
+                    <div className="mt-16 max-w-4xl mx-auto">
+                        <Image 
+                            src="/images/hendry-county-courthouse.png"
+                            alt="Hendry County Courthouse in LaBelle, FL"
+                            width={800}
+                            height={600}
+                            className="rounded-xl shadow-lg mx-auto"
+                        />
+                    </div>
+                )}
                 {isLehighAcres && (
                     <div className="mt-16 max-w-4xl mx-auto">
                         <Image 
