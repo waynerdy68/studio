@@ -46,6 +46,7 @@ export default function ServiceAreaPage({ params }: { params: { city: string } }
     const cityIndex = serviceAreas.findIndex(area => slugify(area) === params.city);
     const isLehighAcres = params.city === 'lehigh-acres';
     const isLaBelle = params.city === 'labelle';
+    const isClewiston = params.city === 'clewiston';
 
     // Define content variations to make each page unique for SEO
     const headlines = [
@@ -107,6 +108,17 @@ export default function ServiceAreaPage({ params }: { params: { city: string } }
                         <Image 
                             src="/images/lehigh-acres-sign.png"
                             alt="Welcome to Lehigh Acres sign with a palm tree"
+                            width={800}
+                            height={600}
+                            className="rounded-xl shadow-lg mx-auto"
+                        />
+                    </div>
+                )}
+                {isClewiston && (
+                    <div className="mt-16 max-w-4xl mx-auto">
+                        <Image 
+                            src="/images/clewiston-flag.png"
+                            alt="Clewiston city flag"
                             width={800}
                             height={600}
                             className="rounded-xl shadow-lg mx-auto"
