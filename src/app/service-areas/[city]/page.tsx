@@ -48,6 +48,7 @@ export default function ServiceAreaPage({ params }: { params: { city: string } }
     const isLaBelle = params.city === 'labelle';
     const isClewiston = params.city === 'clewiston';
     const isFortMyers = params.city === 'fort-myers';
+    const isCapeCoral = params.city === 'cape-coral';
 
     // Define content variations to make each page unique for SEO
     const headlines = [
@@ -131,6 +132,17 @@ export default function ServiceAreaPage({ params }: { params: { city: string } }
                         <Image 
                             src="/images/fort-myers-home-inspection.png"
                             alt="A beautiful home in Fort Myers, FL being inspected"
+                            width={800}
+                            height={600}
+                            className="rounded-xl shadow-lg mx-auto"
+                        />
+                    </div>
+                )}
+                {isCapeCoral && (
+                    <div className="mt-16 max-w-4xl mx-auto">
+                        <Image 
+                            src="/images/cape-coral-veterans-memorial-monument.png"
+                            alt="Cape Coral Veterans Memorial Monument"
                             width={800}
                             height={600}
                             className="rounded-xl shadow-lg mx-auto"
