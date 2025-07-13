@@ -93,7 +93,7 @@ export const pricingTiers: PricingTier[] = [
 
 export const serviceAreas = [
   "LaBelle", "Lehigh Acres", "Clewiston", "Moore Haven", "Immokalee", 
-  "Fort Myers", "Cape Coral", "Punta Gorda", "Port Charlotte"
+  "Fort Myers", "Cape Coral", "Punta Gorda", "Port Charlotte", "Montura Ranch Estates"
 ];
 
 export const youtubeVideoId = "MwtftPuq6K0";

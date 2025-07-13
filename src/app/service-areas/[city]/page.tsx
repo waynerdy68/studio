@@ -49,6 +49,7 @@ export default function ServiceAreaPage({ params }: { params: { city: string } }
     const isClewiston = params.city === 'clewiston';
     const isFortMyers = params.city === 'fort-myers';
     const isCapeCoral = params.city === 'cape-coral';
+    const isMonturaRanchEstates = params.city === 'montura-ranch-estates';
 
     // Define content variations to make each page unique for SEO
     const headlines = [
@@ -143,6 +144,17 @@ export default function ServiceAreaPage({ params }: { params: { city: string } }
                         <Image 
                             src="/images/cape-coral-veterans-memorial-monument.png"
                             alt="Cape Coral Veterans Memorial Monument"
+                            width={800}
+                            height={600}
+                            className="rounded-xl shadow-lg mx-auto"
+                        />
+                    </div>
+                )}
+                {isMonturaRanchEstates && (
+                     <div className="mt-16 max-w-4xl mx-auto">
+                        <Image 
+                            src="/images/montura-ranch-estates-jesus-donkey-love.png"
+                            alt="A statue of Jesus with a donkey in Montura Ranch Estates"
                             width={800}
                             height={600}
                             className="rounded-xl shadow-lg mx-auto"
