@@ -6,8 +6,9 @@ runConfig:
 
 routes:
   - type: redirect
-    source: "https://www.mayneinspectors.com/**"
+    source: "https://maynehomeinspectorsfl.com/**"
     destination: "https://mayneinspectors.com"
     statusCode: 301
+
 
 
