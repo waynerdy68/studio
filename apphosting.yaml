@@ -4,11 +4,11 @@
 runConfig:
   maxInstances: 1
 
+headers:
+  - host: mayneinspectors.com
+
 routes:
   - type: redirect
     source: "https://maynehomeinspectorsfl.com/**"
     destination: "https://mayneinspectors.com"
     statusCode: 301
-
-
-
