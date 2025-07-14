@@ -52,6 +52,7 @@ export default function ServiceAreaPage({ params }: { params: { city: string } }
     const isMonturaRanchEstates = params.city === 'montura-ranch-estates';
     const isPuntaGorda = params.city === 'punta-gorda';
     const isPortCharlotte = params.city === 'port-charlotte';
+    const isMooreHaven = params.city === 'moore-haven';
 
     // Define content variations to make each page unique for SEO
     const headlines = [
@@ -179,6 +180,17 @@ export default function ServiceAreaPage({ params }: { params: { city: string } }
                         <Image 
                             src="/images/port-charlotte-rotonda-west-osprey.png"
                             alt="Osprey in its nest in Port Charlotte, a common sight"
+                            width={800}
+                            height={600}
+                            className="rounded-xl shadow-lg mx-auto"
+                        />
+                    </div>
+                )}
+                {isMooreHaven && (
+                     <div className="mt-16 max-w-4xl mx-auto">
+                        <Image 
+                            src="/images/moore-haven-sugar-cane.png"
+                            alt="Sugar cane fields in Moore Haven, FL"
                             width={800}
                             height={600}
                             className="rounded-xl shadow-lg mx-auto"
