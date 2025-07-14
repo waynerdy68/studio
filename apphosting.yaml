@@ -4,11 +4,17 @@
 runConfig:
   maxInstances: 1
 
-headers:
-  - host: mayneinspectors.com
-
+# This section defines how incoming requests are routed.
 routes:
+  # This rule ensures that any request to your old domain is permanently redirected
+  # to your new primary domain, preserving SEO value.
   - type: redirect
     source: "https://maynehomeinspectorsfl.com/**"
-    destination: "https://mayneinspectors.com"
+    destination: "https://mayneinspectors.com/"
     statusCode: 301
+  # This is the primary rule that serves your website content. It tells App Hosting
+  # to handle requests for your custom domain by running your Next.js application.
+  - type: rewrite
+    source: "/**"
+    destination: "/"
+    host: "mayneinspectors.com"
