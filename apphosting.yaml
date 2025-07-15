@@ -6,16 +6,20 @@ runConfig:
 
 # This section defines how incoming requests are routed.
 routes:
-  # This rule ensures that any request to your old domain is permanently redirected
-  # to your new primary domain, preserving SEO value.
+  # This rule forces all www traffic to the non-www domain, preserving SEO value.
   - type: redirect
-    source: "https://maynehomeinspectorsfl.com/**"
+    source: "https://www.mayneinspectors.com/**"
     destination: "https://mayneinspectors.com/"
     statusCode: 301
-  
+
   # This rule forces all traffic to be secure (HTTPS).
   - type: redirect
     source: "http://mayneinspectors.com/**"
+    destination: "https://mayneinspectors.com/"
+    statusCode: 301
+
+  - type: redirect
+    source: "http://www.mayneinspectors.com/**"
     destination: "https://mayneinspectors.com/"
     statusCode: 301
 
