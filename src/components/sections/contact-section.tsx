@@ -103,7 +103,7 @@ export function ContactSection() {
                   </div>
                   <div>
                     <Label htmlFor="contact-email" className="font-medium">Email Address</Label>
-                    <Input id="contact-email" name="email" type="email" {...emailReg} placeholder="jane@example.com" className="mt-1" onChange={(e) => {
+                    <Input id="contact-email" type="email" {...emailReg} placeholder="jane@example.com" className="mt-1" onChange={(e) => {
                       emailReg.onChange(e);
                       setSharedData({ email: e.target.value });
                     }} />
@@ -112,7 +112,7 @@ export function ContactSection() {
                   </div>
                   <div>
                     <Label htmlFor="contact-phone" className="font-medium">Phone Number (Optional)</Label>
-                    <Input id="contact-phone" name="phone" type="tel" {...phoneReg} placeholder="(555) 987-6543" className="mt-1" onChange={(e) => {
+                    <Input id="contact-phone" type="tel" {...phoneReg} placeholder="(555) 987-6543" className="mt-1" onChange={(e) => {
                       phoneReg.onChange(e);
                       setSharedData({ phone: e.target.value });
                     }} />
@@ -120,7 +120,7 @@ export function ContactSection() {
                   </div>
                   <div>
                     <Label htmlFor="contact-message" className="font-medium">Your Message</Label>
-                    <Textarea id="contact-message" name="message" {...form.register("message")} placeholder="Your question or inquiry..." className="mt-1 min-h-[120px]" />
+                    <Textarea id="contact-message" {...form.register("message")} placeholder="Your question or inquiry..." className="mt-1 min-h-[120px]" />
                     {form.formState.errors.message && <p className="text-sm text-destructive mt-1">{form.formState.errors.message.message}</p>}
                     {state.errors?.message && <p className="text-sm text-destructive mt-1">{state.errors.message[0]}</p>}
                   </div>
@@ -140,14 +140,14 @@ export function ContactSection() {
                   <div>
                     <h4 className="font-semibold text-lg">Location</h4>
                     <p className="text-muted-foreground">LaBelle, FL 33935</p>
-                    <a href="#" className="text-sm text-primary hover:underline mt-1 block">Get Directions</a>
+                    <a href="https://www.google.com/maps/search/?api=1&query=LaBelle+FL+33935" target="_blank" rel="noopener noreferrer" className="text-sm text-primary hover:underline mt-1 block">Get Directions</a>
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
                   <Phone className="w-7 h-7 text-primary mt-1 shrink-0" />
                   <div>
                     <h4 className="font-semibold text-lg">Call/Text Us</h4>
-                    <a href="tel:+ 2398430735" className="text-muted-foreground hover:text-primary transition-colors">(239) 843-0735</a>
+                    <a href="tel:+12398430735" className="text-muted-foreground hover:text-primary transition-colors">(239) 843-0735</a>
                     <p className="text-sm text-muted-foreground">Mon - Sat 7am - 6pm, Sun 12 - 4pm</p>
                   </div>
                 </div>

@@ -15,7 +15,7 @@ export default function HomePage() {
     "@context": "https://schema.org",
     "@type": "HomeAndConstructionBusiness",
     "name": "Mayne Inspectors",
-    "image": "/images/Mayne-Inspector-light-removebg-preview.png",
+    "image": "https://mayneinspectors.com/images/Mayne-Inspector-light-removebg-preview.png",
     // It's best to replace this with your actual domain when it's live
     "url": "https://mayneinspectors.com/", 
     "telephone": "+1-239-843-0735",
