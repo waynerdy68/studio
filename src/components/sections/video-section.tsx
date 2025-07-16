@@ -14,14 +14,15 @@ export function VideoSection() {
           </p>
         </ScrollAnimationWrapper>
         <ScrollAnimationWrapper animationClass="animate-fadeInUp" delay="delay-200">
-          <div className="aspect-w-16 aspect-h-9 max-w-4xl mx-auto rounded-xl overflow-hidden shadow-2xl">
+          <div className="max-w-4xl mx-auto rounded-xl overflow-hidden shadow-2xl" style={{ position: 'relative', paddingTop: '56.25%' }}>
              <iframe
               src={`https://www.youtube.com/embed/${youtubeVideoId}`}
               title="Discover Mayne Home Inspectors"
               frameBorder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
-              className="w-full h-full absolute top-0 left-0"
+              className="w-full h-full"
+              style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}
             ></iframe>
           </div>
         </ScrollAnimationWrapper>
