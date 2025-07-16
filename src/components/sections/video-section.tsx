@@ -2,7 +2,6 @@
 
 import { youtubeVideoId } from "@/lib/constants";
 import { ScrollAnimationWrapper } from "@/components/common/scroll-animation-wrapper";
-import LiteYouTubeEmbed from 'react-lite-youtube-embed';
 
 export function VideoSection() {
   return (
@@ -16,12 +15,14 @@ export function VideoSection() {
         </ScrollAnimationWrapper>
         <ScrollAnimationWrapper animationClass="animate-fadeInUp" delay="delay-200">
           <div className="aspect-w-16 aspect-h-9 max-w-4xl mx-auto rounded-xl overflow-hidden shadow-2xl">
-            <LiteYouTubeEmbed
-              id={youtubeVideoId}
+             <iframe
+              src={`https://www.youtube.com/embed/${youtubeVideoId}`}
               title="Discover Mayne Home Inspectors"
-              noCookie={true}
-              thumbnail="/images/video-thumbnail.png"
-            />
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+              className="w-full h-full absolute top-0 left-0"
+            ></iframe>
           </div>
         </ScrollAnimationWrapper>
       </div>

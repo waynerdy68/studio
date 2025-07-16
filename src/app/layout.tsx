@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import { Inter, Merriweather } from 'next/font/google';
 import './globals.css';
-import 'react-lite-youtube-embed/dist/LiteYouTubeEmbed.css'
 import { ThemeProvider } from '@/components/ui/theme-provider';
 import { Toaster } from '@/components/ui/toaster';
 import { FormProvider } from '@/context/form-context';
