@@ -17,7 +17,7 @@ export default function HomePage() {
     "name": "Mayne Inspectors",
     "image": "/images/Mayne-Inspector-light-removebg-preview.png",
     // It's best to replace this with your actual domain when it's live
-    "url": "/", 
+    "url": "https://mayneinspectors.com/", 
     "telephone": "+1-239-843-0735",
     "email": "castenhome@gmail.com",
     "priceRange": "$$$",
