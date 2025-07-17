@@ -64,16 +64,14 @@ export default function ServiceDetailPage({ params }: { params: { slug: string }
                     </Button>
                     
                     <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
-                        <div className={cn(
-                            "relative rounded-xl shadow-2xl overflow-hidden",
-                             service.slug === '4-point-inspection' ? 'aspect-[3/4]' : 'aspect-video'
-                        )}>
+                        <div className="relative rounded-xl shadow-2xl overflow-hidden">
                             <Image
                                 src={service.image}
                                 alt={`Image representing ${service.name}`}
-                                fill
+                                width={600}
+                                height={400}
                                 sizes="(max-width: 768px) 100vw, 50vw"
-                                className="object-cover"
+                                className="object-cover w-full h-auto"
                                 data-ai-hint="home inspection professional"
                             />
                         </div>
@@ -119,5 +117,3 @@ export default function ServiceDetailPage({ params }: { params: { slug: string }
         </div>
     );
 }
-
-    
