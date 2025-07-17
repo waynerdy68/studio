@@ -8,6 +8,7 @@ import { services, pricingTiers } from '@/lib/constants';
 import { Button } from '@/components/ui/button';
 import { SchedulingSection } from '@/components/sections/scheduling-section';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { cn } from '@/lib/utils';
 
 // Generate static paths for all services at build time
 export async function generateStaticParams() {
@@ -63,7 +64,10 @@ export default function ServiceDetailPage({ params }: { params: { slug: string }
                     </Button>
                     
                     <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
-                        <div className="relative aspect-video rounded-xl shadow-2xl overflow-hidden">
+                        <div className={cn(
+                            "relative rounded-xl shadow-2xl overflow-hidden",
+                             service.slug === '4-point-inspection' ? 'aspect-[3/4]' : 'aspect-video'
+                        )}>
                             <Image
                                 src={service.image}
                                 alt={`Image representing ${service.name}`}
@@ -83,9 +87,7 @@ export default function ServiceDetailPage({ params }: { params: { slug: string }
                             <div className="flex items-center gap-4 text-primary">
                                 <service.icon className="w-8 h-8" />
                             </div>
-                            <p className="text-lg text-muted-foreground">
-                                {service.longDescription}
-                            </p>
+                            <p className="text-lg text-muted-foreground" dangerouslySetInnerHTML={{ __html: service.longDescription }} />
                         </div>
                     </div>
 
