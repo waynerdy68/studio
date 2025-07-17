@@ -64,7 +64,7 @@ export default function ServiceDetailPage({ params }: { params: { slug: string }
                     </Button>
                     
                     <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
-                        <div className="relative aspect-[4/3] md:aspect-square lg:aspect-[4/3] rounded-xl shadow-2xl overflow-hidden">
+                        <div className="relative aspect-video rounded-xl shadow-2xl overflow-hidden">
                             <Image
                                 src={service.image}
                                 alt={`Image representing ${service.name}`}
