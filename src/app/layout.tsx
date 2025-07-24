@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Inter, Merriweather } from 'next/font/google';
+import { Inter } from 'next/font/google';
 import './globals.css';
 import { ThemeProvider } from '@/components/ui/theme-provider';
 import { Toaster } from '@/components/ui/toaster';
@@ -10,11 +10,6 @@ import { BackToTopButton } from '@/components/common/back-to-top-button';
 import { AIChatbox } from '@/components/common/ai-chatbox';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
-const merriweather = Merriweather({
-  subsets: ['latin'],
-  variable: '--font-merriweather',
-  weight: ['400', '700'],
-});
 
 export const metadata: Metadata = {
   title: 'Mayne Inspectors - Premier Home Inspections in LaBelle, FL',
@@ -38,7 +33,7 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
       </head>
-      <body className={`${inter.variable} ${merriweather.variable} font-body antialiased`}>
+      <body className={`${inter.variable} font-body antialiased`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
