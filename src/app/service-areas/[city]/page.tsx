@@ -7,10 +7,16 @@ import { serviceAreas, services } from '@/lib/constants';
 import { ServiceCard } from '@/components/common/service-card';
 import { Button } from '@/components/ui/button';
 import { SchedulingSection } from '@/components/sections/scheduling-section';
+import { notFound } from 'next/navigation';
 
 // Helper to convert city names to slugs and back
 const slugify = (text: string) => text.toLowerCase().replace(/\s+/g, '-');
 const unslugify = (slug: string) => {
+    // Find the original city name from the constants to preserve capitalization
+    const originalCity = serviceAreas.find(area => slugify(area) === slug);
+    if (originalCity) return originalCity;
+    
+    // Fallback for slugs that might not match perfectly
     return slug
         .split('-')
         .map(word => word.charAt(0).toUpperCase() + word.slice(1))
@@ -29,7 +35,14 @@ export async function generateMetadata({ params }: { params: { city: string } })
     const cityName = unslugify(params.city);
 
     // Find the original city name to ensure correct capitalization for the title
-    const originalCity = serviceAreas.find(area => slugify(area) === params.city) || cityName;
+    const originalCity = serviceAreas.find(area => slugify(area) === params.city);
+    
+    if (!originalCity) {
+        return {
+            title: "Service Area Not Found",
+            description: "Please browse our main service areas.",
+        }
+    }
 
     return {
         title: `Home Inspection Services in ${originalCity}, FL | Mayne Inspectors`,
@@ -40,20 +53,14 @@ export async function generateMetadata({ params }: { params: { city: string } })
 
 
 export default function ServiceAreaPage({ params }: { params: { city: string } }) {
-    const cityName = unslugify(params.city);
-    // Use the original city name from constants to preserve capitalization
-    const originalCity = serviceAreas.find(area => slugify(area) === params.city) || cityName;
+    const originalCity = unslugify(params.city);
+    
+    // Validate that the city exists in our service areas
+    if (!serviceAreas.map(slugify).includes(params.city)) {
+        notFound();
+    }
+
     const cityIndex = serviceAreas.findIndex(area => slugify(area) === params.city);
-    const isLehighAcres = params.city === 'lehigh-acres';
-    const isLaBelle = params.city === 'labelle';
-    const isClewiston = params.city === 'clewiston';
-    const isFortMyers = params.city === 'fort-myers';
-    const isCapeCoral = params.city === 'cape-coral';
-    const isMonturaRanchEstates = params.city === 'montura-ranch-estates';
-    const isPuntaGorda = params.city === 'punta-gorda';
-    const isPortCharlotte = params.city === 'port-charlotte';
-    const isMooreHaven = params.city === 'moore-haven';
-    const isImmokalee = params.city === 'immokalee';
 
     // Define content variations to make each page unique for SEO
     const headlines = [
@@ -78,6 +85,8 @@ export default function ServiceAreaPage({ params }: { params: { city: string } }
         secondary: headline.secondary.replace(/{city}/g, originalCity)
     };
     const currentIntro = intro.replace(/{city}/g, originalCity);
+    
+    const imagePath = `/images/${params.city}.png`;
 
     return (
         <div className="bg-background">
@@ -99,116 +108,18 @@ export default function ServiceAreaPage({ params }: { params: { city: string } }
                     </p>
                 </div>
 
-                {isLaBelle && (
-                    <div className="mt-16 max-w-4xl mx-auto">
-                        <Image 
-                            src="/images/hendry-county-courthouse.png"
-                            alt="Hendry County Courthouse in LaBelle, FL"
-                            width={800}
-                            height={600}
-                            className="rounded-xl shadow-lg mx-auto"
-                        />
-                    </div>
-                )}
-                {isLehighAcres && (
-                    <div className="mt-16 max-w-4xl mx-auto">
-                        <Image 
-                            src="/images/lehigh-acres-sign.png"
-                            alt="Welcome to Lehigh Acres sign with a palm tree"
-                            width={800}
-                            height={600}
-                            className="rounded-xl shadow-lg mx-auto"
-                        />
-                    </div>
-                )}
-                {isClewiston && (
-                    <div className="mt-16 max-w-4xl mx-auto">
-                        <Image 
-                            src="/images/clewiston-flag.png"
-                            alt="Clewiston city flag"
-                            width={800}
-                            height={600}
-                            className="rounded-xl shadow-lg mx-auto"
-                        />
-                    </div>
-                )}
-                {isFortMyers && (
-                    <div className="mt-16 max-w-4xl mx-auto">
-                        <Image 
-                            src="/images/fort-myers-home-inspection.png"
-                            alt="A beautiful home in Fort Myers, FL being inspected"
-                            width={800}
-                            height={600}
-                            className="rounded-xl shadow-lg mx-auto"
-                        />
-                    </div>
-                )}
-                {isCapeCoral && (
-                    <div className="mt-16 max-w-4xl mx-auto">
-                        <Image 
-                            src="/images/cape-coral-veterans-memorial-monument.png"
-                            alt="Cape Coral Veterans Memorial Monument"
-                            width={800}
-                            height={600}
-                            className="rounded-xl shadow-lg mx-auto"
-                        />
-                    </div>
-                )}
-                {isMonturaRanchEstates && (
-                     <div className="mt-16 max-w-4xl mx-auto">
-                        <Image 
-                            src="/images/montura-ranch-estates-jesus-donkey-love.png"
-                            alt="A statue of Jesus with a donkey in Montura Ranch Estates"
-                            width={800}
-                            height={600}
-                            className="rounded-xl shadow-lg mx-auto"
-                        />
-                    </div>
-                )}
-                {isPuntaGorda && (
-                     <div className="mt-16 max-w-4xl mx-auto">
-                        <Image 
-                            src="/images/punta-gorda-home-inspection-dji-mini.png"
-                            alt="Drone inspecting a home in Punta Gorda"
-                            width={800}
-                            height={600}
-                            className="rounded-xl shadow-lg mx-auto"
-                        />
-                    </div>
-                )}
-                 {isPortCharlotte && (
-                     <div className="mt-16 max-w-4xl mx-auto">
-                        <Image 
-                            src="/images/port-charlotte-rotonda-west-osprey.png"
-                            alt="Osprey in its nest in Port Charlotte, a common sight"
-                            width={800}
-                            height={600}
-                            className="rounded-xl shadow-lg mx-auto"
-                        />
-                    </div>
-                )}
-                {isMooreHaven && (
-                     <div className="mt-16 max-w-4xl mx-auto">
-                        <Image 
-                            src="/images/moore-haven-sugar-cane.png"
-                            alt="Sugar cane fields in Moore Haven, FL"
-                            width={800}
-                            height={600}
-                            className="rounded-xl shadow-lg mx-auto"
-                        />
-                    </div>
-                )}
-                {isImmokalee && (
-                     <div className="mt-16 max-w-4xl mx-auto">
-                        <Image 
-                            src="/images/immokalee-florida-farm.png"
-                            alt="Farm fields in Immokalee, FL"
-                            width={800}
-                            height={600}
-                            className="rounded-xl shadow-lg mx-auto"
-                        />
-                    </div>
-                )}
+                <div className="mt-16 max-w-4xl mx-auto">
+                    <Image 
+                        src={imagePath}
+                        alt={`A representative image of ${originalCity}, FL`}
+                        width={800}
+                        height={600}
+                        className="rounded-xl shadow-lg mx-auto"
+                        // In case an image is missing, the alt text will provide context.
+                        // We avoid using onError to prevent client-side hooks that can cause hydration mismatches.
+                        // The build process will warn about missing images.
+                    />
+                </div>
 
                 <div className="mt-16">
                      <h2 className="text-3xl font-bold tracking-tight sm:text-4xl text-center mb-12 font-headline">

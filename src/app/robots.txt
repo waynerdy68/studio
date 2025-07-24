@@ -3,5 +3,9 @@ User-agent: *
 Disallow: /api/
 Disallow: /_next/
 Disallow: /private/
+Disallow: /components/
+Disallow: /lib/
+Disallow: /context/
+Disallow: /hooks/
 
 Sitemap: https://mayneinspectors.com/sitemap.xml
