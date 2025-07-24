@@ -79,7 +79,7 @@ export function ContactSection() {
         <ScrollAnimationWrapper>
           <h2 className="section-title">Get In Touch</h2>
           <p className="section-subtitle">
-            Have questions or need a custom quote? We're here to help. Contact us today!
+            Have questions or need a custom quote? We&apos;re here to help. Contact us today!
           </p>
         </ScrollAnimationWrapper>
 
@@ -88,7 +88,7 @@ export function ContactSection() {
             <Card className="shadow-xl bg-card/80 backdrop-blur-sm border-border/50">
               <CardHeader>
                 <CardTitle className="text-2xl font-bold font-headline">Send Us a Message</CardTitle>
-                <CardDescription>Fill out the form and we'll respond as soon as possible.</CardDescription>
+                <CardDescription>Fill out the form and we&apos;ll respond as soon as possible.</CardDescription>
               </CardHeader>
               <CardContent>
                 <form action={formAction} className="space-y-6">

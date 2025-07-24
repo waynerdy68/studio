@@ -3,12 +3,11 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
-import { ArrowLeft, CheckCircle2 } from 'lucide-react';
+import { ArrowLeft } from 'lucide-react';
 import { services, pricingTiers } from '@/lib/constants';
 import { Button } from '@/components/ui/button';
 import { SchedulingSection } from '@/components/sections/scheduling-section';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { cn } from '@/lib/utils';
 
 // Generate static paths for all services at build time
 export async function generateStaticParams() {

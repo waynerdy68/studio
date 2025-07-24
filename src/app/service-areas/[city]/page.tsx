@@ -32,9 +32,6 @@ export async function generateStaticParams() {
 
 // Generate dynamic metadata for each city page for better SEO
 export async function generateMetadata({ params }: { params: { city: string } }): Promise<Metadata> {
-    const cityName = unslugify(params.city);
-
-    // Find the original city name to ensure correct capitalization for the title
     const originalCity = serviceAreas.find(area => slugify(area) === params.city);
     
     if (!originalCity) {

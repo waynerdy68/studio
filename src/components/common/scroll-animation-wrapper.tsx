@@ -22,13 +22,14 @@ export function ScrollAnimationWrapper({
   const targetRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
+    const currentRef = targetRef.current;
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             setIsVisible(true);
-            if (targetRef.current) {
-               observer.unobserve(targetRef.current);
+            if (currentRef) {
+               observer.unobserve(currentRef);
             }
           }
         });
@@ -36,13 +37,13 @@ export function ScrollAnimationWrapper({
       { threshold }
     );
 
-    if (targetRef.current) {
-      observer.observe(targetRef.current);
+    if (currentRef) {
+      observer.observe(currentRef);
     }
 
     return () => {
-      if (targetRef.current) {
-        observer.unobserve(targetRef.current);
+      if (currentRef) {
+        observer.unobserve(currentRef);
       }
     };
   }, [threshold]);

@@ -1,11 +1,11 @@
 "use client";
 
 import { useState, useRef, useEffect, type FormEvent } from "react";
-import { Bot, Send, X, MessageSquare, Loader2 } from "lucide-react";
+import { Bot, Send, X, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import {
   Popover,
   PopoverContent,
@@ -137,7 +137,8 @@ export function AIChatbox() {
                       : "bg-secondary text-secondary-foreground rounded-bl-none"
                   )}
                 >
-                  {msg.text.split('\\n').map((line, index) => (
+                  {msg.text.split('
+').map((line, index) => (
                       <span key={index}>{line}<br/></span>
                   ))}
                 </div>

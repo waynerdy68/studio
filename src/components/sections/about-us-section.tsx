@@ -1,10 +1,8 @@
-
 "use client";
 
 import Image from "next/image";
 import { ScrollAnimationWrapper } from "@/components/common/scroll-animation-wrapper";
-import { Card, CardContent } from "@/components/ui/card";
-import { UserCircle, ShieldCheck } from "lucide-react";
+import { ShieldCheck } from "lucide-react";
 
 export function AboutUsSection() {
   return (
@@ -38,14 +36,14 @@ export function AboutUsSection() {
           <ScrollAnimationWrapper animationClass="animate-fadeInUp" delay="delay-200" className="lg:col-span-3">
             <div className="space-y-6 text-foreground/90">
                <blockquote className="border-l-4 border-primary pl-4 italic text-lg text-foreground">
-                "We inspect every property as if it were our own investment. Your confidence is our top priority."
+                &quot;We inspect every property as if it were our own investment. Your confidence is our top priority.&quot;
               </blockquote>
 
               <p className="text-base leading-relaxed">
-                From a young age, I began my career in the building industry alongside my father, a licensed Florida Contractor. This experience fueled my passion for the field, leading me to obtain my State Contractor's License in 2005 and my Home Inspector License in 2011.
+                From a young age, I began my career in the building industry alongside my father, a licensed Florida Contractor. This experience fueled my passion for the field, leading me to obtain my State Contractor&apos;s License in 2005 and my Home Inspector License in 2011.
               </p>
               <p className="text-base leading-relaxed">
-              With over 30 years of combined experience in construction and inspections, we understand the anxieties of buying property. We're here to alleviate that stress by providing a comprehensive inspection conducted by a highly trained professional. At Mayne Inspectors, we believe an inspection isn't complete until all your questions are answered.
+              With over 30 years of combined experience in construction and inspections, we understand the anxieties of buying property. We&apos;re here to alleviate that stress by providing a comprehensive inspection conducted by a highly trained professional. At Mayne Inspectors, we believe an inspection isn&apos;t complete until all your questions are answered.
               </p>
               
                <div className="flex items-center gap-4 p-4 bg-card/80 rounded-lg border border-border/50">
