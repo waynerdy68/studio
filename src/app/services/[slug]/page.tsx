@@ -19,6 +19,7 @@ export async function generateStaticParams() {
 // Generate dynamic metadata for each service page
 export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
     const service = services.find(s => s.slug === params.slug);
+    const baseUrl = 'https://mayneinspectors.com';
 
     if (!service) {
         return {
@@ -30,6 +31,9 @@ export async function generateMetadata({ params }: { params: { slug: string } })
         title: `${service.name} | Mayne Inspectors`,
         description: `Learn more about our professional ${service.name.toLowerCase()} services in Southwest Florida. ${service.description}`,
         keywords: `home inspection, mayne inspectors, ${service.name.toLowerCase()}`,
+        alternates: {
+            canonical: `${baseUrl}/services/${service.slug}`,
+        },
     };
 }
 

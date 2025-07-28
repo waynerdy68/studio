@@ -33,6 +33,7 @@ export async function generateStaticParams() {
 // Generate dynamic metadata for each city page for better SEO
 export async function generateMetadata({ params }: { params: { city: string } }): Promise<Metadata> {
     const originalCity = serviceAreas.find(area => slugify(area) === params.city);
+    const baseUrl = 'https://mayneinspectors.com';
     
     if (!originalCity) {
         return {
@@ -45,6 +46,9 @@ export async function generateMetadata({ params }: { params: { city: string } })
         title: `Home Inspection Services in ${originalCity}, FL | Mayne Inspectors`,
         description: `Your trusted local home inspectors in ${originalCity}, FL. We offer comprehensive services including 4-point, wind mitigation, and mold testing. Schedule your ${originalCity} inspection today.`,
         keywords: `home inspection ${originalCity}, ${originalCity} home inspector, 4-point inspection ${originalCity}, wind mitigation ${originalCity}, mayne inspectors ${originalCity}`,
+        alternates: {
+            canonical: `${baseUrl}/service-areas/${params.city}`,
+        },
     };
 }
 

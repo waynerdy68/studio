@@ -21,6 +21,7 @@ const scheduleFormSchema = z.object({
   email: z.string().email("Please enter a valid email address"),
   phone: z.string().optional(),
   notes: z.string().optional(),
+  honeypot: z.string().optional(), // Honeypot field
 });
 
 type ScheduleFormData = z.infer<typeof scheduleFormSchema>;
@@ -43,6 +44,7 @@ export function SchedulingSection() {
       email: sharedData.email || "",
       phone: sharedData.phone || "",
       notes: "",
+      honeypot: "",
     },
   });
 
@@ -58,6 +60,7 @@ export function SchedulingSection() {
           ...form.getValues(),
           address: "",
           notes: "",
+          honeypot: "",
         });
       }
     }
@@ -83,7 +86,7 @@ export function SchedulingSection() {
         <ScrollAnimationWrapper>
           <h2 className="section-title">Book Your Inspection Today</h2>
           <p className="section-subtitle">
-            Ready to get started? Fill out the form below to schedule your home inspection. We&apos;ll confirm your appointment shortly.
+            Ready to get started? Fill out the form below to schedule your home inspection. We'll confirm your appointment shortly.
           </p>
         </ScrollAnimationWrapper>
         
@@ -92,10 +95,15 @@ export function SchedulingSection() {
             <Card className="shadow-xl bg-card/80 backdrop-blur-sm border-border/50">
               <CardHeader>
                 <CardTitle className="text-2xl font-bold font-headline">Inspection Request Form</CardTitle>
-                <CardDescription>Provide your details and we&apos;ll get in touch to finalize.</CardDescription>
+                <CardDescription>Provide your details and we'll get in touch to finalize.</CardDescription>
               </CardHeader>
               <CardContent>
                 <form action={formAction} className="space-y-6">
+                   {/* Honeypot Field */}
+                  <div className="absolute w-0 h-0 overflow-hidden">
+                    <Label htmlFor="honeypot">Do not fill this out</Label>
+                    <Input id="honeypot" {...form.register("honeypot")} tabIndex={-1} autoComplete="off" />
+                  </div>
                   <div>
                     <Label htmlFor="name" className="font-medium">Full Name</Label>
                     <Input id="name" {...nameReg} placeholder="John Doe" className="mt-1" onChange={(e) => {

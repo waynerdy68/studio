@@ -27,6 +27,7 @@ const scheduleSchema = z.object({
   email: z.string().email("Invalid email address."),
   phone: z.string().optional(),
   notes: z.string().optional(),
+  honeypot: z.string().optional(),
 });
 
 export type ScheduleFormState = {
@@ -51,6 +52,13 @@ export async function scheduleInspection(
       message: FIREBASE_NOT_CONFIGURED_ERROR,
       success: false,
     };
+  }
+
+  // Honeypot check
+  if (formData.get("honeypot")) {
+    console.log("Honeypot field filled, likely spam. Silently failing.");
+    // Return a success-like response to not alert the bot
+    return { message: "Thank you for your submission!", success: true };
   }
 
   const validatedFields = scheduleSchema.safeParse({

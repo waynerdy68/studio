@@ -10,14 +10,38 @@ interface TestimonialCardProps {
   location?: string;
   avatarUrl?: string;
   index: number;
+  rating: number; // Add rating prop
 }
 
-export function TestimonialCard({ quote, name, location, avatarUrl, index }: TestimonialCardProps) {
+export function TestimonialCard({ quote, name, location, avatarUrl, index, rating }: TestimonialCardProps) {
   const delayClass = `delay-${index * 100}`;
+  
+  // Generate schema markup for individual review
+  const reviewSchema = {
+    "@context": "https://schema.org",
+    "@type": "Review",
+    "reviewRating": {
+      "@type": "Rating",
+      "ratingValue": rating.toString(),
+      "bestRating": "5"
+    },
+    "author": {
+      "@type": "Person",
+      "name": name
+    },
+    "reviewBody": quote
+  };
+
   return (
     <ScrollAnimationWrapper animationClass="animate-fadeInUp" delay={delayClass}>
       <Card className="h-full transform transition-all duration-300 hover:shadow-xl hover:shadow-accent/20 bg-card/80 backdrop-blur-sm border-border/50">
         <CardContent className="p-6 flex flex-col items-center text-center">
+          {/* Include schema markup in a script tag */}
+          <script 
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(reviewSchema) }}
+          />
+          
           <div className="relative mb-4">
             {avatarUrl ? (
               <Image

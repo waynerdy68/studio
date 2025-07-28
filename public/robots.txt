@@ -1,6 +1,7 @@
-# Allow all user agents
+# https://www.robotstxt.org/robotstxt.html
 User-agent: *
-Allow: /
+Disallow: /api/
+Disallow: /_next/
+Disallow: /private/
 
-# Sitemap location
 Sitemap: https://mayneinspectors.com/sitemap.xml
