@@ -137,8 +137,7 @@ export function AIChatbox() {
                       : "bg-secondary text-secondary-foreground rounded-bl-none"
                   )}
                 >
-                  {msg.text.split('
-').map((line, index) => (
+                  {msg.text.split('\n').map((line, index) => (
                       <span key={index}>{line}<br/></span>
                   ))}
                 </div>
