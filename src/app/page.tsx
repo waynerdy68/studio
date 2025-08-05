@@ -1,6 +1,6 @@
 
 import { HeroSection } from "@/components/sections/hero-section";
-import { AboutUsSection } from "@/components/sections/about-us-section";
+import AboutUsSection from "@/components/sections/about-us-section";
 import { ServicesSection } from "@/components/sections/services-section";
 import { VideoSection } from "@/components/sections/video-section";
 import { TestimonialsSection } from "@/components/sections/testimonials-section";

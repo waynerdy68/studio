@@ -1,15 +1,16 @@
-import Link from "next/link"
-import { Button } from "@/components/ui/button"
-import Image from "next/image"
-import { ScrollAnimationWrapper } from "@/components/common/scroll-animation-wrapper"
+
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import Image from "next/image";
+import { ScrollAnimationWrapper } from "@/components/common/scroll-animation-wrapper";
 
 export function HeroSection() {
   return (
     <section id="hero" className="relative bg-background pt-20 pb-12 md:pt-28 md:pb-20 min-h-screen flex items-center">
       <div className="absolute inset-0">
-        <Image 
-          src="https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=1920&q=80&auto=format&fit=crop" 
-          alt="Exterior of a modern, beautiful home" 
+        <Image
+          src="/images/hero-background.jpg"
+          alt="Exterior of a modern, beautiful home"
           fill
           priority
           sizes="100vw"
@@ -42,5 +43,5 @@ export function HeroSection() {
         </ScrollAnimationWrapper>
       </div>
     </section>
-  )
+  );
 }

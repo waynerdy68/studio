@@ -1,62 +1,37 @@
-"use client";
 
-import Image from "next/image";
-import { ScrollAnimationWrapper } from "@/components/common/scroll-animation-wrapper";
-import { ShieldCheck } from "lucide-react";
+import Image from 'next/image';
+import WayneCastenImage from '@/../public/images/wayne-casten-inspector.png';
 
-export function AboutUsSection() {
+const AboutUsSection = () => {
   return (
-    <section id="about" className="bg-primary/5">
-      <div className="container mx-auto px-4 md:px-6">
-        <ScrollAnimationWrapper>
-          <h2 className="section-title">Your Inspector, Your Advocate</h2>
-          <p className="section-subtitle">
-            Meet the expert dedicated to ensuring your peace of mind.
-          </p>
-        </ScrollAnimationWrapper>
-
-        <div className="grid lg:grid-cols-5 gap-12 items-center">
-          <ScrollAnimationWrapper animationClass="animate-fadeInUp" delay="delay-100" className="lg:col-span-2">
-             <div className="relative aspect-square rounded-xl shadow-2xl overflow-hidden group">
-                <Image
-                  src="/images/wayne-casten-inspector.png"
-                  alt="Photo of Wayne Casten, lead inspector at Mayne Inspectors"
-                  fill
-                  sizes="(max-width: 1024px) 100vw, 40vw"
-                  className="transform transition-transform duration-500 group-hover:scale-105 object-cover"
-                  data-ai-hint="person portrait professional"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
-                 <div className="absolute bottom-4 left-4 text-white">
-                    <h3 className="text-2xl font-bold font-headline">Wayne Casten</h3>
-                    <p className="text-sm opacity-90">Founder, Mayne Inspectors</p>
-                 </div>
-              </div>
-          </ScrollAnimationWrapper>
-          <ScrollAnimationWrapper animationClass="animate-fadeInUp" delay="delay-200" className="lg:col-span-3">
-            <div className="space-y-6 text-foreground/90">
-               <blockquote className="border-l-4 border-primary pl-4 italic text-lg text-foreground">
-                &quot;We inspect every property as if it were our own investment. Your confidence is our top priority.&quot;
-              </blockquote>
-
-              <p className="text-base leading-relaxed">
-                From a young age, I began my career in the building industry alongside my father, a licensed Florida Contractor. This experience fueled my passion for the field, leading me to obtain my State Contractor&apos;s License in 2005 and my Home Inspector License in 2011.
-              </p>
-              <p className="text-base leading-relaxed">
-              With over 30 years of combined experience in construction and inspections, we understand the anxieties of buying property. We&apos;re here to alleviate that stress by providing a comprehensive inspection conducted by a highly trained professional. At Mayne Inspectors, we believe an inspection isn&apos;t complete until all your questions are answered.
-              </p>
-              
-               <div className="flex items-center gap-4 p-4 bg-card/80 rounded-lg border border-border/50">
-                <ShieldCheck className="w-10 h-10 text-accent shrink-0" />
-                <div>
-                    <h4 className="font-semibold">Certified & Insured Professional</h4>
-                    <p className="text-sm text-muted-foreground">Empowering you to make informed decisions with peace of mind.</p>
-                </div>
-              </div>
-            </div>
-          </ScrollAnimationWrapper>
+    <section id="about" className="py-20 bg-gray-50 dark:bg-gray-800">
+      <div className="container mx-auto px-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+          <div className="order-2 md:order-1">
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
+              Meet Your Inspector
+            </h2>
+            <p className="text-lg text-gray-700 dark:text-gray-300 mb-6">
+              Wayne Casten is a state-licensed and certified professional inspector with years of experience in the industry. His meticulous approach and commitment to excellence ensure that you receive the most accurate and comprehensive home inspection possible.
+            </p>
+            <p className="text-lg text-gray-700 dark:text-gray-300">
+              He believes in clear, honest communication, taking the time to walk you through his findings and answer any questions you may have. With Wayne, you're not just getting an inspection; you're gaining a trusted partner in your home-buying journey.
+            </p>
+          </div>
+          <div className="order-1 md:order-2 flex justify-center">
+            <Image
+              src={WayneCastenImage}
+              alt="Wayne Casten, certified home inspector"
+              className="rounded-lg shadow-lg"
+              width={400}
+              height={400}
+              placeholder="blur"
+            />
+          </div>
         </div>
       </div>
     </section>
   );
-}
+};
+
+export default AboutUsSection;
