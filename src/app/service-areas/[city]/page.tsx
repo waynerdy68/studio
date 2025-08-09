@@ -87,7 +87,16 @@ export default function ServiceAreaPage({ params }: { params: { city: string } }
     };
     const currentIntro = intro.replace(/{city}/g, originalCity);
     
-    const imagePath = `/images/${params.city}.png`;
+    // Default image path, assuming a consistent naming convention
+    let imagePath = `/images/${params.city}.png`;
+
+    // Special override for Moore Haven
+    if (params.city === 'moore-haven') {
+        imagePath = '/new-images/moore-haven-lake-okeechobee.png';
+    } else {
+        // Fallback or other specific images can be set here
+        imagePath = `/new-images/punta-gorda-home-inspection-drone.png`;
+    }
 
     return (
         <div className="bg-background">
@@ -112,7 +121,7 @@ export default function ServiceAreaPage({ params }: { params: { city: string } }
                 <div className="mt-16 max-w-4xl mx-auto">
                     <Image 
                         src={imagePath}
-                        alt={`A representative image of ${originalCity}, FL`}
+                        alt={`A scenic view of ${originalCity}, a service area for Mayne Inspectors`}
                         width={800}
                         height={600}
                         className="rounded-xl shadow-lg mx-auto"
