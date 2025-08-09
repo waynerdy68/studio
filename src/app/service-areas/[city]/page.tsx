@@ -79,7 +79,7 @@ export default function ServiceAreaPage({ params }: { params: { city: string } }
     
     // Explicitly map city slugs to their new image paths
     const cityImageMap: { [key: string]: string } = {
-        'la-belle': '/images/la-belle-oak-tree-and-river.png',
+        'la-belle': '/images/hendry-county-court-house-labelle.png',
         'lehigh-acres': '/images/lehigh-acres-welcome-sign.png',
         'clewiston': '/images/clewiston-flag.png',
         'moore-haven': '/new-images/moore-haven-lake-okeechobee.png',
