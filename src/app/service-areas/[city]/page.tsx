@@ -76,6 +76,20 @@ export default function ServiceAreaPage({ params }: { params: { city: string } }
         `For thorough and dependable home inspections in {city}, look no further. Our team brings expertise and modern technology to every job, giving you the peace of mind you deserve when buying or selling property.`,
         `As a leading home inspector for the {city} area, we are dedicated to delivering top-quality reports and exceptional customer service. We inspect every property as if it were our own.`
     ];
+    
+    // Explicitly map city slugs to their new image paths
+    const cityImageMap: { [key: string]: string } = {
+        'la-belle': '/images/la-belle-oak-tree-and-river.png',
+        'lehigh-acres': '/images/lehigh-acres-welcome-sign.png',
+        'clewiston': '/images/clewiston-flag.png',
+        'moore-haven': '/new-images/moore-haven-lake-okeechobee.png',
+        'immokalee': '/images/immokalee-florida-farm.png',
+        'fort-myers': '/images/fort-myers-home-inspection.png',
+        'cape-coral': '/images/cape-coral-veterans-memorial-monument.png',
+        'punta-gorda': '/new-images/punta-gorda-home-inspection-drone.png',
+        'port-charlotte': '/images/port-charlotte-rotonda-west-osprey.png',
+        'montura-ranch-estates': '/images/montura-ranch-estates-jesus-donkey-love.png',
+    };
 
     // Cycle through the content variations based on the city's index
     const headline = headlines[cityIndex % headlines.length];
@@ -87,16 +101,8 @@ export default function ServiceAreaPage({ params }: { params: { city: string } }
     };
     const currentIntro = intro.replace(/{city}/g, originalCity);
     
-    // Default image path, assuming a consistent naming convention
-    let imagePath = `/images/${params.city}.png`;
-
-    // Special override for Moore Haven
-    if (params.city === 'moore-haven') {
-        imagePath = '/new-images/moore-haven-lake-okeechobee.png';
-    } else {
-        // Fallback or other specific images can be set here
-        imagePath = `/new-images/punta-gorda-home-inspection-drone.png`;
-    }
+    // Use the map to get the correct image, with a fallback just in case
+    const imagePath = cityImageMap[params.city] || '/new-images/punta-gorda-home-inspection-drone.png';
 
     return (
         <div className="bg-background">
