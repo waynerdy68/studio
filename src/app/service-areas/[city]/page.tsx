@@ -80,15 +80,15 @@ export default function ServiceAreaPage({ params }: { params: { city: string } }
     // Explicitly map city slugs to their new image paths
     const cityImageMap: { [key: string]: string } = {
         'labelle': '/new-images/labelle-florida-cow.png',
-        'lehigh-acres': '/new-images/lehigh-acres-welcome-sign.png',
-        'clewiston': '/new-images/clewiston-flag.png',
+        'lehigh-acres': '/new-images/lehigh-acres-welcome-inspecting.png',
+        'clewiston': '/new-images/clewiston-flag-sugar-town.png',
         'moore-haven': '/new-images/moore-haven-lake-okeechobee.png',
-        'immokalee': '/new-images/immokalee-florida-farm.png',
-        'fort-myers': '/new-images/fort-myers-home-inspection.png',
-        'cape-coral': '/new-images/cape-coral-veterans-memorial-monument.png',
+        'immokalee': '/new-images/immokalee-welcome-sign-farming.png',
+        'fort-myers': '/new-images/fort-myers-home-inspecting.png',
+        'cape-coral': '/new-images/cape-coral-veterans-memorial.png',
         'punta-gorda': '/new-images/punta-gorda-home-inspection-drone.png',
-        'port-charlotte': '/new-images/port-charlotte-rotonda-west-osprey.png',
-        'montura-ranch-estates': '/new-images/montura-ranch-estates-jesus-donkey-love.png',
+        'port-charlotte': '/new-images/port-charlotte-inspection.png',
+        'montura-ranch-estates': '/new-images/montura-ranch-estates-jesus-donkey.png',
     };
 
     // Cycle through the content variations based on the city's index
