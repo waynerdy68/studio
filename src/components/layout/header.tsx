@@ -49,14 +49,14 @@ export function Header() {
         src="/images/Mayne-Inspector-dark.png"
         width={32}
         height={32}
-        alt="Mayne Inspectors Logo"
+        alt="Mayne Home Inspectors Logo"
         className="dark:hidden"
       />
       <Image
         src="/images/Mayne-Inspector-light-removebg-preview.png"
         width={32}
         height={32}
-        alt="Mayne Inspectors Logo"
+        alt="Mayne Home Inspectors Logo"
         className="hidden dark:block"
       />
     </>
@@ -70,9 +70,9 @@ export function Header() {
       }`}
     >
       <div className="container mx-auto flex h-20 items-center justify-between px-4 md:px-6">
-        <Link href="/" className="flex items-center gap-2" aria-label="Mayne Inspectors Home">
+        <Link href="/" className="flex items-center gap-2" aria-label="Mayne Home Inspectors Home">
           <Logo />
-          <span className="text-2xl font-bold font-headline text-foreground">Mayne Inspectors</span>
+          <span className="text-2xl font-bold font-headline text-foreground">Mayne Home Inspectors</span>
         </Link>
 
         {/* Desktop Navigation */}
@@ -95,9 +95,9 @@ export function Header() {
             <SheetContent side="right" className="w-full max-w-xs bg-background p-6">
               <div className="flex flex-col space-y-6">
                 <div className="flex justify-between items-center">
-                   <Link href="/" className="flex items-center gap-2" aria-label="Mayne Inspectors Home" onClick={() => setIsMobileMenuOpen(false)}>
+                   <Link href="/" className="flex items-center gap-2" aria-label="Mayne Home Inspectors Home" onClick={() => setIsMobileMenuOpen(false)}>
                     <Logo />
-                    <span className="text-xl font-bold font-headline text-foreground">Mayne Inspectors</span>
+                    <span className="text-xl font-bold font-headline text-foreground">Mayne Home Inspectors</span>
                   </Link>
                   <SheetClose asChild>
                      <Button variant="ghost" size="icon" aria-label="Close navigation menu">

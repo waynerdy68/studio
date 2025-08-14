@@ -4,8 +4,8 @@ import { faqData } from "@/lib/faq-data";
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: "Frequently Asked Questions | Mayne Inspectors",
-  description: "Find answers to common questions about home inspections, pricing, services, and scheduling with Mayne Inspectors in Southwest Florida.",
+  title: "Frequently Asked Questions | Mayne Home Inspectors",
+  description: "Find answers to common questions about home inspections, pricing, services, and scheduling with Mayne Home Inspectors in Southwest Florida.",
   keywords: "faq, home inspection questions, pricing, services, scheduling, 4-point inspection cost, wind mitigation cost",
 };
 

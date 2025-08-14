@@ -15,14 +15,14 @@ export function Footer() {
         src="/images/Mayne-Inspector-dark.png"
         width={32}
         height={32}
-        alt="Mayne Inspectors Logo"
+        alt="Mayne Home Inspectors Logo"
         className="dark:hidden"
       />
       <Image
         src="/images/Mayne-Inspector-light-removebg-preview.png"
         width={32}
         height={32}
-        alt="Mayne Inspectors Logo"
+        alt="Mayne Home Inspectors Logo"
         className="hidden dark:block"
       />
     </>
@@ -33,9 +33,9 @@ export function Footer() {
       <div className="container mx-auto px-4 md:px-6">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 items-start">
           <div className="flex flex-col items-center sm:items-start">
-            <Link href="/" className="flex items-center gap-2 mb-4" aria-label="Mayne Inspectors Home">
+            <Link href="/" className="flex items-center gap-2 mb-4" aria-label="Mayne Home Inspectors Home">
               <Logo />
-              <span className="text-xl font-bold font-headline">Mayne Inspectors</span>
+              <span className="text-xl font-bold font-headline">Mayne Home Inspectors</span>
             </Link>
             <p className="text-sm text-muted-foreground text-center sm:text-left">
               Serving LaBelle, FL and surrounding areas.
@@ -80,7 +80,7 @@ export function Footer() {
         </div>
         <div className="mt-8 border-t border-border pt-8 text-center">
           <p className="text-sm text-muted-foreground">
-            &copy; {currentYear} Mayne Inspectors. All rights reserved.
+            &copy; {currentYear} Mayne Home Inspectors. All rights reserved.
           </p>
         </div>
       </div>

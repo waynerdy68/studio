@@ -28,7 +28,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
     }
 
     return {
-        title: `${service.name} | Mayne Inspectors`,
+        title: `${service.name} | Mayne Home Inspectors`,
         description: `Learn more about our professional ${service.name.toLowerCase()} services in Southwest Florida. ${service.description}`,
         keywords: `home inspection, mayne inspectors, ${service.name.toLowerCase()}`,
         alternates: {

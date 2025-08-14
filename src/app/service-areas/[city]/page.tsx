@@ -43,7 +43,7 @@ export async function generateMetadata({ params }: { params: { city: string } })
     }
 
     return {
-        title: `Home Inspection Services in ${originalCity}, FL | Mayne Inspectors`,
+        title: `Home Inspection Services in ${originalCity}, FL | Mayne Home Inspectors`,
         description: `Your trusted local home inspectors in ${originalCity}, FL. We offer comprehensive services including 4-point, wind mitigation, and mold testing. Schedule your ${originalCity} inspection today.`,
         keywords: `home inspection ${originalCity}, ${originalCity} home inspector, 4-point inspection ${originalCity}, wind mitigation ${originalCity}, mayne inspectors ${originalCity}`,
         alternates: {
@@ -127,7 +127,7 @@ export default function ServiceAreaPage({ params }: { params: { city: string } }
                 <div className="mt-16 max-w-4xl mx-auto">
                     <Image 
                         src={imagePath}
-                        alt={`A scenic view of ${originalCity}, a service area for Mayne Inspectors`}
+                        alt={`A scenic view of ${originalCity}, a service area for Mayne Home Inspectors`}
                         width={800}
                         height={600}
                         className="rounded-xl shadow-lg mx-auto"

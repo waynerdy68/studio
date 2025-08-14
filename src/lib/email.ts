@@ -29,7 +29,7 @@ export async function sendEmail({ to, subject, html }: EmailOptions): Promise<{ 
   }
 
   const mailOptions = {
-    from: `"Mayne Inspectors" <${smtpConfig.auth.user}>`,
+    from: `"Mayne Home Inspectors" <${smtpConfig.auth.user}>`,
     to,
     subject,
     html,

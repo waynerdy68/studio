@@ -261,7 +261,7 @@ function formatChecklistToHtml(checklist: GenerateChecklistOutput['checklist'], 
     let html = `<div style="font-family: Arial, sans-serif; line-height: 1.6; color: #333;">`;
     html += `<div style="max-width: 600px; margin: auto; padding: 20px; border: 1px solid #ddd; border-radius: 8px;">`;
     html += `<h2 style="color: #0056b3;">Hello ${name},</h2>`;
-    html += `<p>Thank you for using the AI Pre-Inspection Checklist from Mayne Inspectors. Here is the custom checklist you generated:</p>`;
+    html += `<p>Thank you for using the AI Pre-Inspection Checklist from Mayne Home Inspectors. Here is the custom checklist you generated:</p>`;
     
     checklist.forEach(category => {
         html += `<h3 style="color: #0056b3; border-bottom: 2px solid #eee; padding-bottom: 5px;">${category.category}</h3>`;
@@ -273,7 +273,7 @@ function formatChecklistToHtml(checklist: GenerateChecklistOutput['checklist'], 
     });
 
     html += `<br><p>This checklist is a great starting point. For a comprehensive evaluation, a professional inspection is crucial. If you'd like to schedule one or have any questions, please don't hesitate to contact us.</p>`;
-    html += `<p>Sincerely,<br><b>The Mayne Inspectors Team</b></p>`;
+    html += `<p>Sincerely,<br><b>The Mayne Home Inspectors Team</b></p>`;
     html += `</div></div>`;
     return html;
 }
@@ -319,7 +319,7 @@ export async function sendChecklistAction(
     // Send email to the client
     const clientEmailResult = await sendEmail({
         to: email,
-        subject: "Your Pre-Inspection Checklist from Mayne Inspectors",
+        subject: "Your Pre-Inspection Checklist from Mayne Home Inspectors",
         html: emailHtmlToClient,
     });
     
@@ -422,7 +422,7 @@ function formatEstimatesToHtml(estimates: (CostCalculatorOutput & { originalDesc
     let html = `<div style="font-family: Arial, sans-serif; line-height: 1.6; color: #333;">`;
     html += `<div style="max-width: 600px; margin: auto; padding: 20px; border: 1px solid #ddd; border-radius: 8px;">`;
     html += `<h2 style="color: #0056b3;">Hello ${name},</h2>`;
-    html += `<p>Thank you for using the AI Repair Cost Estimator from Mayne Inspectors. Here is the summary of the estimates you generated:</p>`;
+    html += `<p>Thank you for using the AI Repair Cost Estimator from Mayne Home Inspectors. Here is the summary of the estimates you generated:</p>`;
 
     estimates.forEach((estimate, index) => {
         html += `<div style="border: 1px solid #eee; padding: 15px; border-radius: 5px; margin-bottom: 20px;">`;
@@ -439,7 +439,7 @@ function formatEstimatesToHtml(estimates: (CostCalculatorOutput & { originalDesc
     });
 
     html += `<br><p>This tool provides a rough estimate for materials only. For a comprehensive evaluation and accurate quote including labor, a professional inspection is crucial. If you'd like to schedule one, please don't hesitate to contact us.</p>`;
-    html += `<p>Sincerely,<br><b>The Mayne Inspectors Team</b></p>`;
+    html += `<p>Sincerely,<br><b>The Mayne Home Inspectors Team</b></p>`;
     html += `</div></div>`;
     return html;
 }
@@ -482,7 +482,7 @@ export async function sendEstimatesAction(
     // Send email to the client
     await sendEmail({
         to: email,
-        subject: "Your Repair Cost Estimates from Mayne Inspectors",
+        subject: "Your Repair Cost Estimates from Mayne Home Inspectors",
         html: emailHtmlToClient,
     });
     

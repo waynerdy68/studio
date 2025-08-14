@@ -14,7 +14,7 @@ export default function HomePage() {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "HomeAndConstructionBusiness",
-    "name": "Mayne Inspectors",
+    "name": "Mayne Home Inspectors",
     "image": "https://mayneinspectors.com/images/Mayne-Inspector-light-removebg-preview.png",
     // It's best to replace this with your actual domain when it's live
     "url": "https://mayneinspectors.com/", 
