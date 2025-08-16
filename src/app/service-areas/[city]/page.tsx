@@ -66,8 +66,8 @@ export default function ServiceAreaPage({ params }: { params: { city: string } }
     // Define content variations to make each page unique for SEO
     const headlines = [
         { primary: "Expert Home Inspections", secondary: `in {city}, FL`},
-        { primary: "Your Premier Inspector", secondary: `for {city}, FL` },
-        { primary: "Trusted Property Inspections", secondary: `in the {city} Area`},
+        { primary: "Your Premier Home Inspector", secondary: `for {city}, FL` },
+        { primary: "Trusted Home Inspections", secondary: `in the {city} Area`},
     ];
 
     const intros = [
