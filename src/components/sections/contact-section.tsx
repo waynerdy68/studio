@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useEffect, useActionState } from "react";
@@ -13,8 +12,9 @@ import { FormSubmitButton } from "@/components/common/form-submit-button";
 import { useToast } from "@/hooks/use-toast";
 import { ScrollAnimationWrapper } from "@/components/common/scroll-animation-wrapper";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Mail, Phone, MapPin } from "lucide-react";
+import { Mail, Phone, MapPin, Share2, Clock } from "lucide-react";
 import { useFormContext as useSharedFormContext } from "@/context/form-context";
+import { FaYelp, FaFacebook, FaGoogle } from "react-icons/fa";
 
 const contactFormSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters"),
@@ -156,7 +156,6 @@ export function ContactSection() {
                   <div>
                     <h4 className="font-semibold text-lg">Call/Text Us</h4>
                     <a href="tel:+18638430735" className="text-muted-foreground hover:text-primary transition-colors">(863) 843-0735</a>
-                    <p className="text-sm text-muted-foreground">Mon - Sat 7am - 6pm, Sun 12 - 4pm</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
@@ -164,14 +163,32 @@ export function ContactSection() {
                   <div>
                     <h4 className="font-semibold text-lg">Email Us</h4>
                     <a href="mailto:castenhome@gmail.com" className="text-muted-foreground hover:text-primary transition-colors">castenhome@gmail.com</a>
-                    <p className="text-sm text-muted-foreground">Same Day Reply</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-4">
+                  <Clock className="w-7 h-7 text-primary mt-1 shrink-0" />
+                  <div>
+                    <h4 className="font-semibold text-lg">Business Hours</h4>
+                    <p className="text-muted-foreground">Mon - Sat: 7am - 6pm</p>
+                    <p className="text-muted-foreground">Sun: 12pm - 4pm</p>
+                  </div>
+                </div>
+                 <div className="flex items-start gap-4">
+                  <Share2 className="w-7 h-7 text-primary mt-1 shrink-0" />
+                  <div>
+                    <h4 className="font-semibold text-lg">Follow Us</h4>
+                    <div className="flex items-center gap-4 mt-2">
+                      <a href="https://g.page/r/CVD2PrmEP1lVEAE/review" target="_blank" rel="noopener noreferrer" aria-label="Google Business Profile" className="text-muted-foreground hover:text-primary transition-colors"><FaGoogle size={24} /></a>
+                      <a href="https://www.yelp.com/biz/mayne-home-inspectors-labelle-2" target="_blank" rel="noopener noreferrer" aria-label="Yelp" className="text-muted-foreground hover:text-primary transition-colors"><FaYelp size={24} /></a>
+                      <a href="https://www.facebook.com/mayneinspectors" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="text-muted-foreground hover:text-primary transition-colors"><FaFacebook size={24} /></a>
+                    </div>
                   </div>
                 </div>
               </div>
               <div className="mt-8 rounded-lg overflow-hidden shadow-lg">
                 <iframe
                   title="Google Maps Location for Mayne Home Inspectors"
-                  src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBew-oei2S3E03CGHN34ZGYt70fwuZ_q4o&q=LaBelle,FL"
+                  src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBew-oei2S3E03CGHN34ZGYt70fwuZ_q4o&q=place_id:ChIJF-g0dQ-23ogR-8J1pZ_5-qg"
                   width="100%"
                   height="300"
                   style={{ border: 0 }}
