@@ -139,15 +139,22 @@ export function ContactSection() {
                   <MapPin className="w-7 h-7 text-primary mt-1 shrink-0" />
                   <div>
                     <h4 className="font-semibold text-lg">Location</h4>
-                    <p className="text-muted-foreground">LaBelle, FL 33935</p>
-                    <a href="https://www.google.com/maps/search/?api=1&query=LaBelle+FL+33935" target="_blank" rel="noopener noreferrer" className="text-sm text-primary hover:underline mt-1 block">Get Directions</a>
+                    <p className="text-muted-foreground">505 W Hickpochee Ave Suite 200, LaBelle, FL 33935</p>
+                    <a 
+                      href="https://www.google.com/maps/dir/?api=1&destination=Mayne+Home+Inspectors&destination_place_id=ChIJF-g0dQ-23ogR-8J1pZ_5-qg" 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      className="text-sm text-primary hover:underline mt-1 block"
+                    >
+                      Get Directions
+                    </a>
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
                   <Phone className="w-7 h-7 text-primary mt-1 shrink-0" />
                   <div>
                     <h4 className="font-semibold text-lg">Call/Text Us</h4>
-                    <a href="tel:+12398430735" className="text-muted-foreground hover:text-primary transition-colors">(239) 843-0735</a>
+                    <a href="tel:+18638430735" className="text-muted-foreground hover:text-primary transition-colors">(863) 843-0735</a>
                     <p className="text-sm text-muted-foreground">Mon - Sat 7am - 6pm, Sun 12 - 4pm</p>
                   </div>
                 </div>
@@ -159,6 +166,18 @@ export function ContactSection() {
                     <p className="text-sm text-muted-foreground">Same Day Reply</p>
                   </div>
                 </div>
+              </div>
+              <div className="mt-8 rounded-lg overflow-hidden shadow-lg">
+                <iframe
+                  title="Google Maps Location for Mayne Home Inspectors"
+                  src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBew-oei2S3E03CGHN34ZGYt70fwuZ_q4o&q=place_id:ChIJF-g0dQ-23ogR-8J1pZ_5-qg"
+                  width="100%"
+                  height="300"
+                  style={{ border: 0 }}
+                  allowFullScreen={false}
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                ></iframe>
               </div>
             </Card>
           </ScrollAnimationWrapper>

@@ -8,6 +8,7 @@ import { Header } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
 import { BackToTopButton } from '@/components/common/back-to-top-button';
 import { AIChatbox } from '@/components/common/ai-chatbox';
+import { serviceAreas } from '@/lib/constants';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 
@@ -34,8 +35,65 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const structuredData = {
+    '@context': 'https://schema.org',
+    '@type': 'HomeInspector',
+    name: 'Mayne Home Inspectors',
+    telephone: '863-843-0735',
+    url: 'https://mayneinspectors.com',
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: '505 W Hickpochee Ave Suite 200',
+      addressLocality: 'LaBelle',
+      addressRegion: 'FL',
+      postalCode: '33935',
+      addressCountry: 'US',
+    },
+    geo: {
+      '@type': 'GeoCoordinates',
+      latitude: 26.7631,
+      longitude: -81.4415,
+    },
+    openingHoursSpecification: [
+      {
+        '@type': 'OpeningHoursSpecification',
+        dayOfWeek: [
+          'Monday',
+          'Tuesday',
+          'Wednesday',
+          'Thursday',
+          'Friday',
+          'Saturday',
+        ],
+        opens: '07:00',
+        closes: '18:00',
+      },
+      {
+        '@type': 'OpeningHoursSpecification',
+        dayOfWeek: 'Sunday',
+        opens: '12:00',
+        closes: '16:00',
+      },
+    ],
+    areaServed: serviceAreas.map((city) => ({
+      '@type': 'City',
+      name: city,
+    })),
+    sameAs: [
+      'https://g.page/r/CVD2PrmEP1lVEAE/review',
+      'https://www.yelp.com/biz/mayne-home-inspectors-labelle-2',
+      'https://www.facebook.com/mayneinspectors',
+    ],
+    priceRange: '$$',
+  };
   return (
     <html lang="en" className="dark" suppressHydrationWarning>
+       <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+        />
+      </head>
       <body className={`${inter.variable} font-body antialiased`}>
         <ThemeProvider
           attribute="class"

@@ -4,7 +4,7 @@ import type {NextConfig} from 'next';
 const ContentSecurityPolicy = `
   default-src 'self';
   script-src 'self' 'unsafe-eval' 'unsafe-inline' *.youtube.com;
-  child-src *.youtube.com;
+  child-src *.youtube.com *.google.com;
   style-src 'self' 'unsafe-inline' fonts.googleapis.com;
   img-src * 'self' data:;
   media-src 'none';
