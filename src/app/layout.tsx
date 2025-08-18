@@ -1,3 +1,4 @@
+
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
@@ -8,8 +9,8 @@ import { Header } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
 import { BackToTopButton } from '@/components/common/back-to-top-button';
 import { AIChatbox } from '@/components/common/ai-chatbox';
-import { serviceAreas } from '@/lib/constants';
 import { MobileCTABar } from '@/components/common/mobile-cta-bar';
+import { serviceAreas } from '@/lib/constants';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 
@@ -20,13 +21,35 @@ export async function generateMetadata(): Promise<Metadata> {
     metadataBase: new URL(baseUrl),
     title: 'Mayne Home Inspectors - Premier Home Inspections in LaBelle, FL',
     description:
-      'Mayne Home Inspectors offers comprehensive home inspection services in LaBelle, Lehigh Acres, Clewiston, Moore Haven, Immokalee, Fort Myers, Cape Coral, Punta Gorda, and Port Charlotte. Schedule your inspection today for peace of mind.',
-    keywords: 'home inspection, LaBelle, Florida, Mayne Home Inspectors, 4-point inspection, wind mitigation, mold testing, radon testing, commercial inspection',
+      'Professional home inspection services in LaBelle, Fort Myers, Cape Coral & Southwest Florida. Call (239) 843-0735 for same-day service. Licensed & insured with 5.0 Google rating.',
+    keywords: 'home inspection LaBelle FL, home inspector Fort Myers, Cape Coral home inspection, 4-point inspection, wind mitigation, same day inspection reports, licensed home inspector Southwest Florida',
     icons: {
       icon: '/favicon.ico',
     },
     alternates: {
       canonical: '/',
+    },
+    openGraph: {
+      title: 'Mayne Home Inspectors - Southwest Florida\'s Premier Home Inspector',
+      description: 'Professional home inspections with same-day reports. Serving LaBelle, Fort Myers, Cape Coral & more. Call (239) 843-0735',
+      url: 'https://mayneinspectors.com',
+      siteName: 'Mayne Home Inspectors',
+      images: [
+        {
+          url: '/images/punta-gorda-home-inspection-dji-mini.png',
+          width: 1200,
+          height: 630,
+          alt: 'Professional home inspector using drone technology'
+        }
+      ],
+      locale: 'en_US',
+      type: 'website',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: 'Mayne Home Inspectors - Southwest Florida Home Inspections',
+      description: 'Professional home inspections with same-day reports. Call (239) 843-0735',
+      images: ['/images/punta-gorda-home-inspection-dji-mini.png'],
     },
   };
 }
@@ -40,8 +63,9 @@ export default function RootLayout({
     '@context': 'https://schema.org',
     '@type': 'HomeInspector',
     name: 'Mayne Home Inspectors',
-    telephone: '863-843-0735',
+    telephone: '239-843-0735',
     url: 'https://mayneinspectors.com',
+    email: 'castenhome@gmail.com',
     address: {
       '@type': 'PostalAddress',
       streetAddress: '505 W Hickpochee Ave Suite 200',
@@ -79,11 +103,13 @@ export default function RootLayout({
     areaServed: serviceAreas.map((city) => ({
       '@type': 'City',
       name: city,
+      addressRegion: 'FL',
+      addressCountry: 'US'
     })),
     sameAs: [
       'https://g.page/r/CVD2PrmEP1lVEAE/review',
       'https://www.yelp.com/biz/mayne-home-inspectors-labelle-2',
-      'https://www.facebook.com/mayneinspectors',
+      'https://www.facebook.com/mayneinspectors'
     ],
     priceRange: '$$',
   };
