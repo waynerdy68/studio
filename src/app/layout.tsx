@@ -9,6 +9,7 @@ import { Footer } from '@/components/layout/footer';
 import { BackToTopButton } from '@/components/common/back-to-top-button';
 import { AIChatbox } from '@/components/common/ai-chatbox';
 import { serviceAreas } from '@/lib/constants';
+import { MobileCTABar } from '@/components/common/mobile-cta-bar';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 
@@ -104,10 +105,11 @@ export default function RootLayout({
           <FormProvider>
             <div className="flex flex-col min-h-screen">
               <Header />
-              <main className="flex-grow">{children}</main>
+              <main className="flex-grow pb-24 md:pb-0">{children}</main>
               <Footer />
               <BackToTopButton />
               <AIChatbox />
+              <MobileCTABar />
             </div>
           </FormProvider>
           <Toaster />
