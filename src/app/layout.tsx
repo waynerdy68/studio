@@ -11,6 +11,7 @@ import { BackToTopButton } from '@/components/common/back-to-top-button';
 import { AIChatbox } from '@/components/common/ai-chatbox';
 import { MobileCTABar } from '@/components/common/mobile-cta-bar';
 import { serviceAreas } from '@/lib/constants';
+import { FloatingContactWidget } from '@/components/common/floating-contact-widget';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 
@@ -136,6 +137,7 @@ export default function RootLayout({
               <BackToTopButton />
               <AIChatbox />
               <MobileCTABar />
+              <FloatingContactWidget />
             </div>
           </FormProvider>
           <Toaster />
