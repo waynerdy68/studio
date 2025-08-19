@@ -87,7 +87,7 @@ export function AIChatbox() {
         <Button
           variant="default"
           size="lg"
-          className="fixed bottom-6 right-6 z-50 rounded-full h-14 shadow-lg bg-accent hover:bg-accent/90 flex items-center justify-center gap-2 pl-4 pr-5 group"
+          className="fixed bottom-6 left-6 z-50 rounded-full h-14 shadow-lg bg-accent hover:bg-accent/90 flex items-center justify-center gap-2 pl-4 pr-5 group"
           aria-label="Open AI Chat"
         >
           <Bot className="h-6 w-6 transition-transform duration-300 group-hover:scale-110" />
@@ -96,8 +96,8 @@ export function AIChatbox() {
       </PopoverTrigger>
       <PopoverContent
         side="top"
-        align="end"
-        className="w-[380px] h-[500px] p-0 rounded-lg shadow-2xl border-border/50 bg-card flex flex-col overflow-hidden mr-0 mb-2"
+        align="start"
+        className="w-[380px] h-[500px] p-0 rounded-lg shadow-2xl border-border/50 bg-card flex flex-col overflow-hidden ml-0 mb-2"
         aria-modal="true"
         role="dialog"
         aria-labelledby="ai-chatbox-title"
