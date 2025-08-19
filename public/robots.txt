@@ -1,21 +1,7 @@
 # See https://www.robotstxt.org/robotstxt.html for documentation on how to use the robots.txt file
 #
-# Please note: The crawling behavior of a bot is a suggestion that bots can ignore.
-#
-# To control how Google crawls your site, use the "robots.txt" file to block specific URLs,
-# or use the "noindex" meta tag to prevent specific pages from being indexed.
-# See https://developers.google.com/search/docs/crawling-indexing/overview
-
-# Allow all friendly crawlers
+# To allow all robots to crawl your site, use the following syntax:
 User-agent: *
 Allow: /
-Disallow: /api/
-Disallow: /_next/
-Disallow: /favicon.ico
 
-# Specifically for Google
-User-agent: Googlebot
-Allow: /
-Disallow: /api/
-Disallow: /_next/
-Disallow: /favicon.ico
+Sitemap: https://mayneinspectors.com/sitemap.xml
