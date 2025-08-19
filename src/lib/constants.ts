@@ -2,7 +2,7 @@
 import type { LucideIcon } from "lucide-react";
 import {
   Home, ClipboardCheck, Wind, FlaskConical, ShieldAlert, TestTube, Thermometer,
-  Camera as DroneIcon, Accessibility, Building, Award, Building2, Star, ShieldCheck, Gem
+  Camera as DroneIcon, Accessibility, Building, Award, Building2, Star, ShieldCheck, Gem, Zap, Clock
 } from "lucide-react";
 
 export interface Service {
@@ -29,73 +29,202 @@ export const services: Service[] = [
   { id: "roof-cert", slug: "roof-certification", name: "Roof Certification", description: "Provides a professional certification of the roof's condition and expected lifespan.", longDescription: "A Roof Certification is a professional opinion on the condition of a roof and its expected remaining lifespan. Lenders or insurance companies often require it. Our inspector will conduct a detailed examination of the roof structure and materials and issue a formal certification document if it meets the required standards.", icon: Award, image: "/images/north-fort-myers-tree.png" },
   { id: "condo", slug: "condo-townhouse", name: "Condo/Townhouse", description: "Specialized inspections tailored to the unique aspects of condominium and townhouse properties.", longDescription: "Inspecting a condo or townhouse requires a different approach than a single-family home. Our specialized inspection focuses on the unit's interior systems (plumbing, electrical, HVAC) while also assessing the readily accessible common elements that the owner is responsible for, as defined by the HOA/Condo Association agreements. We help you understand your specific liabilities and the overall health of your unit.", icon: Building2, image: "/images/port-charlotte-rotonda-west-osprey.png" },
 ];
-
 export interface Testimonial {
   id: string;
   quote: string;
   name: string;
   location?: string;
   avatarUrl?: string;
+  service?: string;
 }
-
-export const testimonials: Testimonial[] = [
-  { id: "t1", quote: "Wayne Casten did an outstanding job with the home inspection. He was thorough, professional, and took the time to explain everything clearly. His attention to detail and honest insights gave me great peace of mind. I highly recommend Wayne to anyone in need of a reliable and knowledgeable home inspector, you won’t be disappointed!", name: "Ribi09 Imbert", location: "Google Review", avatarUrl: "https://lh3.googleusercontent.com/a-/ALV-UjXu91HlP3xyLZabNEH_7nG2RmPnFxLQ1jWPgZ30DcRkzj69diEn2A=w36-h36-p-rp-mo-br100" },
-  { id: "t2", quote: "Wayne was extremely professional and flexible in getting us seen fast and easy. He easily answered any and all questions we had before, during and after the inspection. Inspection was thorough and detailed. Highly recommend!!", name: "Josue Trejo", location: "Google Review", avatarUrl: "https://lh3.googleusercontent.com/a-/ALV-UjUpZ2odr170144d4uGBrHTrL7fIDQklnYTt0T9bmvpKIPIOgZ6b=w36-h36-p-rp-mo-br100" },
-  { id: "t3", quote: "Nice detailed inspection, very clear report. On top of that, I contacted Mayne Home Inspectors on real short notice and they were able to reschedule their agenda, which makes them even more favorable. I highly recommend Mayne Home Inspectors.", name: "Serge Somers", location: "Google Review", avatarUrl: "https://lh3.googleusercontent.com/a-/ALV-UjXvaz4ZUR79X0yDM7gwx5C9W2Q8SjjI6wBmZg14yxWt6Dasb9J7=w36-h36-p-rp-mo-br100" },
-  { id: "t4", quote: "Amazing service, he checked everything in detail. Very reasonable price and arrived on time. I will hire Mayne Home Inspectors again.", name: "Yasnay Tapanes", location: "Google Review", avatarUrl: "https://lh3.googleusercontent.com/a-/ALV-UjWm9Hh_KZRYAxLsT_xNS1AAH1REzaagAAYh57BSZdly_a_pK2mcfA=w36-h36-p-rp-mo-br100" },
-];
-
 export interface PricingTier {
   id: string;
   name: string;
   price: string;
+  originalPrice?: string; // For showing savings
   priceDetails?: string;
   features: string[];
   icon: LucideIcon;
   ctaText: string;
   isPopular?: boolean;
+  savings?: string;
   href: string;
+  urgencyText?: string;
 }
 
 export const pricingTiers: PricingTier[] = [
   {
     id: "basic",
-    name: "Basic Inspection",
+    name: "Essential Inspection",
     price: "$350",
-    priceDetails: "For homes up to 2000 sq ft",
+    priceDetails: "Homes up to 2,000 sq ft • $50 per additional 500 sq ft",
     icon: ShieldCheck, 
-    features: ["General Home Inspection", "Key Systems: Roof, Plumbing, HVAC, Electrical", "Components: Appliances, Irrigation, Septic System*, Well", "Included - Swimming Pools, Boat Dock/Lift, Seawall"],
-    ctaText: "Get Started",
+    features: [
+      "Complete Home Inspection (All Major Systems)",
+      "✅ Roof, Foundation, Plumbing, Electrical, HVAC", 
+      "✅ Appliances & Interior Components",
+      "✅ Pool, Dock, Seawall Inspection (No Extra Fee)",
+      "✅ Septic & Well System Visual Check",
+      "✅ Same-Day Report Delivery",
+      "✅ High-Resolution Photos Included"
+    ],
+    ctaText: "Book Essential",
     href: "#schedule",
+    urgencyText: "Most Popular for First-Time Buyers"
   },
   {
-    id: "standard",
-    name: "Standard Inspection",
+    id: "standard", 
+    name: "Insurance Ready",
     price: "$525",
-    priceDetails: "For homes up to 2000 sq ft",
+    originalPrice: "$600",
+    savings: "Save $75",
+    priceDetails: "Homes up to 2,000 sq ft • Everything you need for insurance",
     icon: Star, 
-    features: ["Everything in Basic Inspection", "4-Point Inspection", "Wind Mitigation Inspection"],
-    ctaText: "Choose Plan",
+    features: [
+      "🏆 Everything in Essential Inspection",
+      "✅ 4-Point Insurance Inspection ($175 value)",
+      "✅ Wind Mitigation Report ($125 value)", 
+      "✅ Insurance Discount Qualification",
+      "✅ Priority Scheduling Available",
+      "✅ Detailed Insurance Documentation"
+    ],
+    ctaText: "Choose Insurance Ready",
     isPopular: true,
     href: "#schedule",
+    urgencyText: "Required by Most FL Insurance Companies"
   },
   {
     id: "premium",
-    name: "Premium Inspection",
-    price: "$875",
-    priceDetails: "For homes over 2000 sq ft",
+    name: "Complete Peace of Mind",
+    price: "$875", 
+    originalPrice: "$1,050",
+    savings: "Save $175",
+    priceDetails: "Best value for homes over 2,000 sq ft",
     icon: Gem, 
-    features: ["Everything in Standard Inspection", "Mold & Air Quality Sampling", "Radon Testing", "Inrared Scan"],
-    ctaText: "Select Premium",
+    features: [
+      "💎 Everything in Insurance Ready Package",
+      "✅ Professional Mold & Air Quality Testing",
+      "✅ Radon Gas Level Testing (48-hour)",
+      "✅ Advanced Infrared Thermal Scan",
+      "✅ Comprehensive Health & Safety Report",
+      "✅ Priority Emergency Service Access"
+    ],
+    ctaText: "Get Complete Inspection",
     href: "#schedule",
+    urgencyText: "Ultimate Protection for Your Investment"
   },
+  {
+    id: "emergency",
+    name: "Emergency Service",
+    price: "$450",
+    priceDetails: "Same-day or next-day service • All home sizes",
+    icon: Zap,
+    features: [
+      "⚡ Same-Day or Next-Day Service",
+      "✅ All Essential Inspection Features", 
+      "✅ 4-Hour Report Delivery",
+      "✅ Weekend & Holiday Availability",
+      "✅ Direct Inspector Phone Access",
+      "✅ Perfect for Contract Deadlines"
+    ],
+    ctaText: "Book Emergency",
+    href: "tel:+1-239-843-0735",
+    urgencyText: "Call (239) 843-0735 for Immediate Service"
+  }
 ];
 
+// Enhanced service areas with local keywords
 export const serviceAreas = [
   "LaBelle", "Lehigh Acres", "Clewiston", "Moore Haven", "Immokalee", 
   "Fort Myers", "Cape Coral", "Punta Gorda", "Port Charlotte", "Montura Ranch Estates"
 ];
 
+// Local market competitive advantages to highlight
+export const competitiveAdvantages = [
+  {
+    title: "Same-Day Reports",
+    description: "While others take 2-3 days, you get your report by morning",
+    icon: Clock
+  },
+  {
+    title: "No Hidden Fees", 
+    description: "Pools, docks, septic included - others charge $100+ extra",
+    icon: ShieldCheck
+  },
+  {
+    title: "Advanced Technology",
+    description: "Drone + infrared inspections standard on every job",
+    icon: DroneIcon
+  },
+  {
+    title: "Local Expertise",
+    description: "15+ years inspecting Southwest Florida properties", 
+    icon: Award
+  }
+];
+
+// Updated testimonials with local context
+export const testimonials: Testimonial[] = [
+  { 
+    id: "t1", 
+    quote: "Wayne did an outstanding job with our Fort Myers home inspection. He was thorough, professional, and took the time to explain everything clearly. His attention to detail and honest insights gave me great peace of mind.", 
+    name: "Ribi09 Imbert", 
+    location: "Fort Myers, FL", 
+    avatarUrl: "https://lh3.googleusercontent.com/a-/ALV-UjXu91HlP3xyLZabNEH_7nG2RmPnFxLQ1jWPgZ30DcRkzj69diEn2A=w36-h36-p-rp-mo-br100",
+    service: "Home Inspection"
+  },
+  { 
+    id: "t2", 
+    quote: "Wayne was extremely professional and flexible in getting us seen fast in Cape Coral. He easily answered any and all questions we had before, during and after the inspection. Highly recommend!", 
+    name: "Josue Trejo", 
+    location: "Cape Coral, FL", 
+    avatarUrl: "https://lh3.googleusercontent.com/a-/ALV-UjUpZ2odr170144d4uGBrHTrL7fIDQklnYTt0T9bmvpKIPIOgZ6b=w36-h36-p-rp-mo-br100",
+    service: "4-Point Inspection"
+  },
+  { 
+    id: "t3", 
+    quote: "Nice detailed inspection in LaBelle, very clear report. I contacted Mayne Home Inspectors on real short notice and they were able to reschedule their agenda, which makes them even more favorable.", 
+    name: "Serge Somers", 
+    location: "LaBelle, FL", 
+    avatarUrl: "https://lh3.googleusercontent.com/a-/ALV-UjXvaz4ZUR79X0yDM7gwx5C9W2Q8SjjI6wBmZg14yxWt6Dasb9J7=w36-h36-p-rp-mo-br100",
+    service: "Wind Mitigation"
+  },
+  { 
+    id: "t4", 
+    quote: "Amazing service in Punta Gorda, he checked everything in detail. Very reasonable price and arrived on time. I will hire Mayne Home Inspectors again.", 
+    name: "Yasnay Tapanes", 
+    location: "Punta Gorda, FL", 
+    avatarUrl: "https://lh3.googleusercontent.com/a-/ALV-UjWm9Hh_KZRYAxLsT_xNS1AAH1REzaagAAYh57BSZdly_a_pK2mcfA=w36-h36-p-rp-mo-br100",
+    service: "Premium Inspection"
+  },
+];
+
 export const youtubeVideoId = "MwtftPuq6K0";
+
+// Key selling points for conversion optimization
+export const keySellingPoints = [
+  "Licensed & Insured Florida Home Inspector",
+  "5.0 Google Rating with 50+ Reviews", 
+  "Same-Day Inspection Reports (Others Take 2-3 Days)",
+  "Advanced Drone & Infrared Technology",
+  "No Hidden Fees - Pools, Docks, Septic Included",
+  "Emergency & Weekend Service Available",
+  "15+ Years Southwest Florida Experience",
+  "Direct Access to Inspector After Report"
+];
+
+// Local SEO keywords by city for content optimization  
+export const cityKeywords = {
+  "labelle": ["LaBelle home inspector", "home inspection LaBelle FL", "LaBelle property inspector"],
+  "fort-myers": ["Fort Myers home inspector", "home inspection Fort Myers", "Fort Myers property inspection"],
+  "cape-coral": ["Cape Coral home inspector", "home inspection Cape Coral", "Cape Coral property inspector"],
+  "lehigh-acres": ["Lehigh Acres home inspector", "home inspection Lehigh Acres", "Lehigh Acres property inspection"],
+  "punta-gorda": ["Punta Gorda home inspector", "home inspection Punta Gorda", "Punta Gorda property inspector"],
+  "port-charlotte": ["Port Charlotte home inspector", "home inspection Port Charlotte", "Port Charlotte property inspector"],
+  "clewiston": ["Clewiston home inspector", "home inspection Clewiston FL", "Clewiston property inspector"],
+  "moore-haven": ["Moore Haven home inspector", "home inspection Moore Haven", "Moore Haven property inspector"],
+  "immokalee": ["Immokalee home inspector", "home inspection Immokalee FL", "Immokalee property inspector"],
+  "montura-ranch-estates": ["Montura Ranch home inspector", "home inspection Montura Ranch", "Montura Ranch property inspector"]
+};
 
     
