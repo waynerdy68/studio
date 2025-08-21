@@ -2,6 +2,7 @@
 import { FaqSection } from "@/components/sections/faq-section";
 import { faqData } from "@/lib/faq-data";
 import type { Metadata } from 'next';
+import Image from 'next/image';
 
 export const metadata: Metadata = {
   title: "Frequently Asked Questions | Mayne Home Inspectors",
@@ -30,12 +31,24 @@ export default function FAQPage() {
   const jsonLd = generateFaqJsonLd();
 
   return (
-    <>
+    <div className="relative">
+       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+        <Image
+          src="/images/watermark.png"
+          alt="Mayne Home Inspectors Watermark"
+          width={500}
+          height={500}
+          className="opacity-4"
+          style={{ objectFit: 'contain' }}
+        />
+      </div>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <FaqSection />
-    </>
+      <div className="relative z-10">
+        <FaqSection />
+      </div>
+    </div>
   );
 }
