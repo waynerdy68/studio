@@ -12,14 +12,14 @@ export function Footer() {
   const Logo = () => (
     <>
       <Image
-        src="/images/Mayne-Inspector-dark.png"
+        src="/images/brand-pack/logo-light.png"
         width={32}
         height={32}
         alt="Mayne Home Inspectors Logo"
         className="dark:hidden"
       />
       <Image
-        src="/images/Mayne-Inspector-light-removebg-preview.png"
+        src="/images/brand-pack/logo-dark.png"
         width={32}
         height={32}
         alt="Mayne Home Inspectors Logo"
