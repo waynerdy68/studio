@@ -36,9 +36,9 @@ export default function FAQPage() {
         <Image
           src="/images/watermark.png"
           alt="Mayne Home Inspectors Watermark"
-          width={500}
-          height={500}
-          className="opacity-4"
+          width={1024}
+          height={1024}
+          className="opacity-1"
           style={{ objectFit: 'contain' }}
         />
       </div>
