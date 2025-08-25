@@ -37,7 +37,7 @@ export function MobileCTABar() {
   const handleWhatsAppClick = () => {
     // WhatsApp business link with pre-filled message
     const message = encodeURIComponent("Hi! I'd like to schedule a home inspection. Can you help me?")
-    window.open(`https://wa.me/12398430735?text=${message}`, '_blank')
+    window.open(`https://wa.me/18638430735?text=${message}`, '_blank')
   }
 
   return (
@@ -49,7 +49,7 @@ export function MobileCTABar() {
       <div className="flex gap-2 max-w-sm mx-auto">
         {/* Call Button */}
         <Button asChild className="flex-1 bg-primary hover:bg-primary/90 text-primary-foreground font-semibold py-3 h-auto">
-          <a href="tel:+1-239-843-0735" className="flex items-center justify-center gap-2">
+          <a href="tel:+1-863-843-0735" className="flex items-center justify-center gap-2">
             <Phone className="h-4 w-4" />
             Call Now
           </a>
@@ -78,7 +78,7 @@ export function MobileCTABar() {
       {/* Trust indicator */}
       <div className="text-center mt-2">
         <p className="text-xs text-muted-foreground">
-          ⭐ 5.0 Google Rating • Licensed & Insured • Same-Day Reports
+          ⭐ 5.0 Google Rating • Licensed & Insured • 24-Hour Reports
         </p>
       </div>
     </div>

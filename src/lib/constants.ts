@@ -1,4 +1,3 @@
-
 import type { LucideIcon } from "lucide-react";
 import {
   Home, ClipboardCheck, Wind, FlaskConical, ShieldAlert, TestTube, Thermometer,
@@ -65,7 +64,7 @@ export const pricingTiers: PricingTier[] = [
       "✅ Appliances & Interior Components",
       "✅ Pool, Dock, Seawall Inspection (No Extra Fee)",
       "✅ Septic & Well System Visual Check",
-      "✅ Same-Day Report Delivery",
+      "✅ 24-Hour Report Delivery",
       "✅ High-Resolution Photos Included"
     ],
     ctaText: "Book Essential",
@@ -128,8 +127,8 @@ export const pricingTiers: PricingTier[] = [
       "✅ Perfect for Contract Deadlines"
     ],
     ctaText: "Book Emergency",
-    href: "tel:+1-239-843-0735",
-    urgencyText: "Call (239) 843-0735 for Immediate Service"
+    href: "tel:+1-863-843-0735",
+    urgencyText: "Call (863) 843-0735 for Immediate Service"
   }
 ];
 
@@ -142,8 +141,8 @@ export const serviceAreas = [
 // Local market competitive advantages to highlight
 export const competitiveAdvantages = [
   {
-    title: "Same-Day Reports",
-    description: "While others take 2-3 days, you get your report by morning",
+    title: "24-Hour Reports",
+    description: "While others take 2-3 days, you get your report within 24 hours",
     icon: Clock
   },
   {
@@ -205,7 +204,7 @@ export const youtubeVideoId = "MwtftPuq6K0";
 export const keySellingPoints = [
   "Licensed & Insured Florida Home Inspector",
   "5.0 Google Rating with 50+ Reviews", 
-  "Same-Day Inspection Reports (Others Take 2-3 Days)",
+  "24-Hour Inspection Reports (Others Take 2-3 Days)",
   "Advanced Drone & Infrared Technology",
   "No Hidden Fees - Pools, Docks, Septic Included",
   "Emergency & Weekend Service Available",

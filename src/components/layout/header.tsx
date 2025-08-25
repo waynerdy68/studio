@@ -45,14 +45,14 @@ export function Header() {
   const Logo = () => (
     <>
       <Image
-        src="/images/logo-dark-40.png"
+        src="/images/brand-pack/logo-dark.png"
         width={32}
         height={32}
         alt="Mayne Home Inspectors Logo"
         className="dark:hidden"
       />
       <Image
-        src="/images/logo-light-40.png"
+        src="/images/brand-pack/logo-light.png"
         width={32}
         height={32}
         alt="Mayne Home Inspectors Logo"
@@ -93,11 +93,11 @@ export function Header() {
           <div className="flex items-center gap-2">
             <div className="hidden sm:flex flex-col items-end">
               <a 
-                href="tel:+1-239-843-0735" 
+                href="tel:+1-863-843-0735" 
                 className="flex items-center gap-2 text-primary font-bold text-lg hover:text-primary/80 transition-colors"
               >
                 <Phone className="h-5 w-5" />
-                (239) 843-0735
+                (863) 843-0735
               </a>
               <span className="text-xs text-muted-foreground">Call or Text Anytime</span>
             </div>
@@ -133,11 +133,11 @@ export function Header() {
                     {/* Mobile Phone Number */}
                     <div className="bg-primary/10 p-4 rounded-lg text-center">
                       <a 
-                        href="tel:+1-239-843-0735" 
+                        href="tel:+1-863-843-0735" 
                         className="flex items-center justify-center gap-2 text-primary font-bold text-xl"
                       >
                         <Phone className="h-6 w-6" />
-                        (239) 843-0735
+                        (863) 843-0735
                       </a>
                       <p className="text-sm text-muted-foreground mt-1">Tap to call now</p>
                     </div>

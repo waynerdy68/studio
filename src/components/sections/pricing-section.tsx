@@ -23,7 +23,7 @@ export function PricingSection() {
               Transparent Pricing, No Surprises
             </h2>
             <p className="section-subtitle">
-              Choose the inspection package that fits your needs. All packages include same-day scheduling and next-morning reports.
+              Choose the inspection package that fits your needs. All packages include same-day scheduling and 24-hour reports.
             </p>
             
             {/* Competitive Comparison */}
@@ -118,7 +118,7 @@ export function PricingSection() {
                     )}
                     
                     <Button asChild variant="outline" className="w-full" size="sm">
-                      <a href="tel:+1-239-843-0735" className="flex items-center justify-center gap-2">
+                      <a href="tel:+1-863-843-0735" className="flex items-center justify-center gap-2">
                         <Phone className="h-4 w-4" />
                         Call for Quote
                       </a>
@@ -135,7 +135,7 @@ export function PricingSection() {
             <Card className="bg-primary/5 border-primary/20 text-center">
               <CardContent className="p-6">
                 <Clock className="h-8 w-8 text-primary mx-auto mb-3" />
-                <h3 className="font-bold mb-2">Same-Day Reports</h3>
+                <h3 className="font-bold mb-2">24-Hour Reports</h3>
                 <p className="text-sm text-muted-foreground">
                   Get your detailed inspection report by early next morning - faster than any competitor
                 </p>
@@ -180,9 +180,9 @@ export function PricingSection() {
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button asChild size="lg" className="text-lg font-semibold h-14 px-8">
-                <a href="tel:+1-239-843-0735" className="flex items-center justify-center gap-2">
+                <a href="tel:+1-863-843-0735" className="flex items-center gap-2">
                   <Phone className="h-5 w-5" />
-                  Call (239) 843-0735 Now
+                  Call (863) 843-0735 Now
                 </a>
               </Button>
               

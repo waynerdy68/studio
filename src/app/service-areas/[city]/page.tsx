@@ -43,15 +43,15 @@ export async function generateMetadata({ params }: { params: { city: string } })
     }
 
     return {
-        title: `Home Inspector ${originalCity}, FL | Same-Day Reports | (239) 843-0735`,
-        description: `Professional home inspection services in ${originalCity}, FL. Licensed inspector with 5.0 Google rating. Same-day reports, drone & infrared technology. Call (239) 843-0735 for immediate service.`,
-        keywords: `home inspector ${originalCity} FL, home inspection ${originalCity} Florida, ${originalCity} home inspector near me, 4-point inspection ${originalCity}, wind mitigation ${originalCity}, same day inspection reports ${originalCity}, licensed home inspector ${originalCity}`,
+        title: `Home Inspector ${originalCity}, FL | 24-Hour Reports | (863) 843-0735`,
+        description: `Professional home inspection services in ${originalCity}, FL. Licensed inspector with 5.0 Google rating. 24-hour reports, drone & infrared technology. Call (863) 843-0735 for immediate service.`,
+        keywords: `home inspector ${originalCity} FL, home inspection ${originalCity} Florida, ${originalCity} home inspector near me, 4-point inspection ${originalCity}, wind mitigation ${originalCity}, 24-hour inspection reports ${originalCity}, licensed home inspector ${originalCity}`,
         alternates: {
             canonical: `${baseUrl}/service-areas/${params.city}`,
         },
         openGraph: {
             title: `Home Inspector ${originalCity}, FL | Mayne Home Inspectors`,
-            description: `Professional home inspections in ${originalCity}, FL with same-day reports. Licensed & insured. Call (239) 843-0735`,
+            description: `Professional home inspections in ${originalCity}, FL with 24-hour reports. Licensed & insured. Call (863) 843-0735`,
             url: `${baseUrl}/service-areas/${params.city}`,
             images: [
                 {
@@ -84,7 +84,7 @@ export default function ServiceAreaPage({ params }: { params: { city: string } }
         localContext: [
             `As your local home inspector in {city}, FL, we understand the unique challenges Southwest Florida properties face - from hurricane preparedness to moisture concerns. Our comprehensive inspections help protect your investment.`,
             `Serving {city} and the greater Southwest Florida region, Mayne Home Inspectors brings cutting-edge technology and decades of experience to every property evaluation. We're your neighbors, committed to your peace of mind.`,
-            `{city} residents trust Mayne Home Inspectors for thorough, reliable inspections. Our same-day reporting and advanced inspection technology set us apart from other local inspectors.`,
+            `{city} residents trust Mayne Home Inspectors for thorough, reliable inspections. Our 24-hour reporting and advanced inspection technology set us apart from other local inspectors.`,
         ],
         localBenefits: [
             `Local {city} knowledge of common property issues`,
@@ -127,7 +127,7 @@ export default function ServiceAreaPage({ params }: { params: { city: string } }
         '@id': `https://mayneinspectors.com/service-areas/${params.city}`,
         name: `Mayne Home Inspectors - ${originalCity}`,
         image: `https://mayneinspectors.com${imagePath}`,
-        telephone: '239-843-0735',
+        telephone: '863-843-0735',
         email: 'castenhome@gmail.com',
         url: `https://mayneinspectors.com/service-areas/${params.city}`,
         address: {
@@ -225,11 +225,11 @@ export default function ServiceAreaPage({ params }: { params: { city: string } }
                                                     Call or Text for Same-Day Service in {originalCity}
                                                 </p>
                                                 <a 
-                                                    href="tel:+1-239-843-0735" 
+                                                    href="tel:+1-863-843-0735" 
                                                     className="text-2xl sm:text-3xl font-bold text-primary hover:text-primary/80 transition-colors flex items-center gap-3"
                                                 >
                                                     <Phone className="h-6 w-6 sm:h-8 sm:w-8" />
-                                                    (239) 843-0735
+                                                    (863) 843-0735
                                                 </a>
                                             </div>
                                             <div className="text-center">
@@ -245,7 +245,7 @@ export default function ServiceAreaPage({ params }: { params: { city: string } }
                                 {/* Action Buttons */}
                                 <div className="flex flex-col sm:flex-row gap-4">
                                     <Button asChild size="lg" className="text-lg font-semibold h-14 px-8">
-                                        <a href="tel:+1-239-843-0735" className="flex items-center gap-2">
+                                        <a href="tel:+1-863-843-0735" className="flex items-center gap-2">
                                             <Phone className="h-5 w-5" />
                                             Call for {originalCity} Inspection
                                         </a>
@@ -275,7 +275,7 @@ export default function ServiceAreaPage({ params }: { params: { city: string } }
                                     
                                     {/* Overlay badges */}
                                     <div className="absolute top-4 left-4 bg-primary/90 text-primary-foreground px-3 py-2 rounded-lg text-sm font-semibold">
-                                        Same-Day Reports
+                                        24-Hour Reports
                                     </div>
                                     <div className="absolute bottom-4 right-4 bg-accent/90 text-accent-foreground px-3 py-2 rounded-lg text-sm font-semibold">
                                         Drone + Infrared
@@ -312,7 +312,7 @@ export default function ServiceAreaPage({ params }: { params: { city: string } }
                             Home Inspection Services in {originalCity}
                         </h2>
                         <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
-                            All services available with same-day scheduling and next-morning reports for {originalCity} residents.
+                            All services available with same-day scheduling and 24-hour reports for {originalCity} residents.
                         </p>
                         
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -336,7 +336,7 @@ export default function ServiceAreaPage({ params }: { params: { city: string } }
                                     Need an urgent inspection in {originalCity}? We offer same-day service for time-sensitive situations.
                                 </p>
                                 <Button asChild size="lg" className="bg-destructive hover:bg-destructive/90">
-                                    <a href="tel:+1-239-843-0735" className="flex items-center gap-2">
+                                    <a href="tel:+1-863-843-0735" className="flex items-center gap-2">
                                         <Phone className="h-5 w-5" />
                                         Call for Emergency Service
                                     </a>

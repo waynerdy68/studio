@@ -18,7 +18,7 @@ export default function HomePage() {
     "image": "https://mayneinspectors.com/images/Mayne-Inspector-light-removebg-preview.png",
     // It's best to replace this with your actual domain when it's live
     "url": "https://mayneinspectors.com/", 
-    "telephone": "+1-239-843-0735",
+    "telephone": "+1-863-843-0735",
     "email": "castenhome@gmail.com",
     "priceRange": "$$$",
     "address": {

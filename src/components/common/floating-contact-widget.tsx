@@ -22,7 +22,7 @@ export function FloatingContactWidget() {
 
   const handleWhatsApp = () => {
     const message = encodeURIComponent("Hi! I'd like to schedule a home inspection. Can you provide a quote?")
-    window.open(`https://wa.me/12398430735?text=${message}`, '_blank')
+    window.open(`https://wa.me/18638430735?text=${message}`, '_blank')
   }
 
   const handleSchedule = () => {
@@ -61,10 +61,10 @@ export function FloatingContactWidget() {
               
               {/* Call Button */}
               <Button asChild className="w-full justify-start h-12 text-left">
-                <a href="tel:+1-239-843-0735" className="flex items-center gap-3">
+                <a href="tel:+1-863-843-0735" className="flex items-center gap-3">
                   <Phone className="h-5 w-5" />
                   <div>
-                    <div className="font-semibold">(239) 843-0735</div>
+                    <div className="font-semibold">(863) 843-0735</div>
                     <div className="text-xs opacity-90">Call or text for instant quote</div>
                   </div>
                 </a>
@@ -103,7 +103,7 @@ export function FloatingContactWidget() {
               <div className="flex items-center justify-between text-xs text-muted-foreground">
                 <div className="flex items-center gap-1">
                   <Clock className="h-3 w-3" />
-                  Same-day reports
+                  24-hour reports
                 </div>
                 <Badge variant="secondary" className="text-xs">
                   <Star className="h-3 w-3 mr-1" />
