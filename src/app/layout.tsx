@@ -29,8 +29,9 @@ function buildStructuredData() {
     '@type': 'HomeInspector',
     name: 'Mayne Home Inspectors',
     url: 'https://mayneinspectors.com',
-    image: 'https://mayneinspectors.com/images/spy-guy-1200.jpg',
-    telephone: PHONE_E164,
+    image: 'https://mayneinspectors.com/images/logo-dark-1024.png',
+    logo:  'https://mayneinspectors.com/images/logo-dark-1024.png',
+    telephone: +18638430735,
     email: 'castenhome@gmail.com',
     priceRange: '$$',
     address: {
@@ -39,33 +40,24 @@ function buildStructuredData() {
       addressLocality: 'LaBelle',
       addressRegion: 'FL',
       postalCode: '33935',
-      addressCountry: 'US',
+      addressCountry: 'US'
     },
     geo: { '@type': 'GeoCoordinates', latitude: 26.7631, longitude: -81.4415 },
     openingHoursSpecification: [
-      {
-        '@type': 'OpeningHoursSpecification',
-        dayOfWeek: ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'],
-        opens: '07:00',
-        closes: '18:00',
-      },
-      { '@type': 'OpeningHoursSpecification', dayOfWeek: 'Sunday', opens: '12:00', closes: '16:00' },
+      { '@type': 'OpeningHoursSpecification', dayOfWeek: ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'], opens: '07:00', closes: '18:00' },
+      { '@type': 'OpeningHoursSpecification', dayOfWeek: 'Sunday', opens: '12:00', closes: '16:00' }
     ],
     areaServed: serviceAreas.map((city: string) => ({
-      '@type': 'City',
-      name: city,
-      addressRegion: 'FL',
-      addressCountry: 'US',
+      '@type': 'City', name: city, addressRegion: 'FL', addressCountry: 'US'
     })),
     sameAs: [
-      // Use your canonical profiles here. Keep review links OUT of sameAs.
       'https://www.facebook.com/mayneinspectors',
       'https://www.yelp.com/biz/mayne-home-inspectors-labelle-2',
-      // Replace this with your real Google Maps place link (ok if it has a cid param)
-      'https://maps.app.goo.gl/ULm3fUjvePhDYSEy7'
-    ],
-  };
+      'https://maps.app.goo.gl/MwNuS8nhnXJC4zbq5' // replace with full Maps 'place' URL w/ cid when you have it
+    ]
+  }
 }
+
 
 // ------- Page <head> metadata -------
 export async function generateMetadata(): Promise<Metadata> {
