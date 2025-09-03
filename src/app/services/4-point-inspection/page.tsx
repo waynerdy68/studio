@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     title: "4-Point Inspections | Mayne Home Inspectors",
     description:
       "Roof, electrical, plumbing, HVAC. 24-hour report. Serving LaBelle, Lehigh Acres, Clewiston & nearby.",
-    images: [{ url: "/images/og/4-point.jpg", width: 1200, height: 630, alt: "4-Point Inspection in Florida" }],
+    images: [{ url: "/images/og/4-point-inspection.jpg", width: 1200, height: 630, alt: "4-Point Inspection in Florida" }],
   },
   twitter: {
     card: "summary_large_image",
