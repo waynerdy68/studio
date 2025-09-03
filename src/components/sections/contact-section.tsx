@@ -140,7 +140,7 @@ export function ContactSection() {
                   <MapPin className="w-7 h-7 text-primary mt-1 shrink-0" />
                   <div>
                     <h4 className="font-semibold text-lg">Location</h4>
-                    <p className="text-muted-foreground">505 W Hickpochee Ave Suite 200, LaBelle, FL 33935</p>
+                    <p className="text-muted-foreground">LaBelle, FL 33935</p>
                     <a 
                       href="https://www.google.com/maps/dir/?api=1&destination=Mayne+Home+Inspectors&destination_place_id=ChIJF-g0dQ-23ogR-8J1pZ_5-qg" 
                       target="_blank" 

@@ -38,7 +38,7 @@ export default function FAQPage() {
           alt="Mayne Home Inspectors Watermark"
           width={1024}
           height={1024}
-          className="opacity-1"
+          className="opacity-20"
           style={{ objectFit: 'contain' }}
         />
       </div>

@@ -1,3 +1,4 @@
+
 import type { LucideIcon } from "lucide-react";
 import {
   Home, ClipboardCheck, Wind, FlaskConical, ShieldAlert, TestTube, Thermometer,
@@ -204,7 +205,7 @@ export const youtubeVideoId = "MwtftPuq6K0";
 export const keySellingPoints = [
   "Licensed & Insured Florida Home Inspector",
   "5.0 Google Rating with 50+ Reviews", 
-  "24-Hour Inspection Reports (Others Take 2-3 Days)",
+  "24-Hour Inspection Reports",
   "Advanced Drone & Infrared Technology",
   "No Hidden Fees - Pools, Docks, Septic Included",
   "Emergency & Weekend Service Available",
@@ -225,5 +226,3 @@ export const cityKeywords = {
   "immokalee": ["Immokalee home inspector", "home inspection Immokalee FL", "Immokalee property inspector"],
   "montura-ranch-estates": ["Montura Ranch home inspector", "home inspection Montura Ranch", "Montura Ranch property inspector"]
 };
-
-    

@@ -1,3 +1,4 @@
+
 'use client'
 
 import Link from 'next/link'
@@ -53,7 +54,7 @@ const Logo = () => (
   <>
     {/* light theme */}
     <Image
-      src="/images/logo-dark-1024.png"
+      src="/images/brand-pack/logo-dark.png"
       alt={BRAND}
       width={64}
       height={64}
@@ -62,7 +63,7 @@ const Logo = () => (
     />
     {/* dark theme */}
     <Image
-      src="/images/logo-light-1024.png"
+      src="/images/brand-pack/logo-light.png"
       alt={BRAND}
       width={64}
       height={64}
@@ -203,6 +204,3 @@ export function Header() {
     </>
   )
 }
-
-
-
