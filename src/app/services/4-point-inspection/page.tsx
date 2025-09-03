@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   title: "4-Point Inspections in LaBelle, Lehigh Acres & Clewiston | Mayne Home Inspectors",
   description:
     "Insurance-required 4-Point inspections (roof, electrical, plumbing, HVAC). 24-hour PDF with photos. Call (863) 843-0735.",
-  alternates: { canonical: "/services/4-point-inspection" },
+  alternates: { canonical: "/services/4-point-inspection.jpg" },
   openGraph: {
     type: "website",
     url: "https://mayneinspectors.com/services/4-point-inspection",
