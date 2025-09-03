@@ -54,7 +54,7 @@ const Logo = () => (
   <>
     {/* light theme */}
     <Image
-      src="/images/brand-pack/logo-dark.png"
+      src="/images/logo-dark-64.png"
       alt={BRAND}
       width={64}
       height={64}
@@ -63,7 +63,7 @@ const Logo = () => (
     />
     {/* dark theme */}
     <Image
-      src="/images/brand-pack/logo-light.png"
+      src="/images/logo-light-64.png"
       alt={BRAND}
       width={64}
       height={64}
