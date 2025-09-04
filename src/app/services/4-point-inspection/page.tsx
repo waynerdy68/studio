@@ -1,4 +1,3 @@
-
 import type { Metadata } from "next"
 import Script from "next/script"
 import Link from "next/link"
@@ -12,21 +11,21 @@ export const metadata: Metadata = {
   title: "4-Point Inspections in LaBelle, Lehigh Acres & Clewiston | Mayne Home Inspectors",
   description:
     "Insurance-required 4-Point inspections (roof, electrical, plumbing, HVAC). 24-hour PDF with photos. Call (863) 843-0735.",
-  alternates: { canonical: "/services/4-point-inspection.jpg" },
+  alternates: { canonical: "/services/4-point-inspection" }, // ✅ fixed (no .jpg)
   openGraph: {
     type: "website",
     url: "https://mayneinspectors.com/services/4-point-inspection",
     title: "4-Point Inspections | Mayne Home Inspectors",
     description:
       "Roof, electrical, plumbing, HVAC. 24-hour report. Serving LaBelle, Lehigh Acres, Clewiston & nearby.",
-    images: [{ url: "/images/og/4-point-inspection.jpg", width: 1200, height: 630, alt: "4-Point Inspection in Florida" }],
+    images: [{ url: "/images/og/4-point.jpg", width: 1200, height: 630, alt: "4-Point Inspection in Florida" }], // ✅ ensure this file exists
   },
   twitter: {
     card: "summary_large_image",
     title: "4-Point Inspections | Mayne Home Inspectors",
     description:
       "Roof, electrical, plumbing, HVAC. 24-hour report. Serving LaBelle, Lehigh Acres, Clewiston & nearby.",
-    images: ["/images/og/4-point-inspection.jpg"],
+    images: ["/images/og/4-point.jpg"], // ✅ same file as OG
   },
 }
 
@@ -83,14 +82,14 @@ export default function FourPointPage() {
         </div>
       </section>
 
-      {/* Visible hero image (uses your OG image asset) */}
+      {/* Visible hero image (uses your OG asset) */}
       <section className="mt-10">
         <div
           className="relative mx-auto max-w-3xl rounded-xl shadow overflow-hidden"
           style={{ aspectRatio: "1200 / 630" }}
         >
           <Image
-            src="/images/og/4-point-inspection.jpg"
+            src="/images/og/4-point.jpg"   // ✅ match the metadata filename
             alt="4-Point Inspection in Florida"
             fill
             className="object-cover"
@@ -155,7 +154,9 @@ export default function FourPointPage() {
       </section>
 
       <footer className="mt-20 text-center text-sm text-muted-foreground">
-      Certified Home Inspector HI3589 • State Contractor CRC1328070 • Radon Technician R2355 • National Association Home Inspectors NACHI10122704     </footer>
+        Certified Home Inspector HI3589 • State Contractor CRC1328070 • Radon Technician R2355 • National Association Home Inspectors NACHI10122704
+      </footer>
     </main>
   )
 }
+
