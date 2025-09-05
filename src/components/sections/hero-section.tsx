@@ -9,7 +9,7 @@ export function HeroSection() {
     <section id="hero" className="relative bg-background pt-20 pb-12 md:pt-28 md:pb-20 min-h-screen flex items-center">
       <div className="absolute inset-0">
         <Image
- src="/new-images/mayne-hero-section-florida-home.png"
+ src="/images/mayne-hero-section-florida-home.png"
           alt="Exterior of a modern, beautiful home"
           fill
           priority

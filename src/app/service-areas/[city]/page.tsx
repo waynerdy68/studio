@@ -55,7 +55,7 @@ export async function generateMetadata({ params }: { params: { city: string } })
             url: `${baseUrl}/service-areas/${params.city}`,
             images: [
                 {
-                    url: `/new-images/${params.city === 'labelle' ? 'labelle-florida-cow' : 'punta-gorda-home-inspection-drone'}.png`,
+                    url: `/images/${params.city === 'labelle' ? 'labelle-florida-cow' : 'punta-gorda-home-inspection-drone'}.png`,
                     width: 1200,
                     height: 630,
                     alt: `Home inspection services in ${originalCity}, Florida`
@@ -95,16 +95,16 @@ export default function ServiceAreaPage({ params }: { params: { city: string } }
     };
     
     const cityImageMap: { [key: string]: string } = {
-        'labelle': '/new-images/labelle-florida-cow.png',
-        'lehigh-acres': '/new-images/lehigh-acres-welcome-inspecting.png',
-        'clewiston': '/new-images/clewiston-flag-sugar-town.png',
-        'moore-haven': '/new-images/moore-haven-lake-okeechobee.png',
-        'immokalee': '/new-images/immokalee-welcome-sign-farming.png',
-        'fort-myers': '/new-images/fort-myers-home-inspecting.png',
-        'cape-coral': '/new-images/cape-coral-veterans-memorial.png',
-        'punta-gorda': '/new-images/punta-gorda-home-inspection-drone.png',
-        'port-charlotte': '/new-images/port-charlotte-inspection.png',
-        'montura-ranch-estates': '/new-images/montura-ranch-estates-jesus-donkey.png',
+        'labelle': '/images/labelle-florida-cow.png',
+        'lehigh-acres': '/images/lehigh-acres-welcome-inspecting.png',
+        'clewiston': '/images/clewiston-flag-sugar-town.png',
+        'moore-haven': '/images/moore-haven-lake-okeechobee.png',
+        'immokalee': '/images/immokalee-welcome-sign-farming.png',
+        'fort-myers': '/images/fort-myers-home-inspecting.png',
+        'cape-coral': '/images/cape-coral-veterans-memorial.png',
+        'punta-gorda': '/images/punta-gorda-home-inspection-drone.png',
+        'port-charlotte': '/images/port-charlotte-inspection.png',
+        'montura-ranch-estates': '/images/montura-ranch-estates-jesus-donkey.png',
     };
 
     const headline = cityContent.headlines[cityIndex % cityContent.headlines.length];
@@ -118,7 +118,7 @@ export default function ServiceAreaPage({ params }: { params: { city: string } }
     const currentContext = localContext.replace(/{city}/g, originalCity);
     const currentBenefits = localBenefits.map(benefit => benefit.replace(/{city}/g, originalCity));
     
-    const imagePath = cityImageMap[params.city] || '/new-images/punta-gorda-home-inspection-drone.png';
+    const imagePath = cityImageMap[params.city] || '/images/punta-gorda-home-inspection-drone.png';
 
     // Generate local business schema for this specific city
     const localBusinessSchema = {
