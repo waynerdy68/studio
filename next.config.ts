@@ -1,3 +1,4 @@
+// next.config.ts
 import type { NextConfig } from "next";
 
 const ContentSecurityPolicy = `
@@ -12,42 +13,24 @@ const ContentSecurityPolicy = `
 `;
 
 const nextConfig: NextConfig = {
-  typescript: {
-    ignoreBuildErrors: true,
-  },
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
+  // Keep builds moving while you iterate
+  typescript: { ignoreBuildErrors: true },
+  eslint: { ignoreDuringBuilds: true },
+
   images: {
+    // ✅ Auto-serve AVIF/WebP when supported (falls back to your PNG/JPEG)
+    formats: ["image/avif", "image/webp"],
     remotePatterns: [
-      {
-        protocol: "https",
-        hostname: "placehold.co",
-        port: "",
-        pathname: "/**",
-      },
-      {
-        protocol: "https",
-        hostname: "images.unsplash.com",
-        port: "",
-        pathname: "/**",
-      },
-      {
-        protocol: "https",
-        hostname: "lh3.googleusercontent.com",
-        port: "",
-        pathname: "/**",
-      },
-      {
-        protocol: "https",
-        hostname: "firebasestudio.corp.google.com",
-        port: "",
-        pathname: "/**",
-      },
+      { protocol: "https", hostname: "placehold.co", port: "", pathname: "/**" },
+      { protocol: "https", hostname: "images.unsplash.com", port: "", pathname: "/**" },
+      { protocol: "https", hostname: "lh3.googleusercontent.com", port: "", pathname: "/**" },
+      { protocol: "https", hostname: "firebasestudio.corp.google.com", port: "", pathname: "/**" },
     ],
   },
+
   async headers() {
     return [
+      // Global CSP
       {
         source: "/:path*",
         headers: [
@@ -57,10 +40,19 @@ const nextConfig: NextConfig = {
           },
         ],
       },
+      // (Optional) Long-cache static images to speed up repeat visits
+      {
+        source: "/images/:path*",
+        headers: [
+          { key: "Cache-Control", value: "public, max-age=31536000, immutable" },
+        ],
+      },
     ];
   },
+
   async redirects() {
     return [
+      // ✅ Safety net: old /new-images/* links now 308 to /images/*
       {
         source: "/new-images/:path*",
         destination: "/images/:path*",
