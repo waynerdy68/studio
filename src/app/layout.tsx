@@ -93,13 +93,15 @@ function buildStructuredData() {
       addressCountry: "US",
     },
 
-    // Cities you serve
-    areaServed: areas.map((city: string) => ({
-      "@type": "City",
-      name: city,
-      addressRegion: "FL",
-      addressCountry: "US",
-    })),
+    // ✅ Fix: use strings (or AdministrativeArea with only name) to avoid warnings
+    // Option A (simplest): strings
+    areaServed: areas,
+
+    // Option B (also valid): objects with only `name`
+    // areaServed: areas.map((name: string) => ({
+    //   "@type": "AdministrativeArea",
+    //   name: `${name}, FL`
+    // })),
 
     // Broad region umbrella
     serviceArea: {
@@ -122,14 +124,12 @@ function buildStructuredData() {
       },
     ],
 
-    // ✅ Your GBP CID link
     hasMap: "https://www.google.com/maps?cid=6134477698876185168",
 
     sameAs: [
       "https://www.facebook.com/mayneinspectors",
       "https://www.yelp.com/biz/mayne-home-inspectors-labelle-2",
       "https://maps.app.goo.gl/ULm3fUjvePhDYSEy7",
-      // ✅ Google review shortlink
       "https://g.page/r/CVBXU5FP6NLiEB0/review",
     ],
 
@@ -173,6 +173,7 @@ function buildStructuredData() {
 
   return schema;
 }
+
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   const structuredData = buildStructuredData();
