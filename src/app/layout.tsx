@@ -122,13 +122,15 @@ function buildStructuredData() {
       },
     ],
 
-    // Optional: add once you have it
-    // hasMap: "https://www.google.com/maps?cid=6134477698876185168",
+    // ✅ Your GBP CID link
+    hasMap: "https://www.google.com/maps?cid=6134477698876185168",
 
     sameAs: [
       "https://www.facebook.com/mayneinspectors",
       "https://www.yelp.com/biz/mayne-home-inspectors-labelle-2",
       "https://maps.app.goo.gl/ULm3fUjvePhDYSEy7",
+      // ✅ Google review shortlink
+      "https://g.page/r/CVBXU5FP6NLiEB0/review",
     ],
 
     makesOffer: [
@@ -210,5 +212,4 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     </html>
   );
 }
-
 
