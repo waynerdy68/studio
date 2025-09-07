@@ -25,45 +25,31 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 export async function generateMetadata(): Promise<Metadata> {
   const baseUrl = "https://mayneinspectors.com";
   return {
-    metadataBase: new URL(baseUrl),
-    title: "Mayne Home Inspectors - Premier Home Inspections in LaBelle, FL",
-    description: `Professional home inspection services in LaBelle, Fort Myers, Cape Coral & Southwest Florida. Call ${PHONE_DISPLAY} for 24-hour service. Licensed & insured with 5.0 Google rating.`,
-    keywords: [
-      "home inspection LaBelle FL",
-      "home inspector Fort Myers",
-      "Cape Coral home inspection",
-      "4-point inspection",
-      "wind mitigation",
-      "24-hour inspection reports",
-      "licensed home inspector Southwest Florida",
-    ],
-    alternates: { canonical: "/" },
-    icons: { icon: "/favicon.ico" },
+    // …existing metadata…
     openGraph: {
       type: "website",
       url: baseUrl,
       siteName: BRAND,
-      title:
-        "Mayne Home Inspectors - Southwest Florida's Premier Home Inspector",
+      title: "Mayne Home Inspectors - Southwest Florida's Premier Home Inspector",
       description: `Professional home inspections with 24-hour reports. Serving LaBelle, Fort Myers, Cape Coral & more. Call ${PHONE_DISPLAY}`,
       images: [
         {
-          url: "/images/punta-gorda-home-inspection-dji-mini.png",
+          url: "/images/og-default.png",  // 👈 fallback image
           width: 1200,
           height: 630,
-          alt: "Professional home inspector using drone technology",
+          alt: "Mayne Home Inspectors - SWFL",
         },
       ],
-      locale: "en_US",
     },
     twitter: {
       card: "summary_large_image",
       title: "Mayne Home Inspectors - Southwest Florida Home Inspections",
       description: `Professional home inspections with 24-hour reports. Call ${PHONE_DISPLAY}`,
-      images: ["/images/punta-gorda-home-inspection-dji-mini.png"],
+      images: ["/images/og-default.png"],  // 👈 fallback
     },
   };
 }
+
 
 // ---------- JSON-LD builder (SAB-safe) ----------
 function buildStructuredData() {
