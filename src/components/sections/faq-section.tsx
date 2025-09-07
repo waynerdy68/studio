@@ -1,42 +1,51 @@
-
+// src/components/sections/faq-section.tsx
 "use client";
 
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
-import { ScrollAnimationWrapper } from "@/components/common/scroll-animation-wrapper";
-import { faqData } from "@/lib/faq-data";
+import React, { useState } from "react";
 
-export function FaqSection() {
+export interface FAQItem {
+  q: string;
+  a: string;
+}
+
+export default function FaqSection({ items }: { items: FAQItem[] }) {
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
+
   return (
-    <section id="faq" className="py-12 md:py-20 lg:py-24 bg-primary/5">
+    <section className="bg-muted/30 py-12">
       <div className="container mx-auto px-4 md:px-6">
-        <ScrollAnimationWrapper>
-          <h2 className="section-title">Frequently Asked Questions</h2>
-          <p className="section-subtitle">
-            Find quick answers to common questions about our inspection services.
-          </p>
-        </ScrollAnimationWrapper>
-        <ScrollAnimationWrapper animationClass="animate-fadeInUp" delay="delay-200">
-          <div className="max-w-4xl mx-auto">
-            <Accordion type="single" collapsible className="w-full">
-              {faqData.map((item, index) => (
-                <AccordionItem key={index} value={`item-${index}`}>
-                  <AccordionTrigger className="text-left text-lg font-semibold hover:no-underline">
-                    {item.question}
-                  </AccordionTrigger>
-                  <AccordionContent className="text-base text-muted-foreground prose prose-sm max-w-none">
-                    <div dangerouslySetInnerHTML={{ __html: item.answer }} />
-                  </AccordionContent>
-                </AccordionItem>
-              ))}
-            </Accordion>
-          </div>
-        </ScrollAnimationWrapper>
+        <h2 className="text-2xl md:text-3xl font-bold text-center font-headline">
+          Frequently Asked Questions
+        </h2>
+
+        <div className="mt-8 space-y-4 max-w-2xl mx-auto">
+          {items.map((item, index) => (
+            <div
+              key={index}
+              className="border border-border/50 rounded-lg bg-card/80 backdrop-blur-sm shadow-sm"
+            >
+              <button
+                type="button"
+                onClick={() => setOpenIndex(openIndex === index ? null : index)}
+                className="w-full text-left px-4 py-3 font-medium flex justify-between items-center"
+              >
+                <span>{item.q}</span>
+                <span className="ml-2 text-muted-foreground">
+                  {openIndex === index ? "−" : "+"}
+                </span>
+              </button>
+
+              {openIndex === index && (
+                <div className="px-4 pb-4 text-muted-foreground text-sm leading-relaxed">
+                  {item.a}
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );
 }
+
+
