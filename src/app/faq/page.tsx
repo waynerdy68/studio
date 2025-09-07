@@ -1,5 +1,4 @@
-
-import { FaqSection } from "@/components/sections/faq-section";
+import FaqSection from "@/components/sections/faq-section";
 import { faqData } from "@/lib/faq-data";
 import type { Metadata } from 'next';
 import Image from 'next/image';
@@ -47,7 +46,7 @@ export default function FAQPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <div className="relative z-10">
-        <FaqSection />
+        <FaqSection items={faqData} />
       </div>
     </div>
   );

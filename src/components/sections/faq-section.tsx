@@ -1,11 +1,10 @@
-// src/components/sections/faq-section.tsx
 "use client";
 
 import React, { useState } from "react";
 
 export interface FAQItem {
-  q: string;
-  a: string;
+  question: string;
+  answer: string;
 }
 
 export default function FaqSection({ items }: { items: FAQItem[] }) {
@@ -29,7 +28,7 @@ export default function FaqSection({ items }: { items: FAQItem[] }) {
                 onClick={() => setOpenIndex(openIndex === index ? null : index)}
                 className="w-full text-left px-4 py-3 font-medium flex justify-between items-center"
               >
-                <span>{item.q}</span>
+                <span>{item.question}</span>
                 <span className="ml-2 text-muted-foreground">
                   {openIndex === index ? "−" : "+"}
                 </span>
@@ -37,7 +36,7 @@ export default function FaqSection({ items }: { items: FAQItem[] }) {
 
               {openIndex === index && (
                 <div className="px-4 pb-4 text-muted-foreground text-sm leading-relaxed">
-                  {item.a}
+                  {item.answer}
                 </div>
               )}
             </div>
@@ -47,5 +46,3 @@ export default function FaqSection({ items }: { items: FAQItem[] }) {
     </section>
   );
 }
-
-
