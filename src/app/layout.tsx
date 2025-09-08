@@ -1,3 +1,4 @@
+
 // /src/app/layout.tsx
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
@@ -9,7 +10,7 @@ import { FormProvider } from "@/context/form-context";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import { BackToTopButton } from "@/components/common/back-to-top-button";
-// import { AIChatbox } from "@/components/common/ai-chatbox";
+import { AIChatbox } from "@/components/common/ai-chatbox";
 import { MobileCTABar } from "@/components/common/mobile-cta-bar";
 import { FloatingContactWidget } from "@/components/common/floating-contact-widget";
 
@@ -188,7 +189,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <main className="flex-grow pb-24 md:pb-0">{children}</main>
               <Footer />
               <BackToTopButton />
-              {/* <AIChatbox /> */}
+              <AIChatbox />
               <MobileCTABar />
               <FloatingContactWidget />
             </div>
@@ -199,4 +200,3 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     </html>
   );
 }
-
