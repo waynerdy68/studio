@@ -1,4 +1,3 @@
-
 import Image from 'next/image';
 import WayneCastenImage from '@/../public/images/wayne-casten-inspector.png';
 
@@ -12,10 +11,13 @@ const AboutUsSection = () => {
               Meet Your Inspector
             </h2>
             <p className="text-lg text-gray-700 dark:text-gray-300 mb-6">
-              Wayne Casten is a state-licensed and certified professional inspector with years of experience in the industry. His meticulous approach and commitment to excellence ensure that you receive the most accurate and comprehensive home inspection possible.
+              I grew up in the building industry, working side-by-side with my father, a licensed Florida Contractor. That early experience taught me the value of hard work, attention to detail, and doing things the right way. In 2005, I earned my own State Contractor’s License, and a few years later in 2011, I became a licensed Home Inspector.
+            </p>
+            <p className="text-lg text-gray-700 dark:text-gray-300 mb-6">
+              Since then, I’ve built my reputation on being thorough, straightforward, and easy to talk to. I take the time to walk you through what I see, explain things in plain language, and answer your questions honestly. With me, you’re not just getting a checklist, you’re getting the insight of someone who’s been in the construction trenches and understands how homes are really put together.
             </p>
             <p className="text-lg text-gray-700 dark:text-gray-300">
-              He believes in clear, honest communication, taking the time to walk you through his findings and answer any questions you may have. With Wayne, you're not just getting an inspection; you're gaining a trusted partner in your home-buying journey.
+              My goal is simple: to give you the clearest picture possible so you can make confident decisions. When I’m not inspecting homes, I’m usually outside with my dogs or tinkering on a project - and I bring that same curiosity and attention to detail into every inspection.
             </p>
           </div>
           <div className="order-1 md:order-2 flex justify-center">
@@ -35,3 +37,4 @@ const AboutUsSection = () => {
 };
 
 export default AboutUsSection;
+
