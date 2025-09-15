@@ -1,222 +1,161 @@
-// src/app/services/4-point-inspection/page.tsx
-import type { Metadata } from "next";
-import Image from "next/image";
-import Link from "next/link";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import FaqSection from "@/components/sections/faq-section";
-import FaqJsonLd from "@/components/sections/FaqJsonLd";
-import { BRAND, PHONE_DISPLAY, PHONE_E164, serviceAreas } from "@/lib/constants";
+import type { Metadata } from "next"
+import Script from "next/script"
+import Link from "next/link"
+import Image from "next/image"
 
-// ---- SEO Metadata ----
+const BRAND = "Mayne Home Inspectors"
+const PHONE_E164 = "+18638430735"
+const PHONE_DISPLAY = "(863) 843-0735"
+
 export const metadata: Metadata = {
-  title: "4-Point Home Inspection | Mayne Home Inspectors (SWFL)",
+  title: "4-Point Inspections in LaBelle, Lehigh Acres & Clewiston | Mayne Home Inspectors",
   description:
-    "Insurance-required 4-Point inspections covering roof, electrical, plumbing, and HVAC. Serving LaBelle, Fort Myers, Cape Coral, and all SWFL. Same-day PDF report.",
-  alternates: { canonical: "/services/4-point-inspection" },
+    "Insurance-required 4-Point inspections (roof, electrical, plumbing, HVAC). 24-hour PDF with photos. Call (863) 843-0735.",
+  alternates: { canonical: "/services/4-point-inspection" }, // ✅ fixed (no .jpg)
   openGraph: {
-    title: "4-Point Home Inspection | Southwest Florida",
-    description:
-      "Get your 4-Point inspection for insurance—covering roof, plumbing, electrical, and HVAC. Same-day report delivery.",
+    type: "website",
     url: "https://mayneinspectors.com/services/4-point-inspection",
-    type: "article",
-    images: [
-      {
-        url: "/images/4point-inspection-labelle.png",
-        width: 1200,
-        height: 630,
-        alt: "4-Point home inspection in LaBelle, FL",
-      },
-    ],
+    title: "4-Point Inspections | Mayne Home Inspectors",
+    description:
+      "Roof, electrical, plumbing, HVAC. 24-hour report. Serving LaBelle, Lehigh Acres, Clewiston & nearby.",
+    images: [{ url: "/images/og/4-point.jpg", width: 1200, height: 630, alt: "4-Point Inspection in Florida" }], // ✅ ensure this file exists
   },
   twitter: {
     card: "summary_large_image",
-    title: "4-Point Home Inspection | Southwest Florida",
-    description: "Required for older homes. Fast scheduling, same-day report.",
-    images: ["/images/4point-inspection-labelle.png"],
-  },
-};
-
-// ---- Structured Data (Service) ----
-function ServiceJsonLd() {
-  const data = {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    "@id": "https://mayneinspectors.com/services/4-point-inspection#service",
-    name: "4-Point Home Inspection",
-    serviceType: "Insurance 4-Point Inspection",
-    provider: {
-      "@type": ["LocalBusiness", "HomeAndConstructionBusiness"],
-      name: BRAND,
-      telephone: PHONE_E164,
-      areaServed: serviceAreas,
-      url: "https://mayneinspectors.com/",
-    },
+    title: "4-Point Inspections | Mayne Home Inspectors",
     description:
-      "Florida 4-Point inspection covering roof, electrical, plumbing, and HVAC systems. Required by insurers for homes 20+ years old.",
-    url: "https://mayneinspectors.com/services/4-point-inspection",
-    hasOfferCatalog: {
-      "@type": "OfferCatalog",
-      name: "4-Point Inspection",
-      itemListElement: [
-        {
-          "@type": "Offer",
-          name: "Insurance 4-Point Inspection",
-          priceCurrency: "USD",
-          price: "175",
-          itemOffered: {
-            "@type": "Service",
-            name: "4-Point Insurance Inspection",
-            description:
-              "Detailed report covering roof, HVAC, plumbing, and electrical for insurance purposes.",
-          },
-        },
-      ],
-    },
-  };
-  return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
-    />
-  );
+      "Roof, electrical, plumbing, HVAC. 24-hour report. Serving LaBelle, Lehigh Acres, Clewiston & nearby.",
+    images: ["/images/og/4-point.jpg"], // ✅ same file as OG
+  },
 }
 
-// ---- FAQs ----
 const faqs = [
-  {
-    q: "What is a 4-Point inspection?",
-    a: "It’s a limited inspection focusing on four key systems: roof, plumbing, electrical, and HVAC. Insurers use it to assess risk on older homes.",
-  },
-  {
-    q: "Do I need one for insurance?",
-    a: "Yes, most Florida insurance companies require it for homes 20 years or older to issue or renew a policy.",
-  },
-  {
-    q: "How long does the inspection take?",
-    a: "Typically 30–60 minutes depending on accessibility. You’ll receive your PDF report with labeled photos the same day.",
-  },
-  {
-    q: "Can I combine it with a wind mitigation?",
-    a: "Yes, we often bundle 4-Point and wind mitigation inspections together for convenience and savings.",
-  },
-];
+  { q: "What is a 4-Point inspection?",
+    a: "An insurance-focused check of the home’s four major systems: roof, electrical, plumbing, and HVAC. Many carriers require it for older homes." },
+  { q: "Do you include photos and insurer forms?",
+    a: "Yes—clear photos and a carrier-friendly PDF delivered fast (within 24 hours)." },
+  { q: "Will a 4-Point fail my home sale?",
+    a: "No. It’s not a pass/fail home inspection. It documents current condition and materials for underwriting." },
+  { q: "How long is it valid?",
+    a: "Most insurers accept a 4-Point for 1–2 years, but policies vary." },
+  { q: "Can you bundle with a wind mitigation?",
+    a: "Absolutely—bundling saves time and often money. Ask when you call." },
+]
 
-// ---- Page Component ----
 export default function FourPointPage() {
+  const faqLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((f) => ({
+      "@type": "Question",
+      name: f.q,
+      acceptedAnswer: { "@type": "Answer", text: f.a },
+    })),
+  }
+
   return (
-    <>
-      <ServiceJsonLd />
-      <FaqJsonLd qa={faqs} />
+    <main className="max-w-5xl mx-auto px-4 py-16">
+      <Script id="ldjson-4pt-faq" type="application/ld+json">
+        {JSON.stringify(faqLd)}
+      </Script>
 
       {/* Hero */}
-      <section className="bg-background">
-        <div className="container mx-auto px-4 md:px-6 py-12 md:py-16">
-          <div className="grid md:grid-cols-2 gap-10 items-center">
-            <div>
-              <h1 className="text-3xl md:text-4xl font-bold font-headline">
-                4-Point Home Inspection
-              </h1>
-              <p className="mt-4 text-muted-foreground">
-                Many insurers require a <strong>4-Point inspection</strong> on
-                homes 20+ years old. We inspect roof, plumbing, electrical, and
-                HVAC, then deliver a{" "}
-                <strong>same-day PDF report with photos</strong> accepted by
-                insurance companies across Florida.
-              </p>
-              <div className="mt-6 flex flex-wrap gap-3">
-                <Button asChild size="lg" className="bg-primary hover:bg-primary/90">
-                  <Link href="/#schedule">Book 4-Point Inspection</Link>
-                </Button>
-                <Button asChild variant="outline" size="lg">
-                  <a href={`tel:${PHONE_E164}`}>Call {PHONE_DISPLAY}</a>
-                </Button>
-              </div>
-              <p className="mt-3 text-sm text-muted-foreground">
-                Serving {serviceAreas.slice(0, 6).join(", ")}, and nearby SWFL
-                communities.
-              </p>
-            </div>
-            <div className="relative aspect-[4/3] w-full">
-              <Image
-                src="/images/4point-inspection-labelle.png"
-                alt="4-Point home inspection in Southwest Florida"
-                fill
-                sizes="(max-width:768px) 100vw, (max-width:1024px) 50vw, 600px"
-                className="rounded-xl shadow-2xl object-cover"
-              />
-            </div>
-          </div>
+      <section className="text-center">
+        <h1 className="text-3xl sm:text-5xl font-bold text-foreground">4-Point Inspections</h1>
+        <p className="mt-4 text-lg text-muted-foreground">
+          Insurance-ready report: roof, electrical, plumbing, HVAC. 24-hour PDF with photos.
+        </p>
+        <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a
+            href={`tel:${PHONE_E164}`}
+            className="px-6 py-3 rounded-xl bg-primary text-primary-foreground font-semibold shadow hover:opacity-90"
+            aria-label={`Call ${BRAND} at ${PHONE_DISPLAY}`}
+          >
+            Call {PHONE_DISPLAY}
+          </a>
+          <a
+            href={`sms:${PHONE_E164}`}
+            className="px-6 py-3 rounded-xl border border-primary text-primary font-semibold hover:bg-primary/5"
+          >
+            Text Us to Schedule
+          </a>
         </div>
       </section>
 
-      {/* What we check */}
-      <section className="bg-muted/30">
-        <div className="container mx-auto px-4 md:px-6 py-12">
-          <div className="grid md:grid-cols-2 gap-6">
-            {[
-              {
-                title: "Roof",
-                body: "Covering type, age, condition, leaks, and expected lifespan.",
-              },
-              {
-                title: "Plumbing",
-                body: "Supply and drain lines, water heater age/type, evidence of leaks.",
-              },
-              {
-                title: "Electrical",
-                body: "Panel brand, breaker condition, wiring type, overall safety.",
-              },
-              {
-                title: "HVAC",
-                body: "System age, functionality, presence of heating/cooling, condition of equipment.",
-              },
-            ].map((item) => (
-              <Card
-                key={item.title}
-                className="border-border/50 bg-card/80 backdrop-blur-sm"
-              >
-                <CardHeader>
-                  <CardTitle className="text-lg">{item.title}</CardTitle>
-                </CardHeader>
-                <CardContent className="text-sm text-muted-foreground">
-                  {item.body}
-                </CardContent>
-              </Card>
-            ))}
-          </div>
+      {/* Visible hero image (uses your OG asset) */}
+      <section className="mt-10">
+        <div
+          className="relative mx-auto max-w-3xl rounded-xl shadow overflow-hidden"
+          style={{ aspectRatio: "1200 / 630" }}
+        >
+          <Image
+            src="/images/og/4-point.jpg"   // ✅ match the metadata filename
+            alt="4-Point Inspection in Florida"
+            fill
+            className="object-cover"
+            sizes="(min-width: 768px) 768px, 100vw"
+            priority={false}
+          />
         </div>
       </section>
 
-      {/* FAQ */}
-      <FaqSection items={faqs} />
+      {/* What’s included */}
+      <section className="mt-16 grid md:grid-cols-2 gap-8">
+        <div>
+          <h2 className="text-2xl font-semibold">What we check</h2>
+          <ul className="mt-4 space-y-2 text-muted-foreground">
+            <li>• Roof covering, visible condition, age evidence</li>
+            <li>• Electrical panel brand/amps, visible hazards, GFCI/AFCI (as applicable)</li>
+            <li>• Plumbing supply/drain materials, water heater age & TPR, visible leaks</li>
+            <li>• HVAC system age, cooling/heating method, visible condition</li>
+          </ul>
+        </div>
+        <div>
+          <h2 className="text-2xl font-semibold">What you receive</h2>
+          <ul className="mt-4 space-y-2 text-muted-foreground">
+            <li>• Concise PDF formatted for insurers</li>
+            <li>• Clear labeled photos of key items</li>
+            <li>• Notes on items carriers commonly flag</li>
+            <li>• Fast digital delivery (within 24 hours)</li>
+          </ul>
+        </div>
+      </section>
 
       {/* CTA */}
-      <section className="bg-background">
-        <div className="container mx-auto px-4 md:px-6 py-12">
-          <div className="grid md:grid-cols-2 gap-8 items-center">
-            <div>
-              <h2 className="text-2xl font-bold">
-                Insurance Ready. Same-Day Reports.
-              </h2>
-              <ul className="mt-4 space-y-2 text-muted-foreground">
-                <li>• 4-Point inspection: <strong>$175</strong></li>
-                <li>• Covers roof, plumbing, electrical, HVAC</li>
-                <li>• Required for many Florida insurers</li>
-                <li>• Same-day PDF with photos</li>
-              </ul>
-            </div>
-            <div className="flex gap-3 md:justify-end">
-              <Button asChild size="lg" className="bg-primary hover:bg-primary/90">
-                <Link href="/#schedule">Schedule Now</Link>
-              </Button>
-              <Button asChild variant="outline" size="lg">
-                <a href={`tel:${PHONE_E164}`}>Call {PHONE_DISPLAY}</a>
-              </Button>
-            </div>
-          </div>
+      <section className="mt-16 text-center">
+        <p className="text-muted-foreground">
+          Serving LaBelle, Lehigh Acres, Clewiston, Moore Haven, Fort Myers & Cape Coral.
+        </p>
+        <div className="mt-6 flex flex-col sm:flex-row items-center justify-center gap-4">
+          <Link href="/#schedule" className="px-6 py-3 rounded-xl bg-secondary text-secondary-foreground font-semibold hover:opacity-90">
+            Schedule Online
+          </Link>
+          <a
+            href={`tel:${PHONE_E164}`}
+            className="px-6 py-3 rounded-xl border border-primary text-primary font-semibold hover:bg-primary/5"
+            aria-label={`Call ${BRAND} at ${PHONE_DISPLAY}`}
+          >
+            Or call {PHONE_DISPLAY}
+          </a>
         </div>
       </section>
-    </>
-  );
+
+      {/* FAQs */}
+      <section className="mt-16">
+        <h2 className="text-2xl font-semibold">4-Point FAQ</h2>
+        <div className="mt-6 space-y-6">
+          {faqs.map((f) => (
+            <details key={f.q} className="group rounded-xl border p-4">
+              <summary className="cursor-pointer font-medium">{f.q}</summary>
+              <p className="mt-2 text-muted-foreground">{f.a}</p>
+            </details>
+          ))}
+        </div>
+      </section>
+
+      <footer className="mt-20 text-center text-sm text-muted-foreground">
+        Certified Home Inspector HI3589 • State Contractor CRC1328070 • Radon Technician R2355 • National Association Home Inspectors NACHI10122704
+      </footer>
+    </main>
+  )
 }
