@@ -37,9 +37,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }))
 
+  // Add the new static Fort Myers page
+  const staticCityRoutes: MetadataRoute.Sitemap = [
+      { url: `${base}/service-areas/fort-myers`, lastModified: now, changeFrequency: 'weekly', priority: 0.7 }
+  ];
+
+
   // De-dupe just in case
   const seen = new Set<string>()
-  return [...staticPages, ...serviceRoutes, ...cityRoutes].filter(i =>
+  return [...staticPages, ...serviceRoutes, ...cityRoutes, ...staticCityRoutes].filter(i =>
     seen.has(i.url) ? false : (seen.add(i.url), true)
   )
 }
