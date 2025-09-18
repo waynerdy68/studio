@@ -293,8 +293,8 @@ export default function FourPointPage() {
       </section>
 
       {/* Why You Need It */}
-      <section className="mt-16 bg-gradient-to-r from-yellow-50 to-orange-50 rounded-2xl p-8">
-        <h2 className="text-2xl font-semibold text-center mb-8">
+      <section className="mt-16 bg-muted/30 rounded-2xl p-8">
+        <h2 className="text-2xl font-semibold text-center mb-8 text-foreground">
           Why Florida Homeowners Need 4-Point Inspections
         </h2>
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-4xl mx-auto">
@@ -304,7 +304,7 @@ export default function FourPointPage() {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 16.5c-.77.833.192 2.5 1.732 2.5z" />
               </svg>
             </div>
-            <h3 className="font-semibold mb-2">Policy Requirements</h3>
+            <h3 className="font-semibold mb-2 text-foreground">Policy Requirements</h3>
             <p className="text-sm text-muted-foreground">Insurance companies require 4-Point Inspections for older homes to assess coverage eligibility</p>
           </div>
           <div className="text-center">
@@ -313,7 +313,7 @@ export default function FourPointPage() {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
               </svg>
             </div>
-            <h3 className="font-semibold mb-2">Avoid Cancellation</h3>
+            <h3 className="font-semibold mb-2 text-foreground">Avoid Cancellation</h3>
             <p className="text-sm text-muted-foreground">Maintain your current coverage by documenting system conditions before renewal</p>
           </div>
           <div className="text-center">
@@ -322,7 +322,7 @@ export default function FourPointPage() {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1" />
               </svg>
             </div>
-            <h3 className="font-semibold mb-2">Potential Savings</h3>
+            <h3 className="font-semibold mb-2 text-foreground">Potential Savings</h3>
             <p className="text-sm text-muted-foreground">Systems in good condition may qualify for better rates or coverage options</p>
           </div>
           <div className="text-center">
@@ -331,7 +331,7 @@ export default function FourPointPage() {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
               </svg>
             </div>
-            <h3 className="font-semibold mb-2">Peace of Mind</h3>
+            <h3 className="font-semibold mb-2 text-foreground">Peace of Mind</h3>
             <p className="text-sm text-muted-foreground">Know the condition of your major systems and plan for future maintenance</p>
           </div>
         </div>
@@ -432,7 +432,7 @@ export default function FourPointPage() {
             "Lighthouse Insurance",
             "Monarch Insurance"
           ].map(insurer => (
-            <div key={insurer} className="text-center p-3 rounded-lg border bg-white">
+            <div key={insurer} className="text-center p-3 rounded-lg border bg-card">
               <p className="text-sm font-medium">{insurer}</p>
             </div>
           ))}
@@ -443,35 +443,35 @@ export default function FourPointPage() {
       </section>
 
       {/* Process Section */}
-      <section className="mt-16 bg-gradient-to-r from-blue-50 to-green-50 rounded-2xl p-8">
-        <h2 className="text-2xl font-semibold text-center mb-8">Our 4-Point Inspection Process</h2>
+      <section className="mt-16 bg-muted/30 rounded-2xl p-8">
+        <h2 className="text-2xl font-semibold text-center mb-8 text-foreground">Our 4-Point Inspection Process</h2>
         <div className="grid md:grid-cols-4 gap-6 max-w-4xl mx-auto">
           <div className="text-center">
             <div className="w-12 h-12 mx-auto mb-4 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-bold">
               1
             </div>
-            <h3 className="font-semibold mb-2">Quick Scheduling</h3>
+            <h3 className="font-semibold mb-2 text-foreground">Quick Scheduling</h3>
             <p className="text-sm text-muted-foreground">Call or text to schedule, typically within 24 hours</p>
           </div>
           <div className="text-center">
             <div className="w-12 h-12 mx-auto mb-4 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-bold">
               2
             </div>
-            <h3 className="font-semibold mb-2">Focused Inspection</h3>
+            <h3 className="font-semibold mb-2 text-foreground">Focused Inspection</h3>
             <p className="text-sm text-muted-foreground">1-2 hour assessment of the four critical systems</p>
           </div>
           <div className="text-center">
             <div className="w-12 h-12 mx-auto mb-4 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-bold">
               3
             </div>
-            <h3 className="font-semibold mb-2">Documentation</h3>
+            <h3 className="font-semibold mb-2 text-foreground">Documentation</h3>
             <p className="text-sm text-muted-foreground">Professional photos and condition assessment</p>
           </div>
           <div className="text-center">
             <div className="w-12 h-12 mx-auto mb-4 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-bold">
               4
             </div>
-            <h3 className="font-semibold mb-2">Fast Report</h3>
+            <h3 className="font-semibold mb-2 text-foreground">Fast Report</h3>
             <p className="text-sm text-muted-foreground">Insurance-ready report delivered within 24 hours</p>
           </div>
         </div>

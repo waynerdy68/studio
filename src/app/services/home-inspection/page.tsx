@@ -476,35 +476,35 @@ export default function HomeInspectionPage() {
       </section>
 
       {/* Process Section */}
-      <section className="mt-16 bg-gradient-to-r from-blue-50 to-green-50 rounded-2xl p-8">
+      <section className="mt-16 bg-muted/30 rounded-2xl p-8">
         <h2 className="text-2xl font-semibold text-center mb-8">Our Inspection Process</h2>
         <div className="grid md:grid-cols-4 gap-6 max-w-4xl mx-auto">
           <div className="text-center">
             <div className="w-12 h-12 mx-auto mb-4 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-bold">
               1
             </div>
-            <h3 className="font-semibold mb-2">Schedule</h3>
+            <h3 className="font-semibold mb-2 text-foreground">Schedule</h3>
             <p className="text-sm text-muted-foreground">Call or text to book your inspection, typically within 24 hours</p>
           </div>
           <div className="text-center">
             <div className="w-12 h-12 mx-auto mb-4 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-bold">
               2
             </div>
-            <h3 className="font-semibold mb-2">Inspect</h3>
+            <h3 className="font-semibold mb-2 text-foreground">Inspect</h3>
             <p className="text-sm text-muted-foreground">Thorough 2-3 hour inspection with detailed documentation and photos</p>
           </div>
           <div className="text-center">
             <div className="w-12 h-12 mx-auto mb-4 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-bold">
               3
             </div>
-            <h3 className="font-semibold mb-2">Review</h3>
+            <h3 className="font-semibold mb-2 text-foreground">Review</h3>
             <p className="text-sm text-muted-foreground">On-site walkthrough of findings and Q&A session</p>
           </div>
           <div className="text-center">
             <div className="w-12 h-12 mx-auto mb-4 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-bold">
               4
             </div>
-            <h3 className="font-semibold mb-2">Report</h3>
+            <h3 className="font-semibold mb-2 text-foreground">Report</h3>
             <p className="text-sm text-muted-foreground">Detailed report with photos delivered within 24 hours</p>
           </div>
         </div>
