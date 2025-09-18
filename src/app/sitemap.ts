@@ -38,10 +38,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }))
 
-  // Add the new static Fort Myers page
+  // Add the new static city pages
   const staticCityRoutes: MetadataRoute.Sitemap = [
       { url: `${base}/service-areas/fort-myers`, lastModified: now, changeFrequency: 'weekly', priority: 0.7 },
-      { url: `${base}/service-areas/cape-coral`, lastModified: now, changeFrequency: 'weekly', priority: 0.7 }
+      { url: `${base}/service-areas/cape-coral`, lastModified: now, changeFrequency: 'weekly', priority: 0.7 },
+      { url: `${base}/service-areas/punta-gorda`, lastModified: now, changeFrequency: 'weekly', priority: 0.7 }
   ];
 
 
