@@ -1,3 +1,4 @@
+
 // src/app/sitemap.ts
 import type { MetadataRoute } from 'next'
 import { services, serviceAreas } from '@/lib/constants'
@@ -39,7 +40,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   // Add the new static Fort Myers page
   const staticCityRoutes: MetadataRoute.Sitemap = [
-      { url: `${base}/service-areas/fort-myers`, lastModified: now, changeFrequency: 'weekly', priority: 0.7 }
+      { url: `${base}/service-areas/fort-myers`, lastModified: now, changeFrequency: 'weekly', priority: 0.7 },
+      { url: `${base}/service-areas/cape-coral`, lastModified: now, changeFrequency: 'weekly', priority: 0.7 }
   ];
 
 
