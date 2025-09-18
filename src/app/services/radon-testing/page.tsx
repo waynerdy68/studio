@@ -1,222 +1,390 @@
-// src/app/services/radon-testing/page.tsx
-import type { Metadata } from "next";
-import Image from "next/image";
-import Link from "next/link";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import FaqSection from "@/components/sections/faq-section";
-import FaqJsonLd from "@/components/sections/FaqJsonLd";
-import { BRAND, PHONE_DISPLAY, PHONE_E164, serviceAreas } from "@/lib/constants";
 
-// ---- SEO Metadata ----
+import type { Metadata } from "next"
+import Script from "next/script"
+import Link from "next/link"
+import Image from "next/image"
+
+const BRAND = "Mayne Home Inspectors"
+const PHONE_E164 = "+18638430735"
+const PHONE_DISPLAY = "(863) 843-0735"
+const EMAIL = "info@mayneinspectors.com"
+
 export const metadata: Metadata = {
-  title: "Radon Testing | Mayne Home Inspectors (SWFL)",
+  title: "Radon Gas Testing Services | Southwest Florida | Mayne Home Inspectors",
   description:
-    "Professional radon testing in Southwest Florida using continuous radon monitors (48-hour). Same-day summary, clear results, and guidance.",
+    "Protect your family with professional radon testing. We use continuous 48-hour monitors for accurate results. Serving Southwest FL. Licensed R2355. Call (863) 843-0735.",
   alternates: { canonical: "/services/radon-testing" },
   openGraph: {
-    title: "Radon Testing | Southwest Florida",
-    description:
-      "Accurate 48-hour radon testing with continuous monitors. Same-day summary and clear recommendations.",
+    type: "website",
     url: "https://mayneinspectors.com/services/radon-testing",
-    type: "article",
-    images: [
-      {
-        url: "/images/radon-testing-labelle.png",
-        width: 1200,
-        height: 630,
-        alt: "Radon testing with continuous monitor in Southwest Florida",
-      },
-    ],
+    title: "Radon Gas Testing Services for SWFL Homeowners",
+    description:
+      "Identify and measure radon, a leading cause of lung cancer, with our certified 48-hour testing service. Same-day summary and clear reports.",
+    images: [{ url: "/images/og/radon-testing.jpg", width: 1200, height: 630, alt: "Radon testing monitor in a Florida home" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Radon Testing | Southwest Florida",
-    description:
-      "48-hour radon test with continuous monitors. Same-day summary and easy-to-read results.",
-    images: ["/images/radon-testing-labelle.png"],
+    title: "Radon Testing FL | Mayne Home Inspectors",
+    description: "Protect your home from radon gas with our certified 48-hour continuous monitoring test.",
+    images: ["/images/og/radon-testing.jpg"],
   },
-};
-
-// ---- Structured Data (Service) ----
-function ServiceJsonLd() {
-  const data = {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    "@id": "https://mayneinspectors.com/services/radon-testing#service",
-    name: "Radon Testing",
-    serviceType: "Radon Testing (48-hour Continuous Monitor)",
-    provider: {
-      "@type": ["LocalBusiness", "HomeAndConstructionBusiness"],
-      name: BRAND,
-      telephone: PHONE_E164,
-      url: "https://mayneinspectors.com/",
-      areaServed: serviceAreas, // simple strings to keep validators quiet
-    },
-    description:
-      "48-hour radon testing using calibrated continuous radon monitors. Clear results, same-day summary, and guidance on mitigation if necessary.",
-    url: "https://mayneinspectors.com/services/radon-testing",
-    hasOfferCatalog: {
-      "@type": "OfferCatalog",
-      name: "Radon Testing",
-      itemListElement: [
-        {
-          "@type": "Offer",
-          name: "48-hour Radon Test (Continuous Monitor)",
-          priceCurrency: "USD",
-          price: "175",
-          itemOffered: {
-            "@type": "Service",
-            name: "Radon Testing",
-            description:
-              "Continuous radon monitor placed for 48 hours, with a clear results report and recommendations.",
-          },
-        },
-      ],
-    },
-  };
-  return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
-    />
-  );
 }
 
-// ---- FAQs ----
 const faqs = [
-  {
-    q: "How does radon testing work?",
-    a: "We place a calibrated continuous radon monitor in the lowest livable area for ~48 hours. It records hourly levels to provide an accurate average and profile.",
-  },
-  {
-    q: "How soon do I get results?",
-    a: "You’ll receive a same-day summary once the test completes and the device is picked up, followed by a full report.",
-  },
-  {
-    q: "What level is considered high?",
-    a: "The EPA action level is 4.0 pCi/L. Results at or above that typically warrant mitigation; 2.0–3.9 pCi/L may still be considered for long-term testing.",
-  },
-  {
-    q: "Can doors/windows be opened during the test?",
-    a: "Short answer: avoid it. Maintain closed-house conditions as much as practical for accurate results.",
-  },
-];
+    {
+        q: "What is radon and why is it dangerous?",
+        a: "Radon is a naturally occurring radioactive gas that is invisible, odorless, and tasteless. It is the second leading cause of lung cancer in the United States. Since you can't see or smell it, testing is the only way to know the level of radon in your home."
+    },
+    {
+        q: "How does the 48-hour radon test work?",
+        a: "We place a continuous radon monitor in the lowest livable area of your home. This device takes hourly readings for a minimum of 48 hours to provide an accurate average concentration of radon gas, which is more reliable than a one-time charcoal test."
+    },
+    {
+        q: "What is considered a high level of radon?",
+        a: "The EPA recommends taking action to reduce radon levels if the result is 4.0 picoCuries per liter (pCi/L) or higher. Even levels between 2.0 and 3.9 pCi/L are worth considering for mitigation."
+    },
+    {
+        q: "What do I need to do to prepare for a radon test?",
+        a: "For an accurate test, it's important to maintain 'closed-house conditions.' This means keeping all windows and outside doors closed as much as possible for 12 hours before and during the 48-hour test period. Normal entry and exit are fine."
+    },
+    {
+        q: "If high radon levels are found, what's next?",
+        a: "If your home has high radon levels, we will recommend that you consult with a qualified and licensed radon mitigation professional. Radon mitigation systems are effective at reducing radon levels and can often be installed in a single day."
+    },
+    {
+        q: "Can radon testing be done with my home inspection?",
+        a: "Yes, radon testing is included in our Premium Inspection package and can be added to any other inspection. Scheduling them together is convenient and ensures you have all the information you need before closing."
+    }
+]
 
-// ---- Page Component ----
+const testimonials = [
+  {
+    name: "Laura V.",
+    location: "Cape Coral",
+    text: "We added on the radon test to our home inspection for peace of mind. The inspector explained the process, and the report was very clear. Thankfully our levels were low, but it was worth knowing for sure."
+  },
+  {
+    name: "Mark D.",
+    location: "LaBelle",
+    text: "The continuous monitor test was impressive. It showed how the radon levels changed over two days, which felt much more accurate than a simple canister test. Professional service all around."
+  },
+  {
+    name: "Chris W.",
+    location: "South Fort Myers",
+    text: "Great communication and a straightforward process. The radon report was easy to understand, and the inspector was available to answer our questions about the EPA guidelines."
+  }
+]
+
+const testingProcess = [
+    {
+        category: "Device Placement",
+        items: [
+            "A calibrated Continuous Radon Monitor (CRM) is placed",
+            "Located in the lowest livable area of the home",
+            "Placed away from drafts, vents, and direct sunlight"
+        ]
+    },
+    {
+        category: "48-Hour Monitoring",
+        items: [
+            "The device runs uninterrupted for at least 48 hours",
+            "Hourly measurements of radon concentration are recorded",
+            "Maintains closed-house conditions for accuracy"
+        ]
+    },
+    {
+        category: "Data Analysis",
+        items: [
+            "The device is retrieved after the testing period",
+            "Data is downloaded and analyzed for an overall average",
+            "Report generated with hourly readings and EPA guidelines"
+        ]
+    },
+    {
+        category: "Clear Reporting",
+        items: [
+            "Receive a same-day summary of the results",
+            "Detailed PDF report with graphs and explanations",
+            "Clear recommendations if mitigation is advised"
+        ]
+    }
+]
+
 export default function RadonTestingPage() {
+  const faqLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((f) => ({
+      "@type": "Question",
+      name: f.q,
+      acceptedAnswer: { "@type": "Answer", text: f.a },
+    })),
+  }
+
+  const serviceLd = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "@id": "https://mayneinspectors.com/services/radon-testing",
+    "name": "Radon Gas Testing",
+    "description": "Professional 48-hour continuous radon monitoring services in Southwest Florida to ensure a safe indoor environment.",
+    "provider": {
+      "@type": "LocalBusiness",
+      "name": BRAND,
+      "telephone": PHONE_DISPLAY,
+      "email": EMAIL
+    },
+    "areaServed": [
+      "LaBelle, FL",
+      "Lehigh Acres, FL",
+      "Fort Myers, FL",
+      "Cape Coral, FL",
+      "Southwest Florida"
+    ],
+    "serviceType": "Radon Testing",
+    "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Radon Testing Services",
+        "itemListElement": [
+            {
+                "@type": "Offer",
+                "itemOffered": {
+                    "@type": "Service",
+                    "name": "48-Hour Continuous Radon Test"
+                }
+            }
+        ]
+    }
+  }
+
+  const breadcrumbLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://mayneinspectors.com"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Services",
+        "item": "https://mayneinspectors.com/#services"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Radon Testing",
+        "item": "https://mayneinspectors.com/services/radon-testing"
+      }
+    ]
+  }
+
   return (
-    <>
-      <ServiceJsonLd />
-      <FaqJsonLd qa={faqs} />
+    <main className="max-w-5xl mx-auto px-4 py-16">
+      <Script id="ldjson-radon-faq" type="application/ld+json">
+        {JSON.stringify(faqLd)}
+      </Script>
+      <Script id="ldjson-service" type="application/ld+json">
+        {JSON.stringify(serviceLd)}
+      </Script>
+      <Script id="ldjson-breadcrumb" type="application/ld+json">
+        {JSON.stringify(breadcrumbLd)}
+      </Script>
 
-      {/* Hero */}
-      <section className="bg-background">
-        <div className="container mx-auto px-4 md:px-6 py-12 md:py-16">
-          <div className="grid md:grid-cols-2 gap-10 items-center">
-            <div>
-              <h1 className="text-3xl md:text-4xl font-bold font-headline">
-                Radon Testing (48-Hour Continuous Monitor)
-              </h1>
-              <p className="mt-4 text-muted-foreground">
-                Radon is an odorless, radioactive gas. Our{" "}
-                <strong>continuous radon monitors</strong> run for ~48 hours to
-                provide accurate hourly readings and a clear average. You’ll get a{" "}
-                <strong>same-day summary</strong> with guidance on what to do next.
-              </p>
-              <div className="mt-6 flex flex-wrap gap-3">
-                <Button asChild size="lg" className="bg-primary hover:bg-primary/90">
-                  <Link href="/#schedule">Book Radon Test</Link>
-                </Button>
-                <Button asChild variant="outline" size="lg">
-                  <a href={`tel:${PHONE_E164}`}>Call {PHONE_DISPLAY}</a>
-                </Button>
-              </div>
-              <p className="mt-3 text-sm text-muted-foreground">
-                Serving {serviceAreas.slice(0, 6).join(", ")}, and nearby SWFL communities.
-              </p>
-            </div>
-            <div className="relative aspect-[4/3] w-full">
-              <Image
-                src="/images/radon-testing-labelle.png"
-                alt="Continuous radon monitor testing in Southwest Florida"
-                fill
-                sizes="(max-width:768px) 100vw, (max-width:1024px) 50vw, 600px"
-                className="rounded-xl shadow-2xl object-cover"
-              />
-            </div>
-          </div>
+      <nav className="mb-6 text-sm" aria-label="Breadcrumb">
+        <ol className="flex items-center space-x-2 text-muted-foreground">
+          <li><Link href="/" className="hover:text-primary">Home</Link></li>
+          <li>→</li>
+          <li><Link href="/#services" className="hover:text-primary">Services</Link></li>
+          <li>→</li>
+          <li className="text-foreground">Radon Testing</li>
+        </ol>
+      </nav>
+
+      <section className="text-center">
+        <h1 className="text-3xl sm:text-5xl font-bold text-foreground">
+          Radon Gas Testing
+        </h1>
+        <p className="mt-4 text-lg text-muted-foreground max-w-3xl mx-auto">
+          Protect your family from the dangers of radon gas. Our 48-hour continuous monitoring provides accurate, reliable results to ensure your home's air is safe.
+        </p>
+        <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a
+            href={`tel:${PHONE_E164}`}
+            className="px-6 py-3 rounded-xl bg-primary text-primary-foreground font-semibold shadow hover:opacity-90"
+            aria-label={`Call ${BRAND} at ${PHONE_DISPLAY}`}
+          >
+            Call {PHONE_DISPLAY}
+          </a>
+          <a
+            href={`sms:${PHONE_E164}`}
+            className="px-6 py-3 rounded-xl border border-primary text-primary font-semibold hover:bg-primary/5"
+          >
+            Text to Schedule Your Test
+          </a>
         </div>
       </section>
 
-      {/* What we do */}
-      <section className="bg-muted/30">
-        <div className="container mx-auto px-4 md:px-6 py-12">
-          <div className="grid md:grid-cols-3 gap-6">
-            {[
-              {
-                title: "48-Hour Test",
-                body: "Device runs for ~48 hours to capture hourly readings and a reliable average.",
-              },
-              {
-                title: "Continuous Monitor",
-                body: "Calibrated CRM provides accurate, time-stamped data (not a one-time canister).",
-              },
-              {
-                title: "Clear Results",
-                body: "Same-day summary and detailed report with recommendations based on EPA guidance.",
-              },
-            ].map((item) => (
-              <Card key={item.title} className="border-border/50 bg-card/80 backdrop-blur-sm">
-                <CardHeader>
-                  <CardTitle className="text-lg">{item.title}</CardTitle>
-                </CardHeader>
-                <CardContent className="text-sm text-muted-foreground">
-                  {item.body}
-                </CardContent>
-              </Card>
-            ))}
-          </div>
+      <section className="mt-10">
+        <div
+          className="relative mx-auto max-w-3xl rounded-xl shadow overflow-hidden"
+          style={{ aspectRatio: "1200 / 630" }}
+        >
+          <Image
+            src="/images/og/radon-testing.jpg"
+            alt="A continuous radon monitor placed in a home for a 48-hour test"
+            fill
+            className="object-cover"
+            sizes="(min-width: 768px) 768px, 100vw"
+          />
         </div>
       </section>
 
-      {/* Pricing / CTA */}
-      <section className="bg-background">
-        <div className="container mx-auto px-4 md:px-6 py-12">
-          <div className="grid md:grid-cols-2 gap-8 items-center">
-            <div>
-              <h2 className="text-2xl font-bold">Straightforward Pricing</h2>
-              <ul className="mt-4 space-y-2 text-muted-foreground">
-                <li>• Radon testing (48-hour): <strong>$175</strong></li>
-                <li>• Same-day summary after pickup</li>
-                <li>• Detailed PDF with hourly data</li>
-                <li>• Bundle discounts available with home/4-Point</li>
-              </ul>
-            </div>
-            <div className="flex gap-3 md:justify-end">
-              <Button asChild size="lg" className="bg-primary hover:bg-primary/90">
-                <Link href="/#schedule">Schedule Now</Link>
-              </Button>
-              <Button asChild variant="outline" size="lg">
-                <a href={`tel:${PHONE_E164}`}>Call {PHONE_DISPLAY}</a>
-              </Button>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Service Area blurb */}
-      <section className="bg-muted/30">
-        <div className="container mx-auto px-4 md:px-6 py-10">
-          <p className="text-center text-sm text-muted-foreground">
-            {BRAND} provides radon testing across Southwest Florida — including{" "}
-            {serviceAreas.join(", ")}.
+      <section className="mt-16">
+        <h2 className="text-3xl font-semibold text-center mb-8">
+          The Invisible Danger in Your Home
+        </h2>
+        <div className="prose max-w-4xl mx-auto text-muted-foreground">
+          <p className="text-lg leading-relaxed">
+            Radon is a naturally occurring radioactive gas that you can't see, smell, or taste, making it a hidden threat in any home. It's the #1 cause of lung cancer among non-smokers and is responsible for thousands of deaths each year in the U.S. Because Florida's geology can produce radon, the EPA and Surgeon General recommend testing for all homes.
+          </p>
+          <p className="mt-4 text-lg leading-relaxed">
+            Our professional radon testing service provides the accurate data you need to make an informed decision. Unlike simple, one-time charcoal kits, our 48-hour continuous radon monitors provide a detailed profile of your home's radon levels, giving you a reliable average and peace of mind.
           </p>
         </div>
       </section>
 
-      {/* FAQ */}
-      <FaqSection items={faqs} />
-    </>
-  );
+      <section className="mt-16">
+        <h2 className="text-2xl font-semibold text-center mb-8">Our 48-Hour Continuous Monitoring Process</h2>
+        <div className="grid md:grid-cols-2 gap-6">
+          {testingProcess.map((category, index) => (
+            <div key={index} className="border rounded-lg p-6">
+              <h3 className="font-semibold mb-4 text-primary">{category.category}</h3>
+              <ul className="space-y-2 text-sm text-muted-foreground">
+                {category.items.map((item, itemIndex) => (
+                  <li key={itemIndex} className="flex items-start gap-2">
+                    <div className="w-2 h-2 rounded-full bg-primary mt-2 flex-shrink-0"></div>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </section>
+      
+      <section className="mt-16 bg-muted/30 rounded-2xl p-8">
+        <h2 className="text-2xl font-semibold text-center mb-8">What You Receive With Your Test</h2>
+        <div className="grid md:grid-cols-2 gap-8">
+          <div>
+            <h3 className="text-xl font-semibold mb-4">Accurate & Clear Reporting</h3>
+            <ul className="space-y-3 text-muted-foreground">
+              <li className="flex items-start gap-3">
+                <div className="w-2 h-2 rounded-full bg-primary mt-2 flex-shrink-0"></div>
+                <span>A detailed graph showing hourly radon fluctuations</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <div className="w-2 h-2 rounded-full bg-primary mt-2 flex-shrink-0"></div>
+                <span>A clear, easy-to-understand average pCi/L reading</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <div className="w-2 h-2 rounded-full bg-primary mt-2 flex-shrink-0"></div>
+                <span>Comparison to EPA action levels and guidelines</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <div className="w-2 h-2 rounded-full bg-primary mt-2 flex-shrink-0"></div>
+                <span>Unbiased recommendation for next steps if needed</span>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-xl font-semibold mb-4">Professional & Reliable Service</h3>
+            <ul className="space-y-3 text-muted-foreground">
+              <li className="flex items-start gap-3">
+                <div className="w-2 h-2 rounded-full bg-primary mt-2 flex-shrink-0"></div>
+                <span>Service from a licensed inspector (R2355)</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <div className="w-2 h-2 rounded-full bg-primary mt-2 flex-shrink-0"></div>
+                <span>Fast scheduling and efficient device placement/retrieval</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <div className="w-2 h-2 rounded-full bg-primary mt-2 flex-shrink-0"></div>
+                <span>Same-day summary after test completion</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <div className="w-2 h-2 rounded-full bg-primary mt-2 flex-shrink-0"></div>
+                <span>Available as a standalone service or bundled with your home inspection</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section className="mt-16">
+        <h2 className="text-2xl font-semibold text-center mb-8">What Our Customers Say</h2>
+        <div className="grid md:grid-cols-3 gap-6">
+          {testimonials.map((testimonial, index) => (
+            <div key={index} className="border rounded-lg p-6 shadow-sm">
+              <div className="flex items-center mb-4">
+                <div className="flex text-yellow-400">
+                  {[...Array(5)].map((_, i) => (
+                    <svg key={i} className="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                      <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
+                    </svg>
+                  ))}
+                </div>
+              </div>
+              <p className="text-muted-foreground mb-4">"{testimonial.text}"</p>
+              <div>
+                <p className="font-semibold">{testimonial.name}</p>
+                <p className="text-sm text-muted-foreground">{testimonial.location}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+      
+      <section className="mt-16">
+        <h2 className="text-2xl font-semibold text-center mb-8">
+          Frequently Asked Questions About Radon Testing
+        </h2>
+        <div className="max-w-3xl mx-auto space-y-4">
+          {faqs.map((f) => (
+            <details key={f.q} className="group rounded-xl border p-6 shadow-sm">
+              <summary className="cursor-pointer font-medium text-lg">{f.q}</summary>
+              <p className="mt-4 text-muted-foreground leading-relaxed">{f.a}</p>
+            </details>
+          ))}
+        </div>
+      </section>
+
+      <section className="mt-16 bg-muted/50 rounded-2xl p-8 text-center">
+        <h2 className="text-2xl font-semibold mb-4">
+          Is Your Home Safe? Find Out for Sure.
+        </h2>
+        <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
+          Don't leave your family's health to chance. Schedule a professional radon test today for accurate results and peace of mind.
+        </p>
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <Link href="/#schedule" className="px-8 py-3 rounded-xl bg-secondary text-secondary-foreground font-semibold hover:opacity-90">
+            Schedule a Radon Test
+          </Link>
+          <a
+            href={`tel:${PHONE_E164}`}
+            className="px-8 py-3 rounded-xl bg-primary text-primary-foreground font-semibold shadow hover:opacity-90"
+            aria-label={`Call ${BRAND} at ${PHONE_DISPLAY}`}
+          >
+            Or Call {PHONE_DISPLAY}
+          </a>
+        </div>
+      </section>
+
+      <footer className="mt-20 text-center text-sm text-muted-foreground space-y-2">
+        <p>Florida Radon Measurement Technician License R2355 • Serving Southwest Florida since 2020</p>
+      </footer>
+    </main>
+  )
 }
