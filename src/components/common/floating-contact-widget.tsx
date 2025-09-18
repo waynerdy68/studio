@@ -136,11 +136,6 @@ export function FloatingContactWidget() {
           )}
         </Button>
 
-        {/* Notification badge */}
-        <div className="absolute -top-2 -right-2 bg-destructive text-destructive-foreground text-xs font-bold rounded-full h-6 w-6 flex items-center justify-center animate-pulse">
-          !
-        </div>
-        
       </div>
     </div>
   )
