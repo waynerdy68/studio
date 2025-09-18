@@ -31,7 +31,7 @@ export function AIChatbox() {
     if (isOpen && messages.length === 0) {
       // Add initial greeting message from AI
       setMessages([
-        { id: "greeting", text: "Hello! I'm the Mayne Home Inspectors AI assistant. How can I help you with your home inspection questions today?", sender: "ai" }
+        { id: "greeting", text: "Hello! I'm Ask Mayne, the Mayne Home Inspectors AI assistant. How can I help you with your home inspection questions today?", sender: "ai" }
       ]);
     }
   }, [isOpen, messages.length]);
@@ -91,7 +91,7 @@ export function AIChatbox() {
           aria-label="Open AI Chat"
         >
           <Bot className="h-6 w-6 transition-transform duration-300 group-hover:scale-110" />
-          <span className="font-semibold">AI Assistant</span>
+          <span className="font-semibold">Ask Mayne</span>
         </Button>
       </PopoverTrigger>
       <PopoverContent
@@ -105,7 +105,7 @@ export function AIChatbox() {
         <header className="p-4 border-b bg-card flex items-center justify-between">
           <div className="flex items-center gap-2">
             <Bot className="h-6 w-6 text-primary" />
-            <h3 id="ai-chatbox-title" className="text-lg font-semibold font-headline">AI Assistant</h3>
+            <h3 id="ai-chatbox-title" className="text-lg font-semibold font-headline">Ask Mayne</h3>
           </div>
           <Button variant="ghost" size="icon" onClick={() => setIsOpen(false)} aria-label="Close chat">
             <X className="h-5 w-5" />

@@ -7,7 +7,7 @@ import Image from "next/image"
 const BRAND = "Mayne Home Inspectors"
 const PHONE_E164 = "+18638430735"
 const PHONE_DISPLAY = "(863) 843-0735"
-const EMAIL = "info@mayneinspectors.com"
+const EMAIL = "castenhome@gmail.com"
 
 export const metadata: Metadata = {
   title: "Condo & Townhouse Inspection | Southwest FL | Mayne Home Inspectors",

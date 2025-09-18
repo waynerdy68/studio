@@ -6,10 +6,10 @@ import Image from "next/image"
 const BRAND = "Mayne Home Inspectors"
 const PHONE_E164 = "+18638430735"
 const PHONE_DISPLAY = "(863) 843-0735"
-const EMAIL = "info@mayneinspectors.com"
+const EMAIL = "castenhome@gmail.com"
 
 export const metadata: Metadata = {
-  title: "Professional Home Inspection Services FL | Same-Day Reports | Mayne Home Inspectors",
+  title: "Professional Home Inspection Services FL | Same-Day Reports Available | Mayne Home Inspectors",
   description:
     "Comprehensive home inspections in Southwest Florida since 2020. Same-day reports, detailed photos, licensed HI3589. Serving LaBelle, Lehigh Acres, Clewiston, Immokalee. Call (863) 843-0735.",
   alternates: { canonical: "/services/home-inspection" },
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     url: "https://mayneinspectors.com/services/home-inspection",
     title: "Professional Home Inspection Services Southwest Florida",
     description:
-      "Licensed home inspector with same-day reports, detailed photos, and clear recommendations. No scare tactics, just honest assessments.",
+      "Licensed home inspector with comprehensive reports, detailed photos, and clear recommendations. No scare tactics, just honest assessments.",
     images: [{ url: "/images/og/home-inspection.jpg", width: 1200, height: 630, alt: "Professional home inspection services in Southwest Florida" }],
   },
   twitter: {
