@@ -385,5 +385,5 @@ export const cityKeywords: Record<string, string[]> = {
   "montura-ranch-estates": ["Montura Ranch home inspector", "home inspection Montura Ranch", "Montura Ranch property inspector"],
   "babcock-ranch": ["Babcock Ranch home inspector", "new construction inspection Babcock Ranch", "Babcock Ranch inspector"],
   "lake-placid": ["Lake Placid home inspector", "home inspection Lake Placid FL", "Lake Placid property inspector"],
-  "ave-maria": ["Ave Maria home inspector", "home inspection Ave Maria FL", "Ave Maria new construction"],
+  "ave-maria": ["Ave Maria home inspector", "new construction inspection Ave Maria", "Ave Maria property inspector"],
 };
