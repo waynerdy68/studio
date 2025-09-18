@@ -432,7 +432,7 @@ export default function FourPointPage() {
             "Lighthouse Insurance",
             "Monarch Insurance"
           ].map(insurer => (
-            <div key={insurer} className="text-center p-3 rounded-lg border bg-card">
+            <div key={insurer} className="text-center p-3 rounded-lg border bg-muted/30">
               <p className="text-sm font-medium">{insurer}</p>
             </div>
           ))}
