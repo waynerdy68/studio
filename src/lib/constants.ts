@@ -24,6 +24,7 @@ export const serviceAreas: string[] = [
   "Port Charlotte",
   "Montura Ranch Estates",
   "Babcock Ranch",
+  "Lake Placid",
 ];
 
 /** Optional: counties if you want to surface them in UI copy */
@@ -64,7 +65,7 @@ export const services: Service[] = [
     description:
       "Focuses on four key areas: roofing, electrical, plumbing, and HVAC. Often required for insurance.",
     longDescription:
-      "A 4-Point Inspection is often required by insurance companies for older homes. It focuses on the four most critical systems: <br><b>• HVAC:</b> Heating, Ventilation, & Air Conditioning. <br><b>• Electrical:</b> Panel, breakers, and wiring. <br><b>• Plumbing:</b> Water heater, supply lines, and drains. <br><b>• Roof:</b> Shingles, flashing, and integrity. <br>This is crucial for insurance underwriting.",
+      "A 4-Point Inspection is often required by insurance companies for older homes. It focuses on the four most critical systems: &lt;br&gt;&lt;b&gt;• HVAC:&lt;/b&gt; Heating, Ventilation, &amp; Air Conditioning. &lt;br&gt;&lt;b&gt;• Electrical:&lt;/b&gt; Panel, breakers, and wiring. &lt;br&gt;&lt;b&gt;• Plumbing:&lt;/b&gt; Water heater, supply lines, and drains. &lt;br&gt;&lt;b&gt;• Roof:&lt;/b&gt; Shingles, flashing, and integrity. &lt;br&gt;This is crucial for insurance underwriting.",
     icon: ClipboardCheck,
     image: "/images/cape-coral-veterans-memorial-monument.png",
   },
@@ -382,5 +383,3 @@ export const cityKeywords: Record<string, string[]> = {
   "immokalee": ["Immokalee home inspector", "home inspection Immokalee FL", "Immokalee property inspector"],
   "montura-ranch-estates": ["Montura Ranch home inspector", "home inspection Montura Ranch", "Montura Ranch property inspector"],
 };
-
-
