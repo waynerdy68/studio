@@ -1,3 +1,4 @@
+
 // /src/lib/constants.ts
 import type { LucideIcon } from "lucide-react";
 import {
@@ -22,6 +23,7 @@ export const serviceAreas: string[] = [
   "Punta Gorda",
   "Port Charlotte",
   "Montura Ranch Estates",
+  "Babcock Ranch",
 ];
 
 /** Optional: counties if you want to surface them in UI copy */
@@ -380,4 +382,5 @@ export const cityKeywords: Record<string, string[]> = {
   "immokalee": ["Immokalee home inspector", "home inspection Immokalee FL", "Immokalee property inspector"],
   "montura-ranch-estates": ["Montura Ranch home inspector", "home inspection Montura Ranch", "Montura Ranch property inspector"],
 };
+
 

@@ -43,7 +43,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
       { url: `${base}/service-areas/fort-myers`, lastModified: now, changeFrequency: 'weekly', priority: 0.7 },
       { url: `${base}/service-areas/cape-coral`, lastModified: now, changeFrequency: 'weekly', priority: 0.7 },
       { url: `${base}/service-areas/punta-gorda`, lastModified: now, changeFrequency: 'weekly', priority: 0.7 },
-      { url: `${base}/service-areas/lake-placid`, lastModified: now, changeFrequency: 'weekly', priority: 0.7 }
+      { url: `${base}/service-areas/lake-placid`, lastModified: now, changeFrequency: 'weekly', priority: 0.7 },
+      { url: `${base}/service-areas/babcock-ranch`, lastModified: now, changeFrequency: 'weekly', priority: 0.7 }
   ];
 
 
