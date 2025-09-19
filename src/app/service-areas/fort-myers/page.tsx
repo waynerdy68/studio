@@ -20,13 +20,13 @@ export const metadata: Metadata = {
     title: "Fort Myers Home Inspector | Wind Mitigation & Insurance Inspections",
     description:
       "Local Fort Myers home inspector since 2020. Fast scheduling, detailed reports, wind mitigation for insurance discounts. Licensed HI3589.",
-    images: [{ url: "/images/og/service-area-fort-myers.jpg", width: 1200, height: 630, alt: "Home inspector in Fort Myers, Florida examining property" }],
+    images: [{ url: "/images/og/fort-myers-home-inspector.jpg", width: 1200, height: 630, alt: "Home inspector in Fort Myers, Florida examining property" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Fort Myers FL Home Inspector | Mayne Home Inspectors",
     description: "Professional home inspections in Fort Myers since 2020. Same-day reports available.",
-    images: ["/images/og/service-area-fort-myers.jpg"],
+    images: ["/images/og/fort-myers-home-inspector.jpg"],
   },
 }
 
@@ -79,7 +79,7 @@ export default function FortMyersPage() {
     "@type": "LocalBusiness",
     "@id": "https://mayneinspectors.com/service-areas/fort-myers",
     "name": BRAND,
-    "image": "https://mayneinspectors.com/images/og/service-area-fort-myers.jpg",
+    "image": "https://mayneinspectors.com/images/og/fort-myers-home-inspector.jpg",
     "telephone": PHONE_DISPLAY,
     "email": EMAIL,
     "address": {
@@ -198,7 +198,7 @@ export default function FortMyersPage() {
       <section className="mt-10">
         <div className="relative mx-auto max-w-3xl rounded-xl shadow overflow-hidden" style={{ aspectRatio: "1200 / 630" }}>
           <Image 
-            src="/images/og/service-area-fort-myers.jpg" 
+            src="/images/og/fort-myers-home-inspector.jpg" 
             alt="Professional home inspector examining a Fort Myers Florida property with a waterfront view for wind mitigation and structural issues" 
             fill 
             className="object-cover" 

@@ -21,13 +21,13 @@ export const metadata: Metadata = {
     title: "Cape Coral Home Inspector | Waterfront & Seawall Inspections",
     description:
       "Local Cape Coral home inspector since 2020. Fast scheduling, detailed reports for waterfront homes, seawalls, and docks. Licensed HI3589.",
-    images: [{ url: "/images/og/service-area-cape-coral.jpg", width: 1200, height: 630, alt: "Home inspector in Cape Coral, Florida examining a waterfront property" }],
+    images: [{ url: "/images/og/cape-coral-veterans-memorial.jpg", width: 1200, height: 630, alt: "Home inspector in Cape Coral, Florida examining a waterfront property" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Cape Coral FL Home Inspector | Mayne Home Inspectors",
     description: "Professional home inspections in Cape Coral since 2020. Waterfront specialist. Same-day reports.",
-    images: ["/images/og/service-area-cape-coral.jpg"],
+    images: ["/images/og/cape-coral-veterans-memorial.jpg"],
   },
 }
 
@@ -80,7 +80,7 @@ export default function CapeCoralPage() {
     "@type": "LocalBusiness",
     "@id": "https://mayneinspectors.com/service-areas/cape-coral",
     "name": BRAND,
-    "image": "https://mayneinspectors.com/images/og/service-area-cape-coral.jpg",
+    "image": "https://mayneinspectors.com/images/og/cape-coral-veterans-memorial.jpg",
     "telephone": PHONE_DISPLAY,
     "email": EMAIL,
     "address": {
@@ -200,7 +200,7 @@ export default function CapeCoralPage() {
       <section className="mt-10">
         <div className="relative mx-auto max-w-3xl rounded-xl shadow overflow-hidden" style={{ aspectRatio: "1200 / 630" }}>
           <Image
-            src="/images/og/service-area-cape-coral.jpg"
+            src="/images/og/cape-coral-veterans-memorial.jpg"
             alt="Professional home inspector at a waterfront property in Cape Coral, Florida, checking the seawall and dock"
             fill
             className="object-cover"

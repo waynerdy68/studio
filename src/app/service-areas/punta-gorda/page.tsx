@@ -21,13 +21,13 @@ export const metadata: Metadata = {
     title: "Punta Gorda Home Inspector | Historic & Waterfront Inspections",
     description:
       "Local Punta Gorda home inspector since 2020. Fast scheduling and detailed reports for historic downtown and waterfront homes. Licensed HI3589.",
-    images: [{ url: "/images/og/service-area-punta-gorda.jpg", width: 1200, height: 630, alt: "Home inspector at a historic waterfront property in Punta Gorda, Florida" }],
+    images: [{ url: "/images/og/punta-gorda-home-inspection-drone.jpg", width: 1200, height: 630, alt: "Home inspector at a historic waterfront property in Punta Gorda, Florida" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Punta Gorda FL Home Inspector | Mayne Home Inspectors",
     description: "Professional home inspections in Punta Gorda since 2020. Historic and waterfront specialist.",
-    images: ["/images/og/service-area-punta-gorda.jpg"],
+    images: ["/images/og/punta-gorda-home-inspection-drone.jpg"],
   },
 }
 
@@ -80,7 +80,7 @@ export default function PuntaGordaPage() {
     "@type": "LocalBusiness",
     "@id": "https://mayneinspectors.com/service-areas/punta-gorda",
     "name": BRAND,
-    "image": "https://mayneinspectors.com/images/og/service-area-punta-gorda.jpg",
+    "image": "https://mayneinspectors.com/images/og/punta-gorda-home-inspection-drone.jpg",
     "telephone": PHONE_DISPLAY,
     "email": EMAIL,
     "address": {
@@ -199,7 +199,7 @@ export default function PuntaGordaPage() {
       <section className="mt-10">
         <div className="relative mx-auto max-w-3xl rounded-xl shadow overflow-hidden" style={{ aspectRatio: "1200 / 630" }}>
           <Image
-            src="/images/og/service-area-punta-gorda.jpg"
+            src="/images/og/punta-gorda-home-inspection-drone.jpg"
             alt="Professional home inspector at a historic waterfront property in Punta Gorda, Florida"
             fill
             className="object-cover"

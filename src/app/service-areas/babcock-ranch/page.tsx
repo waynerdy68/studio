@@ -21,13 +21,13 @@ export const metadata: Metadata = {
     title: "Babcock Ranch Home Inspector | New Construction Specialist",
     description:
       "Local Babcock Ranch inspector for new homes. We understand green building, solar, and the unique construction of America's most sustainable community.",
-    images: [{ url: "/images/og/service-area-babcock-ranch.jpg", width: 1200, height: 630, alt: "A modern, sustainable home in Babcock Ranch, Florida awaiting inspection" }],
+    images: [{ url: "/images/og/babcock-ranch-insperctor.jpg", width: 1200, height: 630, alt: "A modern, sustainable home in Babcock Ranch, Florida awaiting inspection" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Babcock Ranch FL Home Inspector | Mayne Home Inspectors",
     description: "Professional new construction home inspections in Babcock Ranch.",
-    images: ["/images/og/service-area-babcock-ranch.jpg"],
+    images: ["/images/og/babcock-ranch-insperctor.jpg"],
   },
 }
 
@@ -80,7 +80,7 @@ export default function BabcockRanchPage() {
     "@type": "LocalBusiness",
     "@id": "https://mayneinspectors.com/service-areas/babcock-ranch",
     "name": BRAND,
-    "image": "https://mayneinspectors.com/images/og/service-area-babcock-ranch.jpg",
+    "image": "https://mayneinspectors.com/images/og/babcock-ranch-insperctor.jpg",
     "telephone": PHONE_DISPLAY,
     "email": EMAIL,
     "address": {
@@ -192,7 +192,7 @@ export default function BabcockRanchPage() {
       <section className="mt-10">
         <div className="relative mx-auto max-w-3xl rounded-xl shadow overflow-hidden" style={{ aspectRatio: "1200 / 630" }}>
           <Image
-            src="/images/og/service-area-babcock-ranch.jpg"
+            src="/images/og/babcock-ranch-insperctor.jpg"
             alt="A modern, sustainable home in Babcock Ranch, Florida with solar panels"
             fill
             className="object-cover"

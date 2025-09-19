@@ -21,13 +21,13 @@ export const metadata: Metadata = {
     title: "Montura Ranch Estates Home Inspector | Acreage & Ranch Specialist",
     description:
       "Local Montura Ranch inspector for large properties, manufactured homes, and equestrian estates. We understand the unique needs of rural Hendry County properties.",
-    images: [{ url: "/images/og/service-area-montura-ranch.jpg", width: 1200, height: 630, alt: "A rural property with a manufactured home in Montura Ranch Estates awaiting inspection" }],
+    images: [{ url: "/images/og/montura-ranch-estates-jesus-donkey.jpg", width: 1200, height: 630, alt: "A rural property with a manufactured home in Montura Ranch Estates awaiting inspection" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Montura Ranch FL Home Inspector | Mayne Home Inspectors",
     description: "Professional inspections for large acreage and manufactured homes in Montura Ranch.",
-    images: ["/images/og/service-area-montura-ranch.jpg"],
+    images: ["/images/og/montura-ranch-estates-jesus-donkey.jpg"],
   },
 }
 
@@ -80,7 +80,7 @@ export default function MonturaRanchPage() {
     "@type": "LocalBusiness",
     "@id": "https://mayneinspectors.com/service-areas/montura-ranch-estates",
     "name": BRAND,
-    "image": "https://mayneinspectors.com/images/og/service-area-montura-ranch.jpg",
+    "image": "https://mayneinspectors.com/images/og/montura-ranch-estates-jesus-donkey.jpg",
     "telephone": PHONE_DISPLAY,
     "email": EMAIL,
     "address": {
@@ -190,7 +190,7 @@ export default function MonturaRanchPage() {
       <section className="mt-10">
         <div className="relative mx-auto max-w-3xl rounded-xl shadow overflow-hidden" style={{ aspectRatio: "1200 / 630" }}>
           <Image
-            src="/images/og/service-area-montura-ranch.jpg"
+            src="/images/og/montura-ranch-estates-jesus-donkey.jpg"
             alt="A rural property with a manufactured home and large acreage in Montura Ranch Estates"
             fill
             className="object-cover"

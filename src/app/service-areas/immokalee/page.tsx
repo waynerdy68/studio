@@ -20,13 +20,13 @@ export const metadata: Metadata = {
     title: "Immokalee Home Inspector | Wind Mitigation & Insurance Inspections",
     description:
       "Local Immokalee home inspector since 2020. Fast scheduling, detailed reports, wind mitigation for insurance discounts. Licensed HI3589.",
-    images: [{ url: "/images/og/service-area.jpg", width: 1200, height: 630, alt: "Home inspector in Immokalee, Florida examining property" }],
+    images: [{ url: "/images/og/immokalee-welcome-sign-farming.jpg", width: 1200, height: 630, alt: "Home inspector in Immokalee, Florida examining property" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Immokalee FL Home Inspector | Mayne Home Inspectors",
     description: "Professional home inspections in Immokalee since 2020. Same-day reports available.",
-    images: ["/images/og/service-area.jpg"],
+    images: ["/images/og/immokalee-welcome-sign-farming.jpg"],
   },
 }
 
@@ -83,7 +83,7 @@ export default function ImmokaleeePage() {
     "@type": "LocalBusiness",
     "@id": "https://mayneinspectors.com/service-areas/immokalee",
     "name": BRAND,
-    "image": "https://mayneinspectors.com/images/og/service-area.jpg",
+    "image": "https://mayneinspectors.com/images/og/immokalee-welcome-sign-farming.jpg",
     "telephone": PHONE_DISPLAY,
     "email": EMAIL,
     "address": {
@@ -204,7 +204,7 @@ export default function ImmokaleeePage() {
       <section className="mt-10">
         <div className="relative mx-auto max-w-3xl rounded-xl shadow overflow-hidden" style={{ aspectRatio: "1200 / 630" }}>
           <Image 
-            src="/images/og/service-area.jpg" 
+            src="/images/og/immokalee-welcome-sign-farming.jpg" 
             alt="Professional home inspector examining an Immokalee Florida property in Southwest Florida's agricultural community for wind mitigation and structural issues" 
             fill 
             className="object-cover" 

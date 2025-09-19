@@ -21,13 +21,13 @@ export const metadata: Metadata = {
     title: "Lake Placid Home Inspector | Lakefront & Inland Inspections",
     description:
       "Local Lake Placid home inspector. Fast scheduling and detailed reports for lakefront homes, golf course properties, and more. Licensed HI3589.",
-    images: [{ url: "/images/og/service-area-lake-placid.jpg", width: 1200, height: 630, alt: "Home inspector at a lakefront property in Lake Placid, Florida" }],
+    images: [{ url: "/images/og/lake-placid-bank-commercial-inspection.jpg", width: 1200, height: 630, alt: "Home inspector at a lakefront property in Lake Placid, Florida" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Lake Placid FL Home Inspector | Mayne Home Inspectors",
     description: "Professional home inspections in Lake Placid. Lakefront and inland specialist.",
-    images: ["/images/og/service-area-lake-placid.jpg"],
+    images: ["/images/og/lake-placid-bank-commercial-inspection.jpg"],
   },
 }
 
@@ -80,7 +80,7 @@ export default function LakePlacidPage() {
     "@type": "LocalBusiness",
     "@id": "https://mayneinspectors.com/service-areas/lake-placid",
     "name": BRAND,
-    "image": "https://mayneinspectors.com/images/og/service-area-lake-placid.jpg",
+    "image": "https://mayneinspectors.com/images/og/lake-placid-bank-commercial-inspection.jpg",
     "telephone": PHONE_DISPLAY,
     "email": EMAIL,
     "address": {
@@ -197,7 +197,7 @@ export default function LakePlacidPage() {
       <section className="mt-10">
         <div className="relative mx-auto max-w-3xl rounded-xl shadow overflow-hidden" style={{ aspectRatio: "1200 / 630" }}>
           <Image
-            src="/images/og/service-area-lake-placid.jpg"
+            src="/images/og/lake-placid-bank-commercial-inspection.jpg"
             alt="A beautiful lakefront home in Lake Placid, Florida, awaiting inspection"
             fill
             className="object-cover"

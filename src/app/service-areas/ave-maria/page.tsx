@@ -21,13 +21,13 @@ export const metadata: Metadata = {
     title: "Ave Maria Home Inspector | New Construction Specialist",
     description:
       "Local Ave Maria home inspector. Fast scheduling and detailed reports for new construction and family homes in this growing community. Licensed HI3589.",
-    images: [{ url: "/images/og/service-area-ave-maria.jpg", width: 1200, height: 630, alt: "A family home in the planned community of Ave Maria, Florida" }],
+    images: [{ url: "/images/og/ave-maria-inspection-church.jpg", width: 1200, height: 630, alt: "A family home in the planned community of Ave Maria, Florida" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Ave Maria FL Home Inspector | Mayne Home Inspectors",
     description: "Professional new construction and home inspections in Ave Maria.",
-    images: ["/images/og/service-area-ave-maria.jpg"],
+    images: ["/images/og/ave-maria-inspection-church.jpg"],
   },
 }
 
@@ -80,7 +80,7 @@ export default function AveMariaPage() {
     "@type": "LocalBusiness",
     "@id": "https://mayneinspectors.com/service-areas/ave-maria",
     "name": BRAND,
-    "image": "https://mayneinspectors.com/images/og/service-area-ave-maria.jpg",
+    "image": "https://mayneinspectors.com/images/og/ave-maria-inspection-church.jpg",
     "telephone": PHONE_DISPLAY,
     "email": EMAIL,
     "address": {
@@ -191,7 +191,7 @@ export default function AveMariaPage() {
       <section className="mt-10">
         <div className="relative mx-auto max-w-3xl rounded-xl shadow overflow-hidden" style={{ aspectRatio: "1200 / 630" }}>
           <Image
-            src="/images/og/service-area-ave-maria.jpg"
+            src="/images/og/ave-maria-inspection-church.jpg"
             alt="A beautiful family home in a new construction neighborhood in Ave Maria, Florida"
             fill
             className="object-cover"

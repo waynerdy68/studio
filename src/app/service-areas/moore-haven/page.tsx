@@ -20,13 +20,13 @@ export const metadata: Metadata = {
     title: "Moore Haven Home Inspector | Wind Mitigation & Insurance Inspections",
     description:
       "Local Moore Haven home inspector since 2020. Fast scheduling, detailed reports, wind mitigation for insurance discounts. Licensed HI3589.",
-    images: [{ url: "/images/og/service-area.jpg", width: 1200, height: 630, alt: "Home inspector in Moore Haven, Florida examining property" }],
+    images: [{ url: "/images/og/moore-haven-lake-okeechobee.jpg", width: 1200, height: 630, alt: "Home inspector in Moore Haven, Florida examining property" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Moore Haven FL Home Inspector | Mayne Home Inspectors",
     description: "Professional home inspections in Moore Haven since 2020. Same-day reports available.",
-    images: ["/images/og/service-area.jpg"],
+    images: ["/images/og/moore-haven-lake-okeechobee.jpg"],
   },
 }
 
@@ -83,7 +83,7 @@ export default function MooreHavenPage() {
     "@type": "LocalBusiness",
     "@id": "https://mayneinspectors.com/service-areas/moore-haven",
     "name": BRAND,
-    "image": "https://mayneinspectors.com/images/og/service-area.jpg",
+    "image": "https://mayneinspectors.com/images/og/moore-haven-lake-okeechobee.jpg",
     "telephone": PHONE_DISPLAY,
     "email": EMAIL,
     "address": {
@@ -203,7 +203,7 @@ export default function MooreHavenPage() {
       <section className="mt-10">
         <div className="relative mx-auto max-w-3xl rounded-xl shadow overflow-hidden" style={{ aspectRatio: "1200 / 630" }}>
           <Image 
-            src="/images/og/service-area.jpg" 
+            src="/images/og/moore-haven-lake-okeechobee.jpg" 
             alt="Professional home inspector examining a Moore Haven Florida waterfront property along the Caloosahatchee River for wind mitigation and structural issues" 
             fill 
             className="object-cover" 

@@ -20,13 +20,13 @@ export const metadata: Metadata = {
     title: "LaBelle Home Inspector | Wind Mitigation & Insurance Inspections",
     description:
       "Local LaBelle home inspector since 2020. Fast scheduling, detailed reports, wind mitigation for insurance discounts. Licensed HI3589.",
-    images: [{ url: "/images/og/service-area.jpg", width: 1200, height: 630, alt: "Home inspector in LaBelle, Florida examining property" }],
+    images: [{ url: "/images/og/labelle-florida-cow.jpg", width: 1200, height: 630, alt: "Home inspector in LaBelle, Florida examining property" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "LaBelle FL Home Inspector | Mayne Home Inspectors",
     description: "Professional home inspections in LaBelle since 2013. Same-day reports available.",
-    images: ["/images/og/service-area.jpg"],
+    images: ["/images/og/labelle-florida-cow.jpg"],
   },
 }
 
@@ -79,7 +79,7 @@ export default function LabellePage() {
     "@type": "LocalBusiness",
     "@id": "https://mayneinspectors.com/service-areas/labelle",
     "name": BRAND,
-    "image": "https://mayneinspectors.com/images/og/service-area.jpg",
+    "image": "https://mayneinspectors.com/images/og/labelle-florida-cow.jpg",
     "telephone": PHONE_DISPLAY,
     "email": EMAIL,
     "address": {
@@ -196,7 +196,7 @@ export default function LabellePage() {
       <section className="mt-10">
         <div className="relative mx-auto max-w-3xl rounded-xl shadow overflow-hidden" style={{ aspectRatio: "1200 / 630" }}>
           <Image 
-            src="/images/og/service-area.jpg" 
+            src="/images/og/labelle-florida-cow.jpg" 
             alt="Professional home inspector examining a LaBelle Florida property for wind mitigation and structural issues" 
             fill 
             className="object-cover" 
