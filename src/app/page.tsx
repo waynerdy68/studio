@@ -1,6 +1,8 @@
+
 import { HeroSection } from "@/components/sections/hero-section";
 import AboutUsSection from "@/components/sections/about-us-section";
 import { ServicesSection } from "@/components/sections/services-section";
+import { AiToolsSection } from "@/components/sections/ai-tools-section";
 import { VideoSection } from "@/components/sections/video-section";
 import { GoogleReviewsWidget } from "@/components/sections/google-reviews-widget";
 import { PricingSection } from "@/components/sections/pricing-section";
@@ -15,6 +17,7 @@ export default function HomePage() {
       <HeroSection />
       <AboutUsSection />
       <ServicesSection />
+      <AiToolsSection />
       <VideoSection />
       <GoogleReviewsWidget />
       <PricingSection />
@@ -23,4 +26,3 @@ export default function HomePage() {
     </>
   );
 }
-
