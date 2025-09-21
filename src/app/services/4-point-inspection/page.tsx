@@ -19,13 +19,13 @@ export const metadata: Metadata = {
     title: "4-Point Inspection Services for Florida Homeowners Insurance",
     description:
       "Get your insurance-required 4-Point Inspection with same-day reports. Licensed inspector covering roof, electrical, plumbing, and HVAC systems.",
-    images: [{ url: "/images/og/4-point-inspection.jpg", width: 1200, height: 630, alt: "4-Point Inspection services for Florida homeowners insurance" }],
+    images: [{ url: "/images/og/4-point.jpg", width: 1200, height: 630, alt: "4-Point Inspection services for Florida homeowners insurance" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "4-Point Inspection FL | Mayne Home Inspectors",
     description: "Insurance-required 4-Point Inspections with same-day reports.",
-    images: ["/images/og/4-point-inspection.jpg"],
+    images: ["/images/og/4-point.jpg"],
   },
 }
 
@@ -262,7 +262,7 @@ export default function FourPointPage() {
           style={{ aspectRatio: "1200 / 630" }}
         >
           <Image
-            src="/images/og/4-point-inspection.jpg"
+            src="/images/og/4-point.jpg"
             alt="Professional 4-Point Inspection of home systems for Florida homeowners insurance requirements"
             fill
             className="object-cover"

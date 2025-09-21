@@ -20,13 +20,13 @@ export const metadata: Metadata = {
     title: "Radon Gas Testing Services for SWFL Homeowners",
     description:
       "Identify and measure radon, a leading cause of lung cancer, with our certified 48-hour testing service. Same-day summary and clear reports.",
-    images: [{ url: "/images/og/radon-testing.jpg", width: 1200, height: 630, alt: "Radon testing monitor in a Florida home" }],
+    images: [{ url: "/images/og/radon-testing-labelle.jpg", width: 1200, height: 630, alt: "Radon testing monitor in a Florida home" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Radon Testing FL | Mayne Home Inspectors",
     description: "Protect your home from radon gas with our certified 48-hour continuous monitoring test.",
-    images: ["/images/og/radon-testing.jpg"],
+    images: ["/images/og/radon-testing-labelle.jpg"],
   },
 }
 
@@ -233,7 +233,7 @@ export default function RadonTestingPage() {
           style={{ aspectRatio: "1200 / 630" }}
         >
           <Image
-            src="/images/og/radon-testing.jpg"
+            src="/images/og/radon-testing-labelle.jpg"
             alt="A continuous radon monitor placed in a home for a 48-hour test"
             fill
             className="object-cover"

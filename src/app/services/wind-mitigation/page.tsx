@@ -19,13 +19,13 @@ export const metadata: Metadata = {
     title: "Wind Mitigation Inspection for Florida Insurance Savings",
     description:
       "Lower your Florida homeowners insurance with a certified Wind Mitigation Inspection. We provide the official OIR-B1-1802 form with same-day reports.",
-    images: [{ url: "/images/og/wind-mitigation.jpg", width: 1200, height: 630, alt: "Wind Mitigation Inspection in Florida showing roof clips" }],
+    images: [{ url: "/images/og/wind-mitigation-inspection.jpg", width: 1200, height: 630, alt: "Wind Mitigation Inspection in Florida showing roof clips" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Wind Mitigation Inspections FL | Mayne Home Inspectors",
     description: "Lower your insurance premiums with a certified Wind Mitigation Inspection. Same-day OIR-B1-1802 form.",
-    images: ["/images/og/wind-mitigation.jpg"],
+    images: ["/images/og/wind-mitigation-inspection.jpg"],
   },
 }
 
@@ -252,7 +252,7 @@ export default function WindMitigationPage() {
           style={{ aspectRatio: "1200 / 630" }}
         >
           <Image
-            src="/images/og/wind-mitigation.jpg"
+            src="/images/og/wind-mitigation-inspection.jpg"
             alt="Wind Mitigation Inspection in Florida showing roof clips and hurricane shutters"
             fill
             className="object-cover"

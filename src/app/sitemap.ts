@@ -14,13 +14,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/faq`,           lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
     { url: `${base}/cost-estimator`,lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
     { url: `${base}/checklist`,     lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
-    // Uncomment ONLY if these routes actually exist:
-    // { url: `${base}/about`,       lastModified: now, changeFrequency: 'yearly',  priority: 0.3 },
-    // { url: `${base}/contact`,     lastModified: now, changeFrequency: 'yearly',  priority: 0.3 },
   ]
 
-  // Service pages — assumes /services/{slug}
-  // If you use top-level like /wind-mitigation, add a "path" field to your services and this code will use it.
+  // Dynamic Service pages from constants.ts
   const serviceRoutes: MetadataRoute.Sitemap = (services ?? []).map(
     (s: { slug: string; path?: string }) => ({
       url: `${base}${s.path ?? `/services/${s.slug}`}`,
@@ -28,31 +24,37 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'weekly' as const,
       priority: 0.8,
     })
-  )
+  );
 
-  // City pages — assumes /service-areas/{city-slug}
+  // Statically-defined service pages that are NOT in constants.ts
+  const staticServiceRoutes: MetadataRoute.Sitemap = [
+    { url: `${base}/services/4-point-inspection`, lastModified: now, changeFrequency: 'weekly', priority: 0.8 },
+    { url: `${base}/services/home-inspection`, lastModified: now, changeFrequency: 'weekly', priority: 0.8 },
+    { url: `${base}/services/condo-townhouse`, lastModified: now, changeFrequency: 'weekly', priority: 0.8 },
+  ];
+
+  // Dynamic City pages from constants.ts
   const cityRoutes: MetadataRoute.Sitemap = (serviceAreas ?? []).map((city: string) => ({
     url: `${base}/service-areas/${slugify(city)}`,
     lastModified: now,
     changeFrequency: 'weekly' as const,
     priority: 0.7,
-  }))
+  }));
 
-  // Add the new static city pages
+  // Statically-defined city pages that are NOT in constants.ts
   const staticCityRoutes: MetadataRoute.Sitemap = [
       { url: `${base}/service-areas/fort-myers`, lastModified: now, changeFrequency: 'weekly', priority: 0.7 },
       { url: `${base}/service-areas/cape-coral`, lastModified: now, changeFrequency: 'weekly', priority: 0.7 },
       { url: `${base}/service-areas/punta-gorda`, lastModified: now, changeFrequency: 'weekly', priority: 0.7 },
       { url: `${base}/service-areas/lake-placid`, lastModified: now, changeFrequency: 'weekly', priority: 0.7 },
-      { url: `${base}/service-areas/babcock-ranch`, lastModified: now, changeFrequency: 'weekly', priority: 0.7 }
+      { url: `${base}/service-areas/babcock-ranch`, lastModified: now, changeFrequency: 'weekly', priority: 0.7 },
+      { url: `${base}/service-areas/ave-maria`, lastModified: now, changeFrequency: 'weekly', priority: 0.7 },
+      { url: `${base}/service-areas/montura-ranch-estates`, lastModified: now, changeFrequency: 'weekly', priority: 0.7 },
   ];
-
 
   // De-dupe just in case
   const seen = new Set<string>()
-  return [...staticPages, ...serviceRoutes, ...cityRoutes, ...staticCityRoutes].filter(i =>
+  return [...staticPages, ...serviceRoutes, ...staticServiceRoutes, ...cityRoutes, ...staticCityRoutes].filter(i =>
     seen.has(i.url) ? false : (seen.add(i.url), true)
   )
 }
-
-    
